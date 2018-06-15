@@ -10,7 +10,7 @@
         <ul class="contact-list">
           <li class="p-name">
             {%- if site.author -%}
-            <img src="https://www.gravatar.com/avatar/{{ site.author.gravatar_md5 }}?s=100" />
+            <img src="https://www.gravatar.com/avatar/{{ site.gravatar_md5 }}?s=100" />
               <p>{{ site.author | escape }}</p>
             {%- else -%}
               {{ site.title | escape }}
