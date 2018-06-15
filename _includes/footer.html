@@ -11,7 +11,7 @@
           <li class="p-name">
             {%- if site.author -%}
               {{ site.author | escape }}
-                <img src="https://www.gravatar.com/avatar/{{ site.author.gravatar_md5 }}?s=120" />
+                <img src="https://www.gravatar.com/avatar/{{ site.gravatar_md5 }}?s=120" />
             {%- else -%}
               {{ site.title | escape }}
             {%- endif -%}
