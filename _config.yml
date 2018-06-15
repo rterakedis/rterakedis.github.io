@@ -18,8 +18,8 @@ author: Robert Terakedis
 gravatar_md5: 694ec86c1ef322225b10e95cafc4c7e6
 #email: your-email@example.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Tacos for macOS, iOS, tvOS - Small Nuggets of Food for Thought about Apple Platforms.  
-  Talk Nerdy to me!   Microsoft Datacenter Engineer turned Apple platform management architect at VMware.
+  Tacos for macOS, iOS, tvOS - Small Nuggets of "food for thought" about Apple Platforms.  
+  Microsoft Datacenter Engineer turned Apple platform management architect at VMware.
   Apple mobility management is my jam.  Workspace ONE UEM is my bread & butter.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
