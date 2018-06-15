@@ -14,7 +14,8 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: Tacos for macOS, iOS, tvOS.
-author:  Robert Terakedis
+author: Robert Terakedis
+  gravatar_md5: 694ec86c1ef322225b10e95cafc4c7e6
 #email: your-email@example.com
 description: >- # this means to ignore newlines until "baseurl:"
   Tacos for macOS, iOS, tvOS - Small Nuggets of Food for Thought about Apple Platforms.  
@@ -25,6 +26,7 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: robterakedis
 github_username:  rterakedis
 linkedin_username: terakedis
+#google_analytics: 
 
 # Build settings
 markdown: kramdown
