@@ -30,7 +30,7 @@ linkedin_username: terakedis
 
 # Build settings
 markdown: kramdown
-theme: minima
+theme: jekyll-theme-leap-day
 plugins:
   - jekyll-feed
 
