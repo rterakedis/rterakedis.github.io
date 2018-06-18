@@ -4,15 +4,14 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+## Hello and welcome!
 
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
+I decided it was time to freshen up the blog and go for something much simpler.  It had been *so long* since I had blogged, that I decided to simply decomission my old website/blog on Wordpress and switch to [Jekyll with GitHub Pages](https://help.github.com/articles/using-jekyll-as-a-static-site-generator-with-github-pages/).  I needed a place to write up some interesting stuff at work in the hopes it can help others!
 
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
+## What I'm Up To
 
-
-[jekyll-organization]: https://github.com/jekyll
+Here's a recent list of where you'll find me:
+* [VMware EUC Blogs](https://blogs.vmware.com/euc/author/rterakedis)
+* [MacAdmins Slack -- @rterakedis in #airwatch](https://macadmins.herokuapp.com)
+* [AirWatch Samples on GitHub](https://github.com/vmwaresamples/AirWatch-samples)
+* [VMware Sample Exchange](https://code.vmware.com/samples?categories=Sample&keywords=rterakedis&tags=&groups=&filters=&sort=&page=)
