@@ -11,6 +11,7 @@ I decided it was time to freshen up the blog and go for something much simpler. 
 ## What I'm Up To
 
 Here's a recent list of where you'll find me:
+* [VMware TechZone](https://techzone.vmware.com/users/robert-terakedis)
 * [VMware EUC Blogs](https://blogs.vmware.com/euc/author/rterakedis)
 * [MacAdmins Slack -- @rterakedis in #airwatch](https://macadmins.herokuapp.com)
 * [AirWatch Samples on GitHub](https://github.com/vmwaresamples/AirWatch-samples)
