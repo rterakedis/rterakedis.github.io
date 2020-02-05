@@ -19,7 +19,23 @@ Sitting down to plan out testing, there were four main use cases I hoped to prov
 3. Could you also leverage the Kerberos SSO Extension to sync your local (non-mobile) macOS User account's password with the on-prem AD password over Per-App VPN?
 4. Could you change your on-prem AD password remotely over Per-App VPN when it neared the expiration date?
 
-It seemed pretty straightforward... but NOPE!  Some items that helped me troubleshoot this and discover what was going on under the hood:
+It seemed pretty straightforward... but NOPE!  I ran into quite a bit of unexpected behavior!  Luckily, one of my coworkers, [Adam](https://blog.eucse.com/contact/), had a slightly different configuration than I and was able to test all of this as functioning for macOS that is on-network with on-premise Active Directory.   
+
+## Test Environment Configuration
+
+Here's how I have things configured in my *test* environment:
+
+* Isolated Network with the following VMs:
+  * Two Windows Server 2016 Domain Controllers, one of which runs DNS
+  * Airwatch Cloud Connector and Workspace ONE Access Connnectors configured
+  * One IIS web server running two sites -- one configured for Kerberos Auth and one configured for Anonymous access.
+  * One ADCS server (not used for this testing)
+* Unified Access Gateway Appliance v3.8 (the only VM with inbound access from the Internet)
+  * Tunnel/Edge service is enabled/configured
+* SaaS-based Workspace ONE UEM and Workspace ONE Access.
+* Workspace ONE Tunnel for macOS configured as an auto-deployed Volume Purchase app (from Apple Business Manager)
+* The DNS name for my AD domain set up in Device Traffic Rules for tunneling.
+* Google Chrome, Firefox, and Safari all configured to allow kerberos authentication to the website.
 
 ### Commands
 
@@ -42,6 +58,11 @@ As it turns out, the Kerberos SSO Extension in Catalina appears designed for sit
 | Extension Detects local PW different from AD | No! | Yes! |
 | User Change AD Password via Extension over VPN | No! | No! |
 
-I used Apple's Feedback Assistant app to provide feedback to Apple and provided them with an environment to reproduce the issue.  I'm hopeful that they can find a fix or provide some guidance to enabling the entirety of the Kerberos SSO Extension's functionality over a VPN.
+I was able to confirm that a kerberos ticket is obtained using `klist` in Terminal.  I could also confirm that I could authenticate to the Kerberos-enabled IIS website without having to provide a username/password in the browser.   Kerberos functionality appeared to be working, just not any other functionality.
+
+## Looking Forward
+I used Apple's Feedback Assistant app to provide feedback to Apple and provided them with an environment to reproduce the issue.  I'm hopeful that they can find a fix or provide some guidance to enabling the entirety of the Kerberos SSO Extension's functionality over a VPN.  
+
+| Please reach out if you've done testing as well - I'd love to hear your experience!
 
 More to come...
