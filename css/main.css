@@ -546,7 +546,19 @@ footer .theme-by {
     font-size: 14px;
   }
 }
-
+.header-section div.disclaimer{
+  padding: 15px 15px 15px 10px;
+  margin: 20px 20px 20px 5px;
+  border: 1px solid #eee;
+  border-left-width: 10px;
+  border-right-width: 10px;
+  border-radius: 5px 3px 3px 5px;
+  background-color: #fdf5d4;
+  border-left-color: #f1c40f;
+  border-right-color: #f1c40f;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  text-align: center;
+}
 .header-section.has-img .no-img {
   margin-top: 0;
   background-color: #FCFCFC;
