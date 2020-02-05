@@ -14,10 +14,10 @@ Sounds simple enough, right?  So a few of us wondered if we could leverage some 
 
 Sitting down to plan out testing, there were four main use cases I hoped to prove out:
 
-1) What if the new Kerberos SSO Extension in macOS Catalina was just another one of those applications that you redirected over a VPN?
-2) Could you, in theory, get Kerberos Tickets to an unbound Mac to use for authenticating to Workspace ONE Access and/or internal websites (over Per-App VPN)?
-3) Could you also leverage the Kerberos SSO Extension to sync your local (non-mobile) macOS User account's password with the on-prem AD password over Per-App VPN?
-4) Could you change your on-prem AD password remotely over Per-App VPN when it neared the expiration date?
+1. What if the new Kerberos SSO Extension in macOS Catalina was just another one of those applications that you redirected over a VPN?
+2. Could you, in theory, get Kerberos Tickets to an unbound Mac to use for authenticating to Workspace ONE Access and/or internal websites (over Per-App VPN)?
+3. Could you also leverage the Kerberos SSO Extension to sync your local (non-mobile) macOS User account's password with the on-prem AD password over Per-App VPN?
+4. Could you change your on-prem AD password remotely over Per-App VPN when it neared the expiration date?
 
 It seemed pretty straightforward... but NOPE!  Some items that helped me troubleshoot this and discover what was going on under the hood:
 
