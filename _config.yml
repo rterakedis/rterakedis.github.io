@@ -21,7 +21,7 @@ description: Robert's Blog - Technical talk and opinion with a dash of sarcasm.
 # List of links in the navigation bar
 navbar-links:
   About Me: "aboutme"
-  My Content: 
+  My Work Content: 
       - VMware EUC TechZone: "https://techzone.vmware.com/users/robert-terakedis"
       - VMware Tech Network: "https://communities.vmware.com/people/rterakedis/activity"
       - VMware EUC-Samples: "https://github.com/vmware-samples/euc-samples/tree/master/macOS-Samples"
@@ -97,7 +97,7 @@ share-links-active:
 
 # How to display the link to the website in the footer
 # Remove this if you don't want a link in the footer
-url-pretty: "rterakedis.github.io"  # eg. "deanattali.com/beautiful-jekyll"
+url-pretty: "blog.euc-rt.me"  # eg. "deanattali.com/beautiful-jekyll"
 
 # --- Web Statistics Section --- #
 
