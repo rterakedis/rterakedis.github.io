@@ -20,7 +20,7 @@ description: Robert's Blog - Technical talk and opinion with a dash of sarcasm.
 
 # List of links in the navigation bar
 navbar-links:
-  About Me: "aboutme"
+  About Me: "about"
   My Work Content: 
       - VMware EUC TechZone: "https://techzone.vmware.com/users/robert-terakedis"
       - VMware Tech Network: "https://communities.vmware.com/people/rterakedis/activity"
@@ -199,6 +199,8 @@ exclude:
   - LICENSE
   - README.md
   - Vagrantfile
+
+include: ["_pages"]
 
 # prose.io config
 prose:
