@@ -1,0 +1,9 @@
+---
+layout: post
+title: Deploying Microsoft Defender ATP for macOS using Workspace ONE UEM
+subtitle: Converting Jamf templates to Workspace ONE templates
+tags: [macOS]
+comments: true
+---
+
+I had a few folks recently approach me on the MacAdmins slack asking for help with Microsoft Defender ATP for Mac.   We got it working, but it really came down to 2 issues:  conflicting documentation, Jamf and inTune specific templates.  

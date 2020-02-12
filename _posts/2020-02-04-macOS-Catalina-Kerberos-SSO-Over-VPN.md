@@ -8,7 +8,7 @@ comments: true
 
 Working at VMware, I'm surrounded by great technology and super-smart folks!  In our portfolio of technologies, the folks in our R&D have recently been putting quite a bit of effort into building out macOS capabilities for our Workspace ONE Tunnel client for macOS.  Workspace ONE admins can leverage the same VMware technology they used to enable per-app VPN for iOS and Android, but now on macOS!  There's a bit of nuance to configuring the VPN client if you're previously familiar with iOS (look for my Operational Tutorial soon to hit [TechZone](https://techzone.vmware.com)).  That said, the premise is the same -- by configuring the appropriate rules, the Tunnel app redirects traffic from whitelisted applications back into your network through the Unified Access Gateway.  
 
-Sounds simple enough, right?  So a few of us wondered if we could leverage some of this new technology with new Kerberos SSO Extension in Catalina.  
+Sounds simple enough, right?  So a few of us wondered if we could leverage some of this new technology with new [Kerberos SSO Extension](https://www.apple.com/business/docs/site/Kerberos_Single_Sign_on_Extension_User_Guide.pdf) in macOS Catalina.  
 
 ## Use-Cases
 
