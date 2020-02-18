@@ -26,7 +26,8 @@ navbar-links:
       - VMware Tech Network: "https://communities.vmware.com/people/rterakedis/activity"
       - VMware EUC-Samples: "https://github.com/vmware-samples/euc-samples/tree/master/macOS-Samples"
       - VMware EUC Blog: "https://blogs.vmware.com/euc/author/rterakedis"
-  # Resources:
+  Resources:
+      - Getting Started: "gettingstarted"
   #   - Beautiful Jekyll: "http://deanattali.com/beautiful-jekyll/"
   #   - Learn markdown: "http://www.markdowntutorial.com/"
 

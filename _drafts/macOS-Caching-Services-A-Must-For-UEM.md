@@ -4,6 +4,7 @@ title: macOS Caching Services - A Must for A UEM Deployment
 subtitle: Reducing WAN Traffic in a UEM Deployment
 tags: [macOS]
 comments: true
+published: false
 ---
 
 I commonly hear about macOS Caching Services as an after-thought when planning a Unified Endpoint Management (or UEM) deployment.  While I can think of a number of reasons why this may be the case, my time in this industry has taught me how important this tiny piece of infrastructure can become.   I wanted to put this post together as a way to explain what macOS Caching Services does, why you need it, and how to customize/monitor it.  
