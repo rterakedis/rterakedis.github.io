@@ -7,14 +7,16 @@ comments: true
 published: false
 ---
 
-I commonly hear about macOS Caching Services as an after-thought when planning a Unified Endpoint Management (or UEM) deployment.  While I can think of a number of reasons why this may be the case, my time in this industry has taught me how important this tiny piece of infrastructure can become.   I wanted to put this post together as a way to explain what macOS Caching Services does, why you need it, and how to customize/monitor it.  
+I commonly hear about macOS Caching Services as an after-thought when planning a Unified Endpoint Management (or UEM) deployment.  While I can think of several reasons why this may be the case, my time in this industry has taught me how important this tiny piece of infrastructure can become.   I wanted to put this post together as a way to explain what macOS Caching Services does, why you need it, and how to customize/monitor it.  
 
-## What is macOS Caching Services?
-Content Caching is a service in macOS that helps speed up software installation and reduce WAN (or Internet) traffic for Apple devices on your network(s).  The service provides 
+## What is macOS Caching Services
+
+Content Caching is a service in macOS that helps speed up software installation and reduce WAN (or Internet) traffic for Apple devices on your network(s).  The service provides
 
 ## The Official Docs (for more information)
 
 Get it directly from the source:
+
 * [What is Content Caching on Mac?](https://support.apple.com/guide/mac-help/what-is-content-caching-on-mac-mchl9388ba1b/mac)
 * [Content Types Supported by Content Caching in macOS](https://support.apple.com/en-us/HT204675)
 * [Set up Content Cache Clients, Peers, or Parents on Mac](https://support.apple.com/guide/mac-help/set-content-cache-clients-peers-parents-mac-mchl9b56e1cf/10.15/mac/10.15)
