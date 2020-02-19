@@ -31,9 +31,11 @@ In Workspace ONE UEM, you need only click **Add > Profile** in the top right cor
 * The Kernel Extension payload whitelisting the Team ID:  `UBF8T346G9`
 * The Privacy Preferences payload granting `com.microsoft.wdav` the *SystemPolicyAllFiles* entitlement
 
-> When adding multiple custom settings to a profile, use the plus sign (+) to add additional custom settings payloads.  **DO NOT** paste multiple custom settings payloadType dictionaries (<dict>...</dict>) in the same text box (e.g. a single payload).
-
 > With regards to the Notification Settings payload, I recommend testing this setting with other apps in your environment generating notifications.   In my experience, some apps in some versions of macOS have shown unintended behaviors when managing notification settings via MDM.
+
+As you go to build the Custom Settings payloads, it's important to note that Workspace ONE UEM expects ONLY the payloadType dictionary (e.g. `<dict>...</dict>`) and not the full mobileconfig profile with the *Configuration* wrapper.  What this means is you'll need to trim down the content of the payload to make it work in Workspace ONE.   I cover some of these basics in the [Custom XML Payloads](https://github.com/vmware-samples/euc-samples/blob/master/macOS-Samples/CustomXMLProfiles/CustomXMLTemplate.md) document on the EUC-Samples github repo.
+
+> When adding multiple custom settings to a profile, use the plus sign (+) to add additional custom settings payloads.  **DO NOT** paste multiple custom settings payloadType dictionaries (<dict>...</dict>) in the same text box (e.g. a single payload).
 
 ### Jamf Packages = Internal Apps in Workspace ONE Parlance
 
