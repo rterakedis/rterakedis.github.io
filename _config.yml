@@ -28,6 +28,7 @@ navbar-links:
       - VMware EUC Blog: "https://blogs.vmware.com/euc/author/rterakedis"
   Resources:
       - Getting Started: "gettingstarted"
+      - Stickers: "stickers"
   #   - Beautiful Jekyll: "http://deanattali.com/beautiful-jekyll/"
   #   - Learn markdown: "http://www.markdowntutorial.com/"
 
