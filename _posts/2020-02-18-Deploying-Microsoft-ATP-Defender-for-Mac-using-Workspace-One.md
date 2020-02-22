@@ -24,10 +24,13 @@ The [Deployment with a different MDM system](https://docs.microsoft.com/en-us/wi
 
 ### Jamf Policies = Profiles in Workspace ONE Parlance
 
-In Workspace ONE UEM, you need only click **Add > Profile** in the top right corner, and build a macOS Device profile.   While we typically suggest only a single payload per profile, in this instance, you need multiple payloads for a single app.  Since none of the settings you'll be managing *should* conflict with other similar payloads, I would suggest creating a single profile with all the following payloads:
+In Workspace ONE UEM, you need only click **Add > Profile** in the top right corner, and build a macOS Device profile.   While we typically suggest only a single payload per profile, in this instance, you need multiple payloads for a single app.  Since none of the settings you'll be managing *should* conflict with other similar payloads, I would suggest creating a single profile with the following two payloads:
 
 * The Custom Settings payload for `com.microsoft.wdav`
 * The Custom Settings payload for `com.microsoft.wdav.atp`
+
+I would then suggest creating separate profiles with each individual payload as follows (or add the information to a pre-existing profile containing the specific payload):
+
 * The Kernel Extension payload whitelisting the Team ID:  `UBF8T346G9`
 * The Privacy Preferences payload granting `com.microsoft.wdav` the *SystemPolicyAllFiles* entitlement
 
