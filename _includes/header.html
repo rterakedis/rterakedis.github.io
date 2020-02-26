@@ -31,13 +31,15 @@
             <hr class="small">
             <span class="{{ include.type }}-subheading">{{ page.subtitle }}</span>
 			{% else %}
-			<h2 class="{{ include.type }}-subheading">{{ page.subtitle }}</h2>
-			{% endif %}
-		  {% endif %}
+      <h2 class="{{ include.type }}-subheading">{{ page.subtitle }}</h2>
+      {% endif %}
+
+      {% endif %}
 		  
 		  {% if include.type == "post" %}
-		  <span class="post-meta">Posted on {{ page.date | date: site.date_format }}</span>
-		  {% endif %}
+      <span class="post-meta">Posted on {{ page.date | date: site.date_format }}</span>
+      {% endif %}
+
         </div>
       </div>
     </div>
@@ -57,12 +59,15 @@
             <span class="{{ include.type }}-subheading">{{ page.subtitle }}</span>
 			{% else %}
 			<h2 class="{{ include.type }}-subheading">{{ page.subtitle }}</h2>
-			{% endif %}
+      {% endif %}
 		  {% endif %}
 		  
 		  {% if include.type == "post" %}
 		  <span class="post-meta">Posted on {{ page.date | date: site.date_format }}</span>
       {% endif %}
+    </br>
+    </br>
+    {% include search-google.html %}
     </div>
       </div>
     </div>
