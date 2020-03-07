@@ -33,15 +33,15 @@ Most folks (from what I can tell) advocate pen-to-paper for a Bullet Journal.  I
 
 I started setting up a bullet journal in 2019. I created the following *basic* templates that I saved in iCloud and imported as I built out my bullet journal:
 
-- [2-Page Index](/files/2-P-Index.pdf)
-- [2-Page Future Log](/files/2-P-Index.pdf)
-  - [2-Page Future Log Jan-Jun](/files/2-P-FL-Jan-Jun.pdf)
-  - [2-Page Future Log Jul-Dec](/files/2-P-FL-Jul-Dec.pdf)
-- [2-Page Monthly Log with Tasks](/files/2-P-ML-Tasks.pdf)
-- [2-Page Blank Project Template](/files/2-P-Project.pdf)
-- [2-Page Blank Header Template](/files/2-P-Blank-Header.pdf)
-- [8.5x11 Dot Grid](/files/8.5x11-Dot-Grid.pdf)
-- [8.5x11 Dot Grid Divided 2-Pages](/files/2-P-8.5x11-Dots.pdf)
+- [2-Page Index](./files/2-P-Index.pdf)
+- [2-Page Future Log](./files/2-P-Index.pdf)
+  - [2-Page Future Log Jan-Jun](./files/2-P-FL-Jan-Jun.pdf)
+  - [2-Page Future Log Jul-Dec](./files/2-P-FL-Jul-Dec.pdf)
+- [2-Page Monthly Log with Tasks](./files/2-P-ML-Tasks.pdf)
+- [2-Page Blank Project Template](./files/2-P-Project.pdf)
+- [2-Page Blank Header Template](./files/2-P-Blank-Header.pdf)
+- [8.5x11 Dot Grid](./files/8.5x11-Dot-Grid.pdf)
+- [8.5x11 Dot Grid Divided 2-Pages](./files/2-P-8.5x11-Dots.pdf)
 
 > My goal with the templates was to set up a functional journal and not have it be eye-catching.  If you search YouTube, you can find several folks making highly creative layouts for their Bullet Journals.  That's simply not something I was willing to spend time on.
 
@@ -55,21 +55,21 @@ The new key gave me the ability to differentiate between work (square) tasks or 
 
 ### Future Logs
 
-The first two pages of my Digital Bullet Journal are the two Future Log pages ([2-Page Future Log Jan-Jun](./files/2-P-FL-Jan-Jun.pdf) and [2-Page Future Log Jul-Dec](./files/2-P-FL-Jul-Dec.pdf).  In the future logs, I track recurring events like birthdays and anniversaries and any other notable events planned farther than a month out (family vacations, work trips, and more).   I refer to this every time I create a new Monthly Log.
+The first two pages of my Digital Bullet Journal are the two Future Log pages ([2-Page Future Log Jan-Jun](../files/2-P-FL-Jan-Jun.pdf) and [2-Page Future Log Jul-Dec](../files/2-P-FL-Jul-Dec.pdf).  In the future logs, I track recurring events like birthdays and anniversaries and any other notable events planned farther than a month out (family vacations, work trips, and more).   I refer to this every time I create a new Monthly Log.
 
 ### Monthly Logs
 
 Rather than create a Monthly Log for all 12 months at once, I typically create just the first 3 months (January, February, March) at the beginning.   As each month passes, I create the next monthly log for 3 months out.  In other words, at the end of January, I create the April monthly log.  I find this saves me from having to bore myself with slogging through all 12 monthly logs upfront (but to each their own).  
 
-I start each Monthly log using the [2-Page Monthly Log with Tasks](/files/2-P-ML-Tasks.pdf) template.  I fill in the day's number and abbreviation (S, M, T, and more), and then bring over the items from my Future Log into the calendar (left) side.   I then start adding to my list of monthly tasks I'd like to get done (work and personal) on the right. I migrate tasks into this month from the previous month as I iterate based on whether they're still valuable.  However, I place some tasks into each month based on my delivery planning for work.  Remember, my tasks list contains both work and personal tasks (noted by their different key icons - circle versus square).  As such, some tasks that I feel are *relevant* don't necessarily get moved to the next month.  Instead, I sometimes move a task two or three months out based on its priority.   It subsequently gets re-prioritized as I perform migration at the beginning of that month.
+I start each Monthly log using the [2-Page Monthly Log with Tasks](./files/2-P-ML-Tasks.pdf) template.  I fill in the day's number and abbreviation (S, M, T, and more), and then bring over the items from my Future Log into the calendar (left) side.   I then start adding to my list of monthly tasks I'd like to get done (work and personal) on the right. I migrate tasks into this month from the previous month as I iterate based on whether they're still valuable.  However, I place some tasks into each month based on my delivery planning for work.  Remember, my tasks list contains both work and personal tasks (noted by their different key icons - circle versus square).  As such, some tasks that I feel are *relevant* don't necessarily get moved to the next month.  Instead, I sometimes move a task two or three months out based on its priority.   It subsequently gets re-prioritized as I perform migration at the beginning of that month.
 
 ### Daily Logs
 
-I use the [8.5x11 Dot Grid Divided 2-Pages](/files/2-P-8.5x11-Dots.pdf) template for my Daily Logs.  I draw a rectangle to highlight the date and then list my work and personal tasks under that date header.  Periodically throughout the day, I check that daily log to make sure I remain focused on the tasks at hand and determine if a task needs canceled or migrated (either short term (next monthly log) or held (to Future Log)).  
+I use the [8.5x11 Dot Grid Divided 2-Pages](./files/2-P-8.5x11-Dots.pdf) template for my Daily Logs.  I draw a rectangle to highlight the date and then list my work and personal tasks under that date header.  Periodically throughout the day, I check that daily log to make sure I remain focused on the tasks at hand and determine if a task needs canceled or migrated (either short term (next monthly log) or held (to Future Log)).  
 
 ### Projects or Collections
 
-I use the [2-Page Blank Project Template](/files/2-P-Project.pdf) to store collections.  A few things I've done as collections include:
+I use the [2-Page Blank Project Template](./files/2-P-Project.pdf) to store collections.  A few things I've done as collections include:
 
 - Meal Plans (hand-drawn grids with menu ideas)
 - Date Night Ideas (restaurants and activities - did we like them?)
