@@ -4,7 +4,7 @@ title: My Adapted Digital Bullet Journal via iPad Pro and GoodNotes 5
 subtitle: Putting Apple Pencil to Digital Paper to Stay Organized
 tags: [iPad,DigiBuJo]
 comments: true
-published: false
+published: true
 ---
 
 ## Background
