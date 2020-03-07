@@ -27,6 +27,7 @@ Most folks (from what I can tell) advocate pen-to-paper for a Bullet Journal.  I
 4. **The Erase tool**:  SO much cleaner than white-out, or erasing pencil marks.   Also, if you pinch-out to zoom in, you can get accurate erasing if you're drawing/sketching.
 5. **Excellent 2nd-Gen Apple Pencil Support**:  It just works, and the accuracy of the 2nd Gen Apple Pencil on the iPad Pro is paper-like.
 6. **GoodNotes Search Function**: GoodNotes has a **Fantastic** search function that even searches your *handwritten* notes!  Yes, you read that correctly - searching handwritten notes.  If I didn't know better, I would wager the GoodNotes team supplies CoreML models for handwriting recognition or something.  It's incredible to me how well it works.
+7. **iCloud Sync**:  I leverage this to get my notes on my Phone (for on-the-go reference), and also to sync to macOS (I park it in the corner while I work).  My Daily Log is always in front of my face or just a few clicks away.
 
 ## How I Set Up My Digital Bullet Journal on iPad
 
