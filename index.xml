@@ -45,9 +45,9 @@ Conflicting Documentation The initial problem I found was some confusion generat
       <pubDate>Fri, 15 Jun 2018 00:00:00 +0000</pubDate>
       
       <guid>https://blog.euc-rt.me/2018-06-15-welcome-to-jekyll/</guid>
-      <description>Welcome to my completely reworked website! This time, I&amp;rsquo;ve dropped the complexity of Wordpress and opted for something significantly simpler: Jekyll and GitHub.
-A few quick links that I found particularly helpful:
- How I&amp;rsquo;m using Jekyll in 2016 Secure &amp;amp; Fast Github pages with CloudFlare Utterances - Blog Commenting using GitHub Issues  </description>
+      <description>Welcome to my wholly reworked website! This time, I&amp;rsquo;ve dropped the complexity of Wordpress and opted for something significantly simpler: Jekyll Hugo and GitHub.
+Having now hosted the site in GitHub Pages, here was the process I started with Hugo:
+ Created the Github Pages repo (rterakedis.github.io) &amp;ndash; this is where github pages looks for the blog&amp;rsquo;s generated site files. Created a 2nd Github repo: rterakedis.github.io.hugo &amp;ndash; this repo holds the source files for Hugo to parse and generate the site.</description>
     </item>
     
     <item>

@@ -8,9 +8,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
   <title>Welcome to Hugo (from Jekyll) - Robert&#39;s Flummox Capacitor</title>
-  <meta name="description" content="Welcome to my completely reworked website! This time, I&rsquo;ve dropped the complexity of Wordpress and opted for something significantly simpler: Jekyll and GitHub.
-A few quick links that I found particularly helpful:
- How I&rsquo;m using Jekyll in 2016 Secure &amp; Fast Github pages with CloudFlare Utterances - Blog Commenting using GitHub Issues  ">
+  <meta name="description" content="Welcome to my wholly reworked website! This time, I&rsquo;ve dropped the complexity of Wordpress and opted for something significantly simpler: Jekyll Hugo and GitHub.
+Having now hosted the site in GitHub Pages, here was the process I started with Hugo:
+ Created the Github Pages repo (rterakedis.github.io) &ndash; this is where github pages looks for the blog&rsquo;s generated site files. Created a 2nd Github repo: rterakedis.github.io.hugo &ndash; this repo holds the source files for Hugo to parse and generate the site.">
   <meta name="author" content="Robert Terakedis"/><script type="application/ld+json">
 {
     "@context": "http://schema.org",
@@ -59,9 +59,9 @@ A few quick links that I found particularly helpful:
     "name" : "Robert Terakedis"
   },
   "headline": "Welcome to Hugo (from Jekyll)",
-  "description" : "Welcome to my completely reworked website! This time, I\x26rsquo;ve dropped the complexity of Wordpress and opted for something significantly simpler: Jekyll and GitHub.\nA few quick links that I found particularly helpful:\n How I\x26rsquo;m using Jekyll in 2016 Secure \x26amp; Fast Github pages with CloudFlare Utterances - Blog Commenting using GitHub Issues  ",
+  "description" : "Welcome to my wholly reworked website! This time, I\x26rsquo;ve dropped the complexity of Wordpress and opted for something significantly simpler: Jekyll Hugo and GitHub.\nHaving now hosted the site in GitHub Pages, here was the process I started with Hugo:\n Created the Github Pages repo (rterakedis.github.io) \x26ndash; this is where github pages looks for the blog\x26rsquo;s generated site files. Created a 2nd Github repo: rterakedis.github.io.hugo \x26ndash; this repo holds the source files for Hugo to parse and generate the site.",
   "inLanguage" : "en",
-  "wordCount":  52 ,
+  "wordCount":  181 ,
   "datePublished" : "2018-06-15T00:00:00",
   "dateModified" : "2018-06-15T00:00:00",
   "image" : "https:\/\/blog.euc-rt.me\/img\/avatar-icon.png",
@@ -81,17 +81,17 @@ A few quick links that I found particularly helpful:
 </script>
 
 <meta property="og:title" content="Welcome to Hugo (from Jekyll)" />
-<meta property="og:description" content="Welcome to my completely reworked website! This time, I&rsquo;ve dropped the complexity of Wordpress and opted for something significantly simpler: Jekyll and GitHub.
-A few quick links that I found particularly helpful:
- How I&rsquo;m using Jekyll in 2016 Secure &amp; Fast Github pages with CloudFlare Utterances - Blog Commenting using GitHub Issues  ">
+<meta property="og:description" content="Welcome to my wholly reworked website! This time, I&rsquo;ve dropped the complexity of Wordpress and opted for something significantly simpler: Jekyll Hugo and GitHub.
+Having now hosted the site in GitHub Pages, here was the process I started with Hugo:
+ Created the Github Pages repo (rterakedis.github.io) &ndash; this is where github pages looks for the blog&rsquo;s generated site files. Created a 2nd Github repo: rterakedis.github.io.hugo &ndash; this repo holds the source files for Hugo to parse and generate the site.">
 <meta property="og:image" content="https://blog.euc-rt.me/img/avatar-icon.png" />
 <meta property="og:url" content="https://blog.euc-rt.me/2018-06-15-welcome-to-jekyll/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Robert&#39;s Flummox Capacitor" />
 
   <meta name="twitter:title" content="Welcome to Hugo (from Jekyll)" />
-  <meta name="twitter:description" content="Welcome to my completely reworked website! This time, I&rsquo;ve dropped the complexity of Wordpress and opted for something significantly simpler: Jekyll and GitHub.
-A few quick links that I found …">
+  <meta name="twitter:description" content="Welcome to my wholly reworked website! This time, I&rsquo;ve dropped the complexity of Wordpress and opted for something significantly simpler: Jekyll Hugo and GitHub.
+Having now hosted the site in …">
   <meta name="twitter:image" content="https://blog.euc-rt.me/img/avatar-icon.png" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@robterakedis" />
@@ -299,8 +299,24 @@ A few quick links that I found …">
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
-        <p>Welcome to my completely reworked website!  This time, I&rsquo;ve dropped the complexity of Wordpress and opted for something significantly simpler:  Jekyll and GitHub.</p>
-<p>A few quick links that I found particularly helpful:</p>
+        <p>Welcome to my wholly reworked website!  This time, I&rsquo;ve dropped the complexity of Wordpress and opted for something significantly simpler:  <del>Jekyll</del> Hugo and GitHub.</p>
+<p>Having now hosted the site in GitHub Pages, here was the process I started with Hugo:</p>
+<ol>
+<li>Created the Github Pages repo (rterakedis.github.io) &ndash; this is where github pages looks for the blog&rsquo;s generated site files.</li>
+<li>Created a 2nd Github repo:  rterakedis.github.io.hugo &ndash; this repo holds the source files for Hugo to parse and generate the site.</li>
+<li>Added the GH Pages repo (rterakedis.github.io) as a submodule for rterakedis.github.io.hugo</li>
+<li>Edited the config.toml in the hugo files to include the following:</li>
+</ol>
+<ul>
+<li><code>baseURL = &quot;https://blog.euc-rt.me/&quot;</code></li>
+<li><code>publishdir = &quot;rterakedis.github.io&quot;</code></li>
+</ul>
+<ol>
+<li>Add the CNAME file into the rterakedis.github.io repo and enable the custom name/https in the repo settings</li>
+<li>Ensure the output from <code>hugo</code> builds into the rterakedis.github.io directory in my local rterakedis.github.io.hugo directory</li>
+<li>Commit and push everything to GitHub</li>
+</ol>
+<p>A few quick links that I found particularly helpful when I was working with Jekyll:</p>
 <ul>
 <li><a href="https://mademistakes.com/articles/using-jekyll-2016/#fn-2">How I&rsquo;m using Jekyll in 2016</a></li>
 <li><a href="https://blog.cloudflare.com/secure-and-fast-github-pages-with-cloudflare/">Secure &amp; Fast Github pages with CloudFlare</a></li>
