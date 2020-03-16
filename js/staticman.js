@@ -1,54 +1,40 @@
----
-layout: null
----
-
+// Static comments
+// from: https://github.com/eduardoboucas/popcorn/blob/gh-pages/js/main.js
 (function ($) {
   var $comments = $('.js-comments');
 
-  $('#new_comment').submit(function () {
+  $('.js-form').submit(function () {
     var form = this;
 
-    $(form).addClass('disabled');
-
-    {% assign sm = site.staticman -%}
-    var endpoint = '{{ sm.endpoint | default: "https://staticman3.herokuapp.com/v3/entry/github/" }}';
-    var repository = '{{ sm.repository }}';
-    var branch = '{{ sm.branch }}';
+    $(form).addClass('form--loading');
 
     $.ajax({
       type: $(this).attr('method'),
-      url: endpoint + repository + '/' + branch + '/comments',
+      url: $(this).attr('action'),
       data: $(this).serialize(),
       contentType: 'application/x-www-form-urlencoded',
       success: function (data) {
-        $('#comment-form-submit').addClass('hidden');
-        $('#comment-form-submitted').removeClass('hidden');
-        $('.page__comments-form .js-notice').removeClass('notice--danger');
-        $('.page__comments-form .js-notice').addClass('notice--success');
-        showAlert('success');
+        showModal('Perfect !', 'Thanks for your comment! It will show on the site once it has been approved. .');
+        $(form).removeClass('form--loading');
       },
       error: function (err) {
         console.log(err);
-        $('#comment-form-submitted').addClass('hidden');
-        $('#comment-form-submit').removeClass('hidden');
-        $('.page__comments-form .js-notice').removeClass('notice--success');
-        $('.page__comments-form .js-notice').addClass('notice--danger');
-        showAlert('failure');
-        $(form).removeClass('disabled');
+        showModal('Error', 'Sorry, there was an error with the submission!');
+        $(form).removeClass('form--loading');
       }
     });
 
     return false;
   });
 
-  function showAlert(message) {
-    $('.page__comments-form .js-notice').removeClass('hidden');
-    if (message == 'success') {
-      $('.page__comments-form .js-notice-text-success').removeClass('hidden');
-      $('.page__comments-form .js-notice-text-failure').addClass('hidden');
-    } else {
-      $('.page__comments-form .js-notice-text-success').addClass('hidden');
-      $('.page__comments-form .js-notice-text-failure').removeClass('hidden');
-    }
+  $('.js-close-modal').click(function () {
+    $('body').removeClass('show-modal');
+  });
+
+  function showModal(title, message) {
+    $('.js-modal-title').text(title);
+    $('.js-modal-text').html(message);
+
+    $('body').addClass('show-modal');
   }
 })(jQuery);
