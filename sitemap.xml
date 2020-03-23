@@ -1,1 +1,90 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml"><url><loc>https://blog.euc-rt.me/tags/digibujo/</loc><lastmod>2020-03-06T00:00:00+00:00</lastmod></url><url><loc>https://blog.euc-rt.me/2020-03-06-organizing-adapted-digital-bullet-journal-ipad-goodnotes/</loc><lastmod>2020-03-06T00:00:00+00:00</lastmod></url><url><loc>https://blog.euc-rt.me/posts/</loc><lastmod>2020-03-16T00:00:00+00:00</lastmod></url><url><loc>https://blog.euc-rt.me/</loc><lastmod>2020-03-16T00:00:00+00:00</lastmod></url><url><loc>https://blog.euc-rt.me/tags/</loc><lastmod>2020-03-16T00:00:00+00:00</lastmod></url><url><loc>https://blog.euc-rt.me/2020-02-18-deploying-microsoft-atp-defender-for-mac-using-workspace-one/</loc><lastmod>2020-02-18T00:00:00+00:00</lastmod></url><url><loc>https://blog.euc-rt.me/tags/macos/</loc><lastmod>2020-02-18T00:00:00+00:00</lastmod></url><url><loc>https://blog.euc-rt.me/tags/sso/</loc><lastmod>2020-02-04T00:00:00+00:00</lastmod></url><url><loc>https://blog.euc-rt.me/2020-02-04-macos-catalina-kerberos-sso-over-vpn/</loc><lastmod>2020-02-04T00:00:00+00:00</lastmod></url><url><loc>https://blog.euc-rt.me/tags/vpn/</loc><lastmod>2020-02-04T00:00:00+00:00</lastmod></url><url><loc>https://blog.euc-rt.me/tags/hugo/</loc><lastmod>2020-03-16T00:00:00+00:00</lastmod></url><url><loc>https://blog.euc-rt.me/tags/jekyll/</loc><lastmod>2020-03-16T00:00:00+00:00</lastmod></url><url><loc>https://blog.euc-rt.me/2018-06-15-welcome-to-jekyll/</loc><lastmod>2020-03-16T00:00:00+00:00</lastmod></url><url><loc>https://blog.euc-rt.me/about/</loc></url><url><loc>https://blog.euc-rt.me/categories/</loc></url><url><loc>https://blog.euc-rt.me/gettingstarted/</loc></url><url><loc>https://blog.euc-rt.me/page/</loc></url><url><loc>https://blog.euc-rt.me/stickers/</loc></url></urlset>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://blog.euc-rt.me/tags/digibujo/</loc>
+    <lastmod>2020-03-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.euc-rt.me/2020-03-06-organizing-adapted-digital-bullet-journal-ipad-goodnotes/</loc>
+    <lastmod>2020-03-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.euc-rt.me/posts/</loc>
+    <lastmod>2020-03-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.euc-rt.me/</loc>
+    <lastmod>2020-03-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.euc-rt.me/tags/</loc>
+    <lastmod>2020-03-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.euc-rt.me/2020-02-18-deploying-microsoft-atp-defender-for-mac-using-workspace-one/</loc>
+    <lastmod>2020-02-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.euc-rt.me/tags/macos/</loc>
+    <lastmod>2020-02-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.euc-rt.me/tags/sso/</loc>
+    <lastmod>2020-02-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.euc-rt.me/2020-02-04-macos-catalina-kerberos-sso-over-vpn/</loc>
+    <lastmod>2020-02-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.euc-rt.me/tags/vpn/</loc>
+    <lastmod>2020-02-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.euc-rt.me/tags/hugo/</loc>
+    <lastmod>2020-03-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.euc-rt.me/tags/jekyll/</loc>
+    <lastmod>2020-03-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.euc-rt.me/2018-06-15-welcome-to-jekyll/</loc>
+    <lastmod>2020-03-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.euc-rt.me/about/</loc>
+  </url>
+  
+  <url>
+    <loc>https://blog.euc-rt.me/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>https://blog.euc-rt.me/gettingstarted/</loc>
+  </url>
+  
+  <url>
+    <loc>https://blog.euc-rt.me/page/</loc>
+  </url>
+  
+  <url>
+    <loc>https://blog.euc-rt.me/stickers/</loc>
+  </url>
+  
+</urlset>
