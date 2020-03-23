@@ -3,6 +3,41 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://blog.euc-rt.me/tags/macos/</loc>
+    <lastmod>2020-03-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.euc-rt.me/posts/macos-catalina-kerberos-sso-over-vpn-followup/</loc>
+    <lastmod>2020-03-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.euc-rt.me/posts/</loc>
+    <lastmod>2020-03-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.euc-rt.me/</loc>
+    <lastmod>2020-03-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.euc-rt.me/tags/sso/</loc>
+    <lastmod>2020-03-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.euc-rt.me/tags/</loc>
+    <lastmod>2020-03-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.euc-rt.me/tags/vpn/</loc>
+    <lastmod>2020-03-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.euc-rt.me/tags/digibujo/</loc>
     <lastmod>2020-03-06T00:00:00+00:00</lastmod>
   </url>
@@ -13,42 +48,12 @@
   </url>
   
   <url>
-    <loc>https://blog.euc-rt.me/posts/</loc>
-    <lastmod>2020-03-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.euc-rt.me/</loc>
-    <lastmod>2020-03-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.euc-rt.me/tags/</loc>
-    <lastmod>2020-03-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://blog.euc-rt.me/2020-02-18-deploying-microsoft-atp-defender-for-mac-using-workspace-one/</loc>
     <lastmod>2020-02-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.euc-rt.me/tags/macos/</loc>
-    <lastmod>2020-02-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.euc-rt.me/tags/sso/</loc>
-    <lastmod>2020-02-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://blog.euc-rt.me/2020-02-04-macos-catalina-kerberos-sso-over-vpn/</loc>
-    <lastmod>2020-02-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.euc-rt.me/tags/vpn/</loc>
     <lastmod>2020-02-04T00:00:00+00:00</lastmod>
   </url>
   

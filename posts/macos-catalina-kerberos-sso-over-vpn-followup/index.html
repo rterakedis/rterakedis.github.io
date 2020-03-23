@@ -7,8 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>Testing macOS Catalina Kerberos SSO Extension Over VPN - Robert Terakedis</title>
-  <meta name="description" content="Enabling the off-network Kerberos Single Sign-On Experience.">
+  <title>macOS Catalina Kerberos SSO over VPN Followup - Robert Terakedis</title>
+  <meta name="description" content="Making Some Progress, But Still Awaiting A Fix!">
   <meta name="author" content="Robert Terakedis"/><script type="application/ld+json">
 {
     "@context": "http://schema.org",
@@ -44,8 +44,8 @@
         "@type": "ListItem",
         "position": 3,
         "item": {
-          "@id": "https:\/\/blog.euc-rt.me\/2020-02-04-macos-catalina-kerberos-sso-over-vpn\/",
-          "name": "Testing mac o s catalina kerberos s s o extension over v p n"
+          "@id": "https:\/\/blog.euc-rt.me\/posts\/macos-catalina-kerberos-sso-over-vpn-followup\/",
+          "name": "Mac o s catalina kerberos s s o over v p n followup"
         }
     }]
 }
@@ -56,15 +56,15 @@
   "author": {
     "name" : "Robert Terakedis"
   },
-  "headline": "Testing macOS Catalina Kerberos SSO Extension Over VPN",
-  "description" : "Working at VMware, I\x26rsquo;m surrounded by great technology and super-smart folks! In our portfolio of technologies, the folks in our R\x26amp;D have recently been putting quite a bit of effort into building out macOS capabilities for our Workspace ONE Tunnel client for macOS. Workspace ONE admins can leverage the same VMware technology they used to enable per-app VPN for iOS and Android, but now on macOS! There\x26rsquo;s a bit of nuance to configuring the VPN client if you\x26rsquo;re previously familiar with iOS (look for my Operational Tutorial soon to hit TechZone).",
+  "headline": "macOS Catalina Kerberos SSO over VPN Followup",
+  "description" : "I\x26rsquo;ve been going back and forth with Apple about some of the issues I previously found using the macOS Catalina Kerberos SSO over Per-App VPN. As it turns out, they acknowledged some of the issues I was seeing and are supposedly working on a fix. I\x26rsquo;ve been watching the past few beta releases for macOS, and I\x26rsquo;ve not yet seen anything in the release notes to indicate they\x26rsquo;ve implemented any fixes.",
   "inLanguage" : "en",
-  "wordCount":  677 ,
-  "datePublished" : "2020-02-04T00:00:00",
-  "dateModified" : "2020-02-04T00:00:00",
+  "wordCount":  443 ,
+  "datePublished" : "2020-03-22T00:00:00",
+  "dateModified" : "2020-03-22T00:00:00",
   "image" : "https:\/\/blog.euc-rt.me\/img\/avatar-icon.png",
   "keywords" : [ "macOS, SSO, VPN" ],
-  "mainEntityOfPage" : "https:\/\/blog.euc-rt.me\/2020-02-04-macos-catalina-kerberos-sso-over-vpn\/",
+  "mainEntityOfPage" : "https:\/\/blog.euc-rt.me\/posts\/macos-catalina-kerberos-sso-over-vpn-followup\/",
   "publisher" : {
     "@type": "Organization",
     "name" : "https:\/\/blog.euc-rt.me\/",
@@ -78,15 +78,15 @@
 }
 </script>
 
-<meta property="og:title" content="Testing macOS Catalina Kerberos SSO Extension Over VPN" />
-<meta property="og:description" content="Enabling the off-network Kerberos Single Sign-On Experience.">
+<meta property="og:title" content="macOS Catalina Kerberos SSO over VPN Followup" />
+<meta property="og:description" content="Making Some Progress, But Still Awaiting A Fix!">
 <meta property="og:image" content="https://blog.euc-rt.me/img/avatar-icon.png" />
-<meta property="og:url" content="https://blog.euc-rt.me/2020-02-04-macos-catalina-kerberos-sso-over-vpn/" />
+<meta property="og:url" content="https://blog.euc-rt.me/posts/macos-catalina-kerberos-sso-over-vpn-followup/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Robert Terakedis" />
 
-  <meta name="twitter:title" content="Testing macOS Catalina Kerberos SSO Extension Over VPN" />
-  <meta name="twitter:description" content="Enabling the off-network Kerberos Single Sign-On Experience.">
+  <meta name="twitter:title" content="macOS Catalina Kerberos SSO over VPN Followup" />
+  <meta name="twitter:description" content="Making Some Progress, But Still Awaiting A Fix!">
   <meta name="twitter:image" content="https://blog.euc-rt.me/img/avatar-icon.png" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@robterakedis" />
@@ -274,14 +274,14 @@
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="posts-heading">
               
-                <h1>Testing macOS Catalina Kerberos SSO Extension Over VPN</h1>
+                <h1>macOS Catalina Kerberos SSO over VPN Followup</h1>
               
               
                 <hr class="small">
               
               
                 
-                  <h2 class="posts-subheading">Enabling the off-network Kerberos Single Sign-On Experience.</h2>
+                  <h2 class="posts-subheading">Making Some Progress, But Still Awaiting A Fix!</h2>
                 
               
               
@@ -298,46 +298,15 @@
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
-        <p>Working at VMware, I&rsquo;m surrounded by great technology and super-smart folks!  In our portfolio of technologies, the folks in our R&amp;D have recently been putting quite a bit of effort into building out macOS capabilities for our Workspace ONE Tunnel client for macOS.  Workspace ONE admins can leverage the same VMware technology they used to enable per-app VPN for iOS and Android, but now on macOS!  There&rsquo;s a bit of nuance to configuring the VPN client if you&rsquo;re previously familiar with iOS (look for my Operational Tutorial soon to hit <a href="https://techzone.vmware.com">TechZone</a>).  That said, the premise is the same &ndash; by configuring the appropriate rules, the Tunnel app redirects traffic from whitelisted applications back into your network through the Unified Access Gateway.</p>
-<p>Sounds simple enough, right?  So a few of us wondered if we could leverage some of this new technology with new <a href="https://www.apple.com/business/docs/site/Kerberos_Single_Sign_on_Extension_User_Guide.pdf">Kerberos SSO Extension</a> in macOS Catalina.</p>
-<h2 id="use-cases">Use-Cases</h2>
-<p>Sitting down to plan out testing, there were four main use cases I hoped to prove out:</p>
-<ol>
-<li>What if the new Kerberos SSO Extension in macOS Catalina was just another one of those applications that you redirected over a VPN?</li>
-<li>Could you, in theory, get Kerberos Tickets to an unbound Mac to use for authenticating to Workspace ONE Access and/or internal websites (over Per-App VPN)?</li>
-<li>Could you also leverage the Kerberos SSO Extension to sync your local (non-mobile) macOS User account&rsquo;s password with the on-prem AD password over Per-App VPN?</li>
-<li>Could you change your on-prem AD password remotely over Per-App VPN when it neared the expiration date?</li>
-</ol>
-<p>It seemed pretty straightforward&hellip; but NOPE!  I ran into quite a bit of unexpected behavior!  Luckily, one of my coworkers, <a href="https://blog.eucse.com/contact/">Adam</a>, had a slightly different configuration than I and was able to test all of this as functioning for macOS that is on-network with on-premise Active Directory.</p>
-<h2 id="test-environment-configuration">Test Environment Configuration</h2>
-<p>Here&rsquo;s how I have things configured in my <em>test</em> environment:</p>
-<ul>
-<li>Isolated Network with the following VMs:
-<ul>
-<li>Two Windows Server 2016 Domain Controllers, one of which runs DNS</li>
-<li>Airwatch Cloud Connector and Workspace ONE Access Connnectors configured</li>
-<li>One IIS web server running two sites &ndash; one configured for Kerberos Auth and one configured for Anonymous access.</li>
-<li>One ADCS server (not used for this testing)</li>
-</ul>
-</li>
-<li>Unified Access Gateway Appliance v3.8 (the only VM with inbound access from the Internet)
-<ul>
-<li>Tunnel/Edge service is enabled/configured</li>
-</ul>
-</li>
-<li>SaaS-based Workspace ONE UEM and Workspace ONE Access.</li>
-<li>Workspace ONE Tunnel for macOS configured as an auto-deployed Volume Purchase app (from Apple Business Manager)</li>
-<li>The DNS name for my AD domain set up in Device Traffic Rules for tunneling.</li>
-<li>Google Chrome, Firefox, and Safari all configured to allow kerberos authentication to the website.</li>
-</ul>
-<h3 id="commands">Commands</h3>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">defaults write -g GSSDebugLevel <span class="m">20</span>
-
-defaults write -g KerberosDebugLevel <span class="m">20</span>
-
-log stream --debug --predicate <span class="s1">&#39;(subsystem == &#34;com.apple.Heimdal&#34;) OR (subsystem == &#34;com.apple.AppSSO&#34;) OR (subsystem == &#34;org.h5l.gss&#34;) OR (subsystem == &#34;com.apple.network&#34;) OR (process == &#34;VMware Tunnel&#34;) &#39;</span>
-</code></pre></div><h2 id="results">Results</h2>
-<p>As it turns out, the Kerberos SSO Extension in Catalina appears designed for situations where macOS is on-network with an on-premise Active Directory.   I went through some testing using our Per-App Tunnel (and a full-device Global Protect VPN), and ran into the following testing results:</p>
+        <p>I&rsquo;ve been going back and forth with Apple about some of the issues I previously found using the <a href="https://blog.euc-rt.me/2020-02-04-macos-catalina-kerberos-sso-over-vpn/">macOS Catalina Kerberos SSO over Per-App VPN</a>.  As it turns out, they acknowledged some of the issues I was seeing and are <em>supposedly</em> working on a fix.  I&rsquo;ve been watching the past few beta releases for macOS, and I&rsquo;ve not yet seen anything in the release notes to indicate they&rsquo;ve implemented any fixes.</p>
+<h2 id="partial-workaround">Partial Workaround</h2>
+<p>In the meantime, they did offer up a partial workaround.  It would seem some of the functionality in the Kerberos SSO extension in macOS Catalina is based on the MIT library built-in to macOS.   If you remember from the last post, one of the problems that I saw was an inability to change the user&rsquo;s AD password over per-App VPN.  Doing so gave me a warning “Password Change Failed.  Configuration file does not specify default realm”.  This didn&rsquo;t really make sense as you&rsquo;re required to specify the realm in the Kerberos SSO extension MDM payload, and I could confirm that the parameter was being included in the XML for the payload.</p>
+<p>Apple offered up that to get around that issue, we had to create an <code>/etc/krb5.conf</code> file and add the following two lines in it:</p>
+<div class="highlight"><pre class="chroma"><code class="language-Bash" data-lang="Bash"><span class="o">[</span>libdefaults<span class="o">]</span>
+ <span class="nv">default_realm</span> <span class="o">=</span> EXAMPLE.ORG 
+</code></pre></div><p>I was also instructed to run <code>pkill -9 KerberosExtension</code> to kill the Kerberos Extension to ensure it reloaded the configuration and read the krb5.conf file.</p>
+<h2 id="results-post-workaround">Results Post-Workaround</h2>
+<p>I ran through the same validation tests again and here&rsquo;s what happened:</p>
 <table>
 <thead>
 <tr>
@@ -364,16 +333,33 @@ log stream --debug --predicate <span class="s1">&#39;(subsystem == &#34;com.appl
 </tr>
 <tr>
 <td>User Change AD Password via Extension over VPN</td>
-<td>No!</td>
-<td>No!</td>
+<td><strong>Yes!</strong></td>
+<td><strong>Yes!</strong></td>
 </tr>
 </tbody>
 </table>
-<p>I was able to confirm that a kerberos ticket is obtained using <code>klist</code> in Terminal.  I could also confirm that I could authenticate to the Kerberos-enabled IIS website without having to provide a username/password in the browser.   Kerberos functionality appeared to be working, just not any other functionality.</p>
-<h2 id="looking-forward">Looking Forward</h2>
-<p>I used Apple&rsquo;s Feedback Assistant app to provide feedback to Apple and provided them with an environment to reproduce the issue.  I&rsquo;m hopeful that they can find a fix or provide some guidance to enabling the entirety of the Kerberos SSO Extension&rsquo;s functionality over a VPN.</p>
-<p>| Please reach out if you&rsquo;ve done testing as well - I&rsquo;d love to hear your experience!</p>
-<p>More to come&hellip;</p>
+<p>Apple also instructed me to continue testing and capture logs using the following procedure:</p>
+<ol>
+<li>Enable the necessary debug modes by running:</li>
+</ol>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo log config --mode <span class="s2">&#34;level:debug,persist:debug&#34;</span> --subsystem com.apple.AppSSO
+$ sudo log config --mode <span class="s2">&#34;level:debug,persist:debug&#34;</span> --subsystem com.apple.Heimdal
+$ sudo log config --mode <span class="s2">&#34;level:debug,persist:debug&#34;</span> --subsystem org.h5l.gss
+</code></pre></div><ol start="2">
+<li>run pkill -9 KerberosExtension AppSSOAgent KerberosMenuExtra</li>
+</ol>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ pkill -9 KerberosExtension AppSSOAgent KerberosMenuExtra
+</code></pre></div><ol start="3">
+<li>Reproduce the issue.</li>
+<li>Gather and send us a sysdiagnose (sudo sysdiagnose).</li>
+<li>Please also note the timestamps.</li>
+<li>To reset the logs run:</li>
+</ol>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo log config --subsystem com.apple.AppSSO --reset
+$ sudo log config --subsystem com.apple.Heimdal --reset
+$ sudo log config --subsystem org.h5l.gss --reset
+</code></pre></div><h2 id="next-steps">Next Steps</h2>
+<p>I&rsquo;ll be continuing to test this and working with our internal Tunnel team.  I&rsquo;m hoping to get Apple additional information so they can see what is causing the remaining issues.  I&rsquo;m excited to get this working and having the ability to leverage this Extension while off-network.  Feel free to leave comments below!</p>
 
 
         
@@ -398,42 +384,42 @@ log stream --debug --predicate <span class="s1">&#39;(subsystem == &#34;com.appl
     <ul class="share">
       
       <li>
-        <a href="//twitter.com/share?url=https%3a%2f%2fblog.euc-rt.me%2f2020-02-04-macos-catalina-kerberos-sso-over-vpn%2f&amp;text=Testing%20macOS%20Catalina%20Kerberos%20SSO%20Extension%20Over%20VPN&amp;via=robterakedis" target="_blank" title="Share on Twitter">
+        <a href="//twitter.com/share?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fmacos-catalina-kerberos-sso-over-vpn-followup%2f&amp;text=macOS%20Catalina%20Kerberos%20SSO%20over%20VPN%20Followup&amp;via=robterakedis" target="_blank" title="Share on Twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.euc-rt.me%2f2020-02-04-macos-catalina-kerberos-sso-over-vpn%2f" target="_blank" title="Share on Facebook">
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.euc-rt.me%2fposts%2fmacos-catalina-kerberos-sso-over-vpn-followup%2f" target="_blank" title="Share on Facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//reddit.com/submit?url=https%3a%2f%2fblog.euc-rt.me%2f2020-02-04-macos-catalina-kerberos-sso-over-vpn%2f&amp;title=Testing%20macOS%20Catalina%20Kerberos%20SSO%20Extension%20Over%20VPN" target="_blank" title="Share on Reddit">
+        <a href="//reddit.com/submit?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fmacos-catalina-kerberos-sso-over-vpn-followup%2f&amp;title=macOS%20Catalina%20Kerberos%20SSO%20over%20VPN%20Followup" target="_blank" title="Share on Reddit">
           <i class="fab fa-reddit"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fblog.euc-rt.me%2f2020-02-04-macos-catalina-kerberos-sso-over-vpn%2f&amp;title=Testing%20macOS%20Catalina%20Kerberos%20SSO%20Extension%20Over%20VPN" target="_blank" title="Share on LinkedIn">
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fmacos-catalina-kerberos-sso-over-vpn-followup%2f&amp;title=macOS%20Catalina%20Kerberos%20SSO%20over%20VPN%20Followup" target="_blank" title="Share on LinkedIn">
           <i class="fab fa-linkedin"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fblog.euc-rt.me%2f2020-02-04-macos-catalina-kerberos-sso-over-vpn%2f&amp;title=Testing%20macOS%20Catalina%20Kerberos%20SSO%20Extension%20Over%20VPN" target="_blank" title="Share on StumbleUpon">
+        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fmacos-catalina-kerberos-sso-over-vpn-followup%2f&amp;title=macOS%20Catalina%20Kerberos%20SSO%20over%20VPN%20Followup" target="_blank" title="Share on StumbleUpon">
           <i class="fab fa-stumbleupon"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fblog.euc-rt.me%2f2020-02-04-macos-catalina-kerberos-sso-over-vpn%2f&amp;description=Testing%20macOS%20Catalina%20Kerberos%20SSO%20Extension%20Over%20VPN" target="_blank" title="Share on Pinterest">
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fmacos-catalina-kerberos-sso-over-vpn-followup%2f&amp;description=macOS%20Catalina%20Kerberos%20SSO%20over%20VPN%20Followup" target="_blank" title="Share on Pinterest">
           <i class="fab fa-pinterest"></i>
         </a>
       </li>
@@ -455,9 +441,9 @@ log stream --debug --predicate <span class="s1">&#39;(subsystem == &#34;com.appl
                   <ul>
                 
                 
-                    <li><a href="/posts/macos-catalina-kerberos-sso-over-vpn-followup/">macOS Catalina Kerberos SSO over VPN Followup</a></li>
-                
                     <li><a href="/2020-02-18-deploying-microsoft-atp-defender-for-mac-using-workspace-one/">Deploying Microsoft Defender ATP for macOS using Workspace ONE UEM</a></li>
+                
+                    <li><a href="/2020-02-04-macos-catalina-kerberos-sso-over-vpn/">Testing macOS Catalina Kerberos SSO Extension Over VPN</a></li>
                 
               </ul>
 
@@ -469,13 +455,9 @@ log stream --debug --predicate <span class="s1">&#39;(subsystem == &#34;com.appl
         <ul class="pager blog-pager">
           
             <li class="previous">
-              <a href="https://blog.euc-rt.me/2018-06-15-welcome-to-jekyll/" data-toggle="tooltip" data-placement="top" title="Welcome to Hugo (from Jekyll)">&larr; Previous Post</a>
+              <a href="https://blog.euc-rt.me/2020-03-06-organizing-adapted-digital-bullet-journal-ipad-goodnotes/" data-toggle="tooltip" data-placement="top" title="My Adapted Digital Bullet Journal via iPad Pro and GoodNotes 5">&larr; Previous Post</a>
             </li>
           
-          
-            <li class="next">
-              <a href="https://blog.euc-rt.me/2020-02-18-deploying-microsoft-atp-defender-for-mac-using-workspace-one/" data-toggle="tooltip" data-placement="top" title="Deploying Microsoft Defender ATP for macOS using Workspace ONE UEM">Next Post &rarr;</a>
-            </li>
           
         </ul>
       

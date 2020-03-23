@@ -6,24 +6,15 @@
     <description>Recent content in Tags on Robert Terakedis</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 06 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 22 Mar 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.euc-rt.me/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>DigiBuJo</title>
-      <link>https://blog.euc-rt.me/tags/digibujo/</link>
-      <pubDate>Fri, 06 Mar 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.euc-rt.me/tags/digibujo/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>macOS</title>
       <link>https://blog.euc-rt.me/tags/macos/</link>
-      <pubDate>Tue, 18 Feb 2020 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 22 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>https://blog.euc-rt.me/tags/macos/</guid>
       <description></description>
@@ -32,7 +23,7 @@
     <item>
       <title>SSO</title>
       <link>https://blog.euc-rt.me/tags/sso/</link>
-      <pubDate>Tue, 04 Feb 2020 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 22 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>https://blog.euc-rt.me/tags/sso/</guid>
       <description></description>
@@ -41,9 +32,18 @@
     <item>
       <title>VPN</title>
       <link>https://blog.euc-rt.me/tags/vpn/</link>
-      <pubDate>Tue, 04 Feb 2020 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 22 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>https://blog.euc-rt.me/tags/vpn/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>DigiBuJo</title>
+      <link>https://blog.euc-rt.me/tags/digibujo/</link>
+      <pubDate>Fri, 06 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.euc-rt.me/tags/digibujo/</guid>
       <description></description>
     </item>
     

@@ -6,10 +6,19 @@
     <description>Recent content in macOS on Robert Terakedis</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 18 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 22 Mar 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.euc-rt.me/tags/macos/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>macOS Catalina Kerberos SSO over VPN Followup</title>
+      <link>https://blog.euc-rt.me/posts/macos-catalina-kerberos-sso-over-vpn-followup/</link>
+      <pubDate>Sun, 22 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.euc-rt.me/posts/macos-catalina-kerberos-sso-over-vpn-followup/</guid>
+      <description>I&amp;rsquo;ve been going back and forth with Apple about some of the issues I previously found using the macOS Catalina Kerberos SSO over Per-App VPN. As it turns out, they acknowledged some of the issues I was seeing and are supposedly working on a fix. I&amp;rsquo;ve been watching the past few beta releases for macOS, and I&amp;rsquo;ve not yet seen anything in the release notes to indicate they&amp;rsquo;ve implemented any fixes.</description>
+    </item>
     
     <item>
       <title>Deploying Microsoft Defender ATP for macOS using Workspace ONE UEM</title>
