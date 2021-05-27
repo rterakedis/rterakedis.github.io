@@ -386,6 +386,11 @@ footer div.disclaimer {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   text-align: center;
 }
+@media (prefers-color-scheme: dark) {
+  footer div.disclaimer {
+    color:black;
+  }
+}
 
 @media only screen and (min-width: 768px) {
   footer {
