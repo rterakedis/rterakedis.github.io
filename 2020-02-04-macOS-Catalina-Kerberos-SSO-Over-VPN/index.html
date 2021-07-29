@@ -1,27 +1,365 @@
-<!doctype html><html lang=en itemscope itemtype=http://schema.org/WebPage><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><title>Testing macOS Catalina Kerberos SSO Extension Over VPN - Robert Terakedis</title><meta name=description content="Enabling the off-network Kerberos Single Sign-On Experience."><meta name=author content="Robert Terakedis"><script type=application/ld+json>{"@context":"http://schema.org","@type":"WebSite","name":"Robert Terakedis","url":"https:\/\/blog.euc-rt.me\/"}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Organization","name":"","url":"https:\/\/blog.euc-rt.me\/"}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https:\/\/blog.euc-rt.me\/","name":"home"}},{"@type":"ListItem","position":3,"item":{"@id":"https:\/\/blog.euc-rt.me\/2020-02-04-macOS-Catalina-Kerberos-SSO-Over-VPN\/","name":"Testing MAC os catalina kerberos sso extension over VPN"}}]}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Article","author":{"name":"Robert Terakedis"},"headline":"Testing macOS Catalina Kerberos SSO Extension Over VPN","description":"Working at VMware, I\u0026rsquo;m surrounded by great technology and super-smart folks! In our portfolio of technologies, the folks in our R\u0026amp;D have recently been putting quite a bit of effort into building out macOS capabilities for our Workspace ONE Tunnel client for macOS. Workspace ONE admins can leverage the same VMware technology they used to enable per-app VPN for iOS and Android, but now on macOS! There\u0026rsquo;s a bit of nuance to configuring the VPN client if you\u0026rsquo;re previously familiar with iOS (look for my Operational Tutorial soon to hit TechZone).","inLanguage":"en","wordCount":677,"datePublished":"2020-02-04T00:00:00","dateModified":"2020-02-04T00:00:00","image":"https:\/\/blog.euc-rt.me\/img\/avatar-icon.png","keywords":["macOS, SSO, VPN"],"mainEntityOfPage":"https:\/\/blog.euc-rt.me\/2020-02-04-macOS-Catalina-Kerberos-SSO-Over-VPN\/","publisher":{"@type":"Organization","name":"https:\/\/blog.euc-rt.me\/","logo":{"@type":"ImageObject","url":"https:\/\/blog.euc-rt.me\/img\/avatar-icon.png","height":60,"width":60}}}</script><meta property="og:title" content="Testing macOS Catalina Kerberos SSO Extension Over VPN"><meta property="og:description" content="Enabling the off-network Kerberos Single Sign-On Experience."><meta property="og:image" content="https://blog.euc-rt.me/img/avatar-icon.png"><meta property="og:url" content="https://blog.euc-rt.me/2020-02-04-macOS-Catalina-Kerberos-SSO-Over-VPN/"><meta property="og:type" content="website"><meta property="og:site_name" content="Robert Terakedis"><meta name=twitter:title content="Testing macOS Catalina Kerberos SSO Extension Over VPN"><meta name=twitter:description content="Enabling the off-network Kerberos Single Sign-On Experience."><meta name=twitter:image content="https://blog.euc-rt.me/img/avatar-icon.png"><meta name=twitter:card content="summary"><meta name=twitter:site content="@robterakedis"><meta name=twitter:creator content="@robterakedis"><link href=https://blog.euc-rt.me/img/favicon.ico rel=icon type=image/x-icon><meta name=generator content="Hugo 0.85.0"><link rel=alternate href=https://blog.euc-rt.me/index.xml type=application/rss+xml title="Robert Terakedis"><link rel=stylesheet href=https://blog.euc-rt.me/fontawesome/css/all.css><link rel=stylesheet href=https://blog.euc-rt.me/css/bootstrap.min.css><link rel=stylesheet href=https://blog.euc-rt.me/css/main.css><link rel=stylesheet href=https://blog.euc-rt.me/css/fonts.css><link rel=stylesheet href=https://blog.euc-rt.me/css/highlight.min.css><link rel=stylesheet href=https://blog.euc-rt.me/css/codeblock.css><link rel=stylesheet href=https://blog.euc-rt.me/css/photoswipe.min.css><link rel=stylesheet href=https://blog.euc-rt.me/css/photoswipe.default-skin.min.css><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga('create','UA-9354949-17','auto'),ga('send','pageview'))</script><script async src=https://www.google-analytics.com/analytics.js></script></head><body><nav class="navbar navbar-default navbar-fixed-top navbar-custom"><div class=container-fluid><div class=navbar-header><button type=button class=navbar-toggle data-toggle=collapse data-target=#main-navbar>
+<!doctype html><html lang=en itemscope itemtype=http://schema.org/WebPage>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>Testing macOS Catalina Kerberos SSO Extension Over VPN - Robert Terakedis</title>
+<meta name=description content="Enabling the off-network Kerberos Single Sign-On Experience.">
+<meta name=author content="Robert Terakedis"><script type=application/ld+json>{"@context":"http://schema.org","@type":"WebSite","name":"Robert Terakedis","url":"https:\/\/blog.euc-rt.me\/"}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Organization","name":"","url":"https:\/\/blog.euc-rt.me\/"}</script>
+<script type=application/ld+json>{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https:\/\/blog.euc-rt.me\/","name":"home"}},{"@type":"ListItem","position":3,"item":{"@id":"https:\/\/blog.euc-rt.me\/2020-02-04-macOS-Catalina-Kerberos-SSO-Over-VPN\/","name":"Testing MAC os catalina kerberos sso extension over VPN"}}]}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Article","author":{"name":"Robert Terakedis"},"headline":"Testing macOS Catalina Kerberos SSO Extension Over VPN","description":"Working at VMware, I\u0026rsquo;m surrounded by great technology and super-smart folks! In our portfolio of technologies, the folks in our R\u0026amp;D have recently been putting quite a bit of effort into building out macOS capabilities for our Workspace ONE Tunnel client for macOS. Workspace ONE admins can leverage the same VMware technology they used to enable per-app VPN for iOS and Android, but now on macOS! There\u0026rsquo;s a bit of nuance to configuring the VPN client if you\u0026rsquo;re previously familiar with iOS (look for my Operational Tutorial soon to hit TechZone).","inLanguage":"en","wordCount":677,"datePublished":"2020-02-04T00:00:00","dateModified":"2020-02-04T00:00:00","image":"https:\/\/blog.euc-rt.me\/img\/avatar-icon.png","keywords":["macOS, SSO, VPN"],"mainEntityOfPage":"https:\/\/blog.euc-rt.me\/2020-02-04-macOS-Catalina-Kerberos-SSO-Over-VPN\/","publisher":{"@type":"Organization","name":"https:\/\/blog.euc-rt.me\/","logo":{"@type":"ImageObject","url":"https:\/\/blog.euc-rt.me\/img\/avatar-icon.png","height":60,"width":60}}}</script>
+<meta property="og:title" content="Testing macOS Catalina Kerberos SSO Extension Over VPN">
+<meta property="og:description" content="Enabling the off-network Kerberos Single Sign-On Experience.">
+<meta property="og:image" content="https://blog.euc-rt.me/img/avatar-icon.png">
+<meta property="og:url" content="https://blog.euc-rt.me/2020-02-04-macOS-Catalina-Kerberos-SSO-Over-VPN/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Robert Terakedis">
+<meta name=twitter:title content="Testing macOS Catalina Kerberos SSO Extension Over VPN">
+<meta name=twitter:description content="Enabling the off-network Kerberos Single Sign-On Experience.">
+<meta name=twitter:image content="https://blog.euc-rt.me/img/avatar-icon.png">
+<meta name=twitter:card content="summary">
+<meta name=twitter:site content="@robterakedis">
+<meta name=twitter:creator content="@robterakedis">
+<link href=https://blog.euc-rt.me/img/favicon.ico rel=icon type=image/x-icon>
+<meta name=generator content="Hugo 0.86.0">
+<link rel=alternate href=https://blog.euc-rt.me/index.xml type=application/rss+xml title="Robert Terakedis">
+<link rel=stylesheet href=https://blog.euc-rt.me/fontawesome/css/all.css>
+<link rel=stylesheet href=https://blog.euc-rt.me/css/bootstrap.min.css>
+<link rel=stylesheet href=https://blog.euc-rt.me/css/main.css><link rel=stylesheet href=https://blog.euc-rt.me/css/fonts.css>
+<link rel=stylesheet href=https://blog.euc-rt.me/css/highlight.min.css><link rel=stylesheet href=https://blog.euc-rt.me/css/codeblock.css><link rel=stylesheet href=https://blog.euc-rt.me/css/photoswipe.min.css>
+<link rel=stylesheet href=https://blog.euc-rt.me/css/photoswipe.default-skin.min.css>
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga('create','UA-9354949-17','auto'),ga('send','pageview'))</script>
+<script async src=https://www.google-analytics.com/analytics.js></script>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+<div class=container-fluid>
+<div class=navbar-header>
+<button type=button class=navbar-toggle data-toggle=collapse data-target=#main-navbar>
 <span class=sr-only>Toggle navigation</span>
-<span class=icon-bar></span><span class=icon-bar></span><span class=icon-bar></span></button>
-<a class=navbar-brand href=https://blog.euc-rt.me/>Robert Terakedis</a></div><div class="collapse navbar-collapse" id=main-navbar><ul class="nav navbar-nav navbar-right"><li><a title=About href=/about/>About</a></li><li class=navlinks-container><a class=navlinks-parent>My Work Content</a><div class=navlinks-children><a href=https://techzone.vmware.com/users/robert-terakedis>VMware EUC TechZone</a>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+</button>
+<a class=navbar-brand href=https://blog.euc-rt.me/>Robert Terakedis</a>
+</div>
+<div class="collapse navbar-collapse" id=main-navbar>
+<ul class="nav navbar-nav navbar-right">
+<li>
+<a title=About href=/about/>About</a>
+</li>
+<li class=navlinks-container>
+<a class=navlinks-parent>My Work Content</a>
+<div class=navlinks-children>
+<a href=https://techzone.vmware.com/users/robert-terakedis>VMware EUC TechZone</a>
 <a href=https://communities.vmware.com/people/rterakedis/activity>VMware Tech Network</a>
 <a href=https://github.com/vmware-samples/euc-samples/tree/master/macOS-Samples>VMware EUC Samples</a>
-<a href=https://blogs.vmware.com/euc/author/rterakedis>VMware EUC Blog</a></div></li><li class=navlinks-container><a class=navlinks-parent>Resources</a><div class=navlinks-children><a href=/stickers/>Stickers</a>
-<a href=/gettingstarted/>Getting Started</a></div></li><li><a title=Tags href=/tags>Tags</a></li><li><a href=#modalSearch data-toggle=modal data-target=#modalSearch style=outline:none><span class="hidden-sm hidden-md hidden-lg">Search</span> <span id=searchGlyph class="glyphicon glyphicon-search"></span></a></li></ul></div><div class=avatar-container><div class=avatar-img-border><a title="Robert Terakedis" href=https://blog.euc-rt.me/><img class=avatar-img src=https://blog.euc-rt.me/img/avatar-icon.png alt="Robert Terakedis" style=height:100px;width:100px></a></div></div></div></nav><div id=modalSearch class="modal fade" role=dialog><div class=modal-dialog><div class=modal-content><div class=modal-header><button type=button class=close data-dismiss=modal>&#215;</button><h4 class=modal-title>Search Robert Terakedis</h4></div><div class=modal-body><gcse:search></gcse:search></div><div class=modal-footer><button type=button class="btn btn-default" data-dismiss=modal>Close</button></div></div></div></div><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<a href=https://blogs.vmware.com/euc/author/rterakedis>VMware EUC Blog</a>
+</div>
+</li>
+<li class=navlinks-container>
+<a class=navlinks-parent>Resources</a>
+<div class=navlinks-children>
+<a href=/stickers/>Stickers</a>
+<a href=/gettingstarted/>Getting Started</a>
+</div>
+</li>
+<li>
+<a title=Tags href=/tags>Tags</a>
+</li>
+<li>
+<a href=#modalSearch data-toggle=modal data-target=#modalSearch style=outline:none>
+<span class="hidden-sm hidden-md hidden-lg">Search</span> <span id=searchGlyph class="glyphicon glyphicon-search"></span>
+</a>
+</li>
+</ul>
+</div>
+<div class=avatar-container>
+<div class=avatar-img-border>
+<a title="Robert Terakedis" href=https://blog.euc-rt.me/>
+<img class=avatar-img src=https://blog.euc-rt.me/img/avatar-icon.png alt="Robert Terakedis" style=height:100px;width:100px>
+</a>
+</div>
+</div>
+</div>
+</nav>
+<div id=modalSearch class="modal fade" role=dialog>
+<div class=modal-dialog>
+<div class=modal-content>
+<div class=modal-header>
+<button type=button class=close data-dismiss=modal>&#215;</button>
+<h4 class=modal-title>Search Robert Terakedis</h4>
+</div>
+<div class=modal-body>
+<gcse:search></gcse:search>
+</div>
+<div class=modal-footer>
+<button type=button class="btn btn-default" data-dismiss=modal>Close</button>
+</div>
+</div>
+</div>
+</div>
+<div class=pswp tabindex=-1 role=dialog aria-hidden=true>
+<div class=pswp__bg></div>
+<div class=pswp__scroll-wrap>
+<div class=pswp__container>
+<div class=pswp__item></div>
+<div class=pswp__item></div>
+<div class=pswp__item></div>
+</div>
+<div class="pswp__ui pswp__ui--hidden">
+<div class=pswp__top-bar>
+<div class=pswp__counter></div>
+<button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
 <button class="pswp__button pswp__button--share" title=Share></button>
 <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
-<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><header class=header-section><div class="intro-header no-img"><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><div class=posts-heading><h1>Testing macOS Catalina Kerberos SSO Extension Over VPN</h1><hr class=small><h2 class=posts-subheading>Enabling the off-network Kerberos Single Sign-On Experience.</h2></div></div></div></div></div></header><div class=container role=main><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><article role=main class=blog-post><p>Working at VMware, I&rsquo;m surrounded by great technology and super-smart folks! In our portfolio of technologies, the folks in our R&D have recently been putting quite a bit of effort into building out macOS capabilities for our Workspace ONE Tunnel client for macOS. Workspace ONE admins can leverage the same VMware technology they used to enable per-app VPN for iOS and Android, but now on macOS! There&rsquo;s a bit of nuance to configuring the VPN client if you&rsquo;re previously familiar with iOS (look for my Operational Tutorial soon to hit <a href=https://techzone.vmware.com>TechZone</a>). That said, the premise is the same &ndash; by configuring the appropriate rules, the Tunnel app redirects traffic from whitelisted applications back into your network through the Unified Access Gateway.</p><p>Sounds simple enough, right? So a few of us wondered if we could leverage some of this new technology with new <a href=https://www.apple.com/business/docs/site/Kerberos_Single_Sign_on_Extension_User_Guide.pdf>Kerberos SSO Extension</a> in macOS Catalina.</p><h2 id=use-cases>Use-Cases</h2><p>Sitting down to plan out testing, there were four main use cases I hoped to prove out:</p><ol><li>What if the new Kerberos SSO Extension in macOS Catalina was just another one of those applications that you redirected over a VPN?</li><li>Could you, in theory, get Kerberos Tickets to an unbound Mac to use for authenticating to Workspace ONE Access and/or internal websites (over Per-App VPN)?</li><li>Could you also leverage the Kerberos SSO Extension to sync your local (non-mobile) macOS User account&rsquo;s password with the on-prem AD password over Per-App VPN?</li><li>Could you change your on-prem AD password remotely over Per-App VPN when it neared the expiration date?</li></ol><p>It seemed pretty straightforward&mldr; but NOPE! I ran into quite a bit of unexpected behavior! Luckily, one of my coworkers, <a href=https://blog.eucse.com/contact/>Adam</a>, had a slightly different configuration than I and was able to test all of this as functioning for macOS that is on-network with on-premise Active Directory.</p><h2 id=test-environment-configuration>Test Environment Configuration</h2><p>Here&rsquo;s how I have things configured in my <em>test</em> environment:</p><ul><li>Isolated Network with the following VMs:<ul><li>Two Windows Server 2016 Domain Controllers, one of which runs DNS</li><li>Airwatch Cloud Connector and Workspace ONE Access Connnectors configured</li><li>One IIS web server running two sites &ndash; one configured for Kerberos Auth and one configured for Anonymous access.</li><li>One ADCS server (not used for this testing)</li></ul></li><li>Unified Access Gateway Appliance v3.8 (the only VM with inbound access from the Internet)<ul><li>Tunnel/Edge service is enabled/configured</li></ul></li><li>SaaS-based Workspace ONE UEM and Workspace ONE Access.</li><li>Workspace ONE Tunnel for macOS configured as an auto-deployed Volume Purchase app (from Apple Business Manager)</li><li>The DNS name for my AD domain set up in Device Traffic Rules for tunneling.</li><li>Google Chrome, Firefox, and Safari all configured to allow kerberos authentication to the website.</li></ul><h3 id=commands>Commands</h3><div class=highlight><pre class=chroma><code class=language-bash data-lang=bash>defaults write -g GSSDebugLevel <span class=m>20</span>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+<div class=pswp__preloader>
+<div class=pswp__preloader__icn>
+<div class=pswp__preloader__cut>
+<div class=pswp__preloader__donut></div>
+</div>
+</div>
+</div>
+</div>
+<div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+<div class=pswp__share-tooltip></div>
+</div>
+<button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+</button>
+<div class=pswp__caption>
+<div class=pswp__caption__center></div>
+</div>
+</div>
+</div>
+</div>
+<header class=header-section>
+<div class="intro-header no-img">
+<div class=container>
+<div class=row>
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<div class=posts-heading>
+<h1>Testing macOS Catalina Kerberos SSO Extension Over VPN</h1>
+<hr class=small>
+<h2 class=posts-subheading>Enabling the off-network Kerberos Single Sign-On Experience.</h2>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<div class=container role=main>
+<div class=row>
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<article role=main class=blog-post>
+<p>Working at VMware, I&rsquo;m surrounded by great technology and super-smart folks! In our portfolio of technologies, the folks in our R&D have recently been putting quite a bit of effort into building out macOS capabilities for our Workspace ONE Tunnel client for macOS. Workspace ONE admins can leverage the same VMware technology they used to enable per-app VPN for iOS and Android, but now on macOS! There&rsquo;s a bit of nuance to configuring the VPN client if you&rsquo;re previously familiar with iOS (look for my Operational Tutorial soon to hit <a href=https://techzone.vmware.com>TechZone</a>). That said, the premise is the same &ndash; by configuring the appropriate rules, the Tunnel app redirects traffic from whitelisted applications back into your network through the Unified Access Gateway.</p>
+<p>Sounds simple enough, right? So a few of us wondered if we could leverage some of this new technology with new <a href=https://www.apple.com/business/docs/site/Kerberos_Single_Sign_on_Extension_User_Guide.pdf>Kerberos SSO Extension</a> in macOS Catalina.</p>
+<h2 id=use-cases>Use-Cases</h2>
+<p>Sitting down to plan out testing, there were four main use cases I hoped to prove out:</p>
+<ol>
+<li>What if the new Kerberos SSO Extension in macOS Catalina was just another one of those applications that you redirected over a VPN?</li>
+<li>Could you, in theory, get Kerberos Tickets to an unbound Mac to use for authenticating to Workspace ONE Access and/or internal websites (over Per-App VPN)?</li>
+<li>Could you also leverage the Kerberos SSO Extension to sync your local (non-mobile) macOS User account&rsquo;s password with the on-prem AD password over Per-App VPN?</li>
+<li>Could you change your on-prem AD password remotely over Per-App VPN when it neared the expiration date?</li>
+</ol>
+<p>It seemed pretty straightforward&mldr; but NOPE! I ran into quite a bit of unexpected behavior! Luckily, one of my coworkers, <a href=https://blog.eucse.com/contact/>Adam</a>, had a slightly different configuration than I and was able to test all of this as functioning for macOS that is on-network with on-premise Active Directory.</p>
+<h2 id=test-environment-configuration>Test Environment Configuration</h2>
+<p>Here&rsquo;s how I have things configured in my <em>test</em> environment:</p>
+<ul>
+<li>Isolated Network with the following VMs:
+<ul>
+<li>Two Windows Server 2016 Domain Controllers, one of which runs DNS</li>
+<li>Airwatch Cloud Connector and Workspace ONE Access Connnectors configured</li>
+<li>One IIS web server running two sites &ndash; one configured for Kerberos Auth and one configured for Anonymous access.</li>
+<li>One ADCS server (not used for this testing)</li>
+</ul>
+</li>
+<li>Unified Access Gateway Appliance v3.8 (the only VM with inbound access from the Internet)
+<ul>
+<li>Tunnel/Edge service is enabled/configured</li>
+</ul>
+</li>
+<li>SaaS-based Workspace ONE UEM and Workspace ONE Access.</li>
+<li>Workspace ONE Tunnel for macOS configured as an auto-deployed Volume Purchase app (from Apple Business Manager)</li>
+<li>The DNS name for my AD domain set up in Device Traffic Rules for tunneling.</li>
+<li>Google Chrome, Firefox, and Safari all configured to allow kerberos authentication to the website.</li>
+</ul>
+<h3 id=commands>Commands</h3>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>defaults write -g GSSDebugLevel <span class=m>20</span>
 
 defaults write -g KerberosDebugLevel <span class=m>20</span>
 
 log stream --debug --predicate <span class=s1>&#39;(subsystem == &#34;com.apple.Heimdal&#34;) OR (subsystem == &#34;com.apple.AppSSO&#34;) OR (subsystem == &#34;org.h5l.gss&#34;) OR (subsystem == &#34;com.apple.network&#34;) OR (process == &#34;VMware Tunnel&#34;) &#39;</span>
-</code></pre></div><h2 id=results>Results</h2><p>As it turns out, the Kerberos SSO Extension in Catalina appears designed for situations where macOS is on-network with an on-premise Active Directory. I went through some testing using our Per-App Tunnel (and a full-device Global Protect VPN), and ran into the following testing results:</p><table><thead><tr><th>Testing Item</th><th>Per-App VPN (Tunnel)</th><th>GlobalProtect (VPN)</th></tr></thead><tbody><tr><td>Kerberos Ticket Obtained over VPN</td><td>Yes!</td><td>Yes!</td></tr><tr><td>Password Expiration Date Correct</td><td>No!</td><td>No!</td></tr><tr><td>Extension Detects local PW different from AD</td><td>No!</td><td>Yes!</td></tr><tr><td>User Change AD Password via Extension over VPN</td><td>No!</td><td>No!</td></tr></tbody></table><p>I was able to confirm that a kerberos ticket is obtained using <code>klist</code> in Terminal. I could also confirm that I could authenticate to the Kerberos-enabled IIS website without having to provide a username/password in the browser. Kerberos functionality appeared to be working, just not any other functionality.</p><h2 id=looking-forward>Looking Forward</h2><p>I used Apple&rsquo;s Feedback Assistant app to provide feedback to Apple and provided them with an environment to reproduce the issue. I&rsquo;m hopeful that they can find a fix or provide some guidance to enabling the entirety of the Kerberos SSO Extension&rsquo;s functionality over a VPN.</p><p>| Please reach out if you&rsquo;ve done testing as well - I&rsquo;d love to hear your experience!</p><p>More to come&mldr;</p><div class=blog-tags><a href=https://blog.euc-rt.me//tags/macos/>macOS</a>&nbsp;
+</code></pre></div><h2 id=results>Results</h2>
+<p>As it turns out, the Kerberos SSO Extension in Catalina appears designed for situations where macOS is on-network with an on-premise Active Directory. I went through some testing using our Per-App Tunnel (and a full-device Global Protect VPN), and ran into the following testing results:</p>
+<table>
+<thead>
+<tr>
+<th>Testing Item</th>
+<th>Per-App VPN (Tunnel)</th>
+<th>GlobalProtect (VPN)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kerberos Ticket Obtained over VPN</td>
+<td>Yes!</td>
+<td>Yes!</td>
+</tr>
+<tr>
+<td>Password Expiration Date Correct</td>
+<td>No!</td>
+<td>No!</td>
+</tr>
+<tr>
+<td>Extension Detects local PW different from AD</td>
+<td>No!</td>
+<td>Yes!</td>
+</tr>
+<tr>
+<td>User Change AD Password via Extension over VPN</td>
+<td>No!</td>
+<td>No!</td>
+</tr>
+</tbody>
+</table>
+<p>I was able to confirm that a kerberos ticket is obtained using <code>klist</code> in Terminal. I could also confirm that I could authenticate to the Kerberos-enabled IIS website without having to provide a username/password in the browser. Kerberos functionality appeared to be working, just not any other functionality.</p>
+<h2 id=looking-forward>Looking Forward</h2>
+<p>I used Apple&rsquo;s Feedback Assistant app to provide feedback to Apple and provided them with an environment to reproduce the issue. I&rsquo;m hopeful that they can find a fix or provide some guidance to enabling the entirety of the Kerberos SSO Extension&rsquo;s functionality over a VPN.</p>
+<p>| Please reach out if you&rsquo;ve done testing as well - I&rsquo;d love to hear your experience!</p>
+<p>More to come&mldr;</p>
+<div class=blog-tags>
+<a href=https://blog.euc-rt.me//tags/macos/>macOS</a>&nbsp;
 <a href=https://blog.euc-rt.me//tags/sso/>SSO</a>&nbsp;
-<a href=https://blog.euc-rt.me//tags/vpn/>VPN</a>&nbsp;</div><hr><section id=social-share><div class="list-inline footer-links"><div class=share-box aria-hidden=true><ul class=share><li><a href="//twitter.com/share?url=https%3a%2f%2fblog.euc-rt.me%2f2020-02-04-macOS-Catalina-Kerberos-SSO-Over-VPN%2f&text=Testing%20macOS%20Catalina%20Kerberos%20SSO%20Extension%20Over%20VPN&via=robterakedis" target=_blank title="Share on Twitter"><i class="fab fa-twitter"></i></a></li><li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.euc-rt.me%2f2020-02-04-macOS-Catalina-Kerberos-SSO-Over-VPN%2f" target=_blank title="Share on Facebook"><i class="fab fa-facebook"></i></a></li><li><a href="//reddit.com/submit?url=https%3a%2f%2fblog.euc-rt.me%2f2020-02-04-macOS-Catalina-Kerberos-SSO-Over-VPN%2f&title=Testing%20macOS%20Catalina%20Kerberos%20SSO%20Extension%20Over%20VPN" target=_blank title="Share on Reddit"><i class="fab fa-reddit"></i></a></li><li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fblog.euc-rt.me%2f2020-02-04-macOS-Catalina-Kerberos-SSO-Over-VPN%2f&title=Testing%20macOS%20Catalina%20Kerberos%20SSO%20Extension%20Over%20VPN" target=_blank title="Share on LinkedIn"><i class="fab fa-linkedin"></i></a></li><li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fblog.euc-rt.me%2f2020-02-04-macOS-Catalina-Kerberos-SSO-Over-VPN%2f&title=Testing%20macOS%20Catalina%20Kerberos%20SSO%20Extension%20Over%20VPN" target=_blank title="Share on StumbleUpon"><i class="fab fa-stumbleupon"></i></a></li><li><a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fblog.euc-rt.me%2f2020-02-04-macOS-Catalina-Kerberos-SSO-Over-VPN%2f&description=Testing%20macOS%20Catalina%20Kerberos%20SSO%20Extension%20Over%20VPN" target=_blank title="Share on Pinterest"><i class="fab fa-pinterest"></i></a></li></ul></div></div></section><h4 class=see-also>See also</h4><ul><li><a href=/posts/new-key-added-softwareupdate-command-macos/>New Key Added to SoftwareUpdate Command in macOS</a></li><li><a href=/posts/converting-jamf-custom-schema-json-workspace-one-uem/>Converting Jamf Custom Schema JSON for Workspace ONE UEM</a></li><li><a href=/posts/troubleshooting-macos-management-with-workspace-one/>Troubleshooting macOS Management with Workspace ONE</a></li><li><a href=/posts/deploying-nomad-over-vmware-per-app-tunnel/>Deploying NoMAD over VMware Per-App Tunnel</a></li><li><a href=/posts/modify-zshell-defaults/>Modify ZShell Defaults in macOS</a></li></ul></article><ul class="pager blog-pager"><li class=previous><a href=https://blog.euc-rt.me/2018-06-15-welcome-to-jekyll/ data-toggle=tooltip data-placement=top title="Welcome to Hugo (from Jekyll)">&larr; Previous Post</a></li><li class=next><a href=https://blog.euc-rt.me/2020-02-18-Deploying-Microsoft-ATP-Defender-for-Mac-using-Workspace-One/ data-toggle=tooltip data-placement=top title="Deploying Microsoft Defender ATP for macOS using Workspace ONE UEM">Next Post &rarr;</a></li></ul><script src=https://utteranc.es/client.js repo=rterakedis/rterakedis.github.io issue-term=pathname theme=github-light crossorigin=anonymous async></script></div></div></div><footer><div class=container><div class=row><div class=disclaimer><b>Disclaimer:</b> The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.</div></div><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><ul class="list-inline text-center footer-links"><li><a href=https://github.com/rterakedis title=GitHub><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
-<i class="fab fa-github fa-stack-1x fa-inverse"></i></span></a></li><li><a href=https://twitter.com/robterakedis title=Twitter><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
-<i class="fab fa-twitter fa-stack-1x fa-inverse"></i></span></a></li><li><a href=https://linkedin.com/in/terakedis title=LinkedIn><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
-<i class="fab fa-linkedin fa-stack-1x fa-inverse"></i></span></a></li><li><a href title=RSS><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
-<i class="fas fa-rss fa-stack-1x fa-inverse"></i></span></a></li></ul><p class="credits copyright text-muted"><a href=https://blog.euc-rt.me>Robert Terakedis</a>
+<a href=https://blog.euc-rt.me//tags/vpn/>VPN</a>&nbsp;
+</div>
+<hr>
+<section id=social-share>
+<div class="list-inline footer-links">
+<div class=share-box aria-hidden=true>
+<ul class=share>
+<li>
+<a href="//twitter.com/share?url=https%3a%2f%2fblog.euc-rt.me%2f2020-02-04-macOS-Catalina-Kerberos-SSO-Over-VPN%2f&text=Testing%20macOS%20Catalina%20Kerberos%20SSO%20Extension%20Over%20VPN&via=robterakedis" target=_blank title="Share on Twitter">
+<i class="fab fa-twitter"></i>
+</a>
+</li>
+<li>
+<a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.euc-rt.me%2f2020-02-04-macOS-Catalina-Kerberos-SSO-Over-VPN%2f" target=_blank title="Share on Facebook">
+<i class="fab fa-facebook"></i>
+</a>
+</li>
+<li>
+<a href="//reddit.com/submit?url=https%3a%2f%2fblog.euc-rt.me%2f2020-02-04-macOS-Catalina-Kerberos-SSO-Over-VPN%2f&title=Testing%20macOS%20Catalina%20Kerberos%20SSO%20Extension%20Over%20VPN" target=_blank title="Share on Reddit">
+<i class="fab fa-reddit"></i>
+</a>
+</li>
+<li>
+<a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fblog.euc-rt.me%2f2020-02-04-macOS-Catalina-Kerberos-SSO-Over-VPN%2f&title=Testing%20macOS%20Catalina%20Kerberos%20SSO%20Extension%20Over%20VPN" target=_blank title="Share on LinkedIn">
+<i class="fab fa-linkedin"></i>
+</a>
+</li>
+<li>
+<a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fblog.euc-rt.me%2f2020-02-04-macOS-Catalina-Kerberos-SSO-Over-VPN%2f&title=Testing%20macOS%20Catalina%20Kerberos%20SSO%20Extension%20Over%20VPN" target=_blank title="Share on StumbleUpon">
+<i class="fab fa-stumbleupon"></i>
+</a>
+</li>
+<li>
+<a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fblog.euc-rt.me%2f2020-02-04-macOS-Catalina-Kerberos-SSO-Over-VPN%2f&description=Testing%20macOS%20Catalina%20Kerberos%20SSO%20Extension%20Over%20VPN" target=_blank title="Share on Pinterest">
+<i class="fab fa-pinterest"></i>
+</a>
+</li>
+</ul>
+</div>
+</div>
+</section>
+<h4 class=see-also>See also</h4>
+<ul>
+<li><a href=/posts/new-key-added-softwareupdate-command-macos/>New Key Added to SoftwareUpdate Command in macOS</a></li>
+<li><a href=/posts/converting-jamf-custom-schema-json-workspace-one-uem/>Converting Jamf Custom Schema JSON for Workspace ONE UEM</a></li>
+<li><a href=/posts/troubleshooting-macos-management-with-workspace-one/>Troubleshooting macOS Management with Workspace ONE</a></li>
+<li><a href=/posts/deploying-nomad-over-vmware-per-app-tunnel/>Deploying NoMAD over VMware Per-App Tunnel</a></li>
+<li><a href=/posts/modify-zshell-defaults/>Modify ZShell Defaults in macOS</a></li>
+</ul>
+</article>
+<ul class="pager blog-pager">
+<li class=previous>
+<a href=https://blog.euc-rt.me/2018-06-15-welcome-to-jekyll/ data-toggle=tooltip data-placement=top title="Welcome to Hugo (from Jekyll)">&larr; Previous Post</a>
+</li>
+<li class=next>
+<a href=https://blog.euc-rt.me/2020-02-18-Deploying-Microsoft-ATP-Defender-for-Mac-using-Workspace-One/ data-toggle=tooltip data-placement=top title="Deploying Microsoft Defender ATP for macOS using Workspace ONE UEM">Next Post &rarr;</a>
+</li>
+</ul>
+<script src=https://utteranc.es/client.js repo=rterakedis/rterakedis.github.io issue-term=pathname theme=github-dark crossorigin=anonymous async></script>
+</div>
+</div>
+</div>
+<footer>
+<div class=container>
+<div class=row>
+<div class=disclaimer>
+<b>Disclaimer:</b> The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.
+</div>
+</div>
+<div class=row>
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<ul class="list-inline text-center footer-links">
+<li>
+<a href=https://github.com/rterakedis title=GitHub>
+<span class="fa-stack fa-lg">
+<i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-github fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+</li>
+<li>
+<a href=https://twitter.com/robterakedis title=Twitter>
+<span class="fa-stack fa-lg">
+<i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+</li>
+<li>
+<a href=https://linkedin.com/in/terakedis title=LinkedIn>
+<span class="fa-stack fa-lg">
+<i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+</li>
+<li>
+<a href title=RSS>
+<span class="fa-stack fa-lg">
+<i class="fas fa-circle fa-stack-2x"></i>
+<i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+</li>
+</ul>
+<p class="credits copyright text-muted">
+<a href=https://blog.euc-rt.me>Robert Terakedis</a>
 &nbsp;&bull;&nbsp;&copy;
 2021
 &nbsp;&bull;&nbsp;
-<a href=https://blog.euc-rt.me/>Not to be confused with Pterodactyl...</a></p><p class="credits theme-by text-muted"><a href=https://gohugo.io>Hugo v0.85.0</a> powered &nbsp;&bull;&nbsp; Theme <a href=https://github.com/halogenica/beautifulhugo>Beautiful Hugo</a> adapted from <a href=https://deanattali.com/beautiful-jekyll/>Beautiful Jekyll</a></p></div></div></div></footer><script src=https://blog.euc-rt.me/js/katex.min.js></script><script src=https://blog.euc-rt.me/js/auto-render.min.js></script><script src=https://blog.euc-rt.me/js/jquery.min.js></script><script src=https://blog.euc-rt.me/js/bootstrap.min.js></script><script src=https://blog.euc-rt.me/js/main.js></script><script src=https://blog.euc-rt.me/js/highlight.min.js></script><script>hljs.initHighlightingOnLoad()</script><script>$(document).ready(function(){$("pre.chroma").css("padding","0")})</script><script>renderMathInElement(document.body)</script><script src=https://blog.euc-rt.me/js/photoswipe.min.js></script><script src=https://blog.euc-rt.me/js/photoswipe-ui-default.min.js></script><script src=https://blog.euc-rt.me/js/load-photoswipe.js></script><script>(function(){var c='006263833525848905237:3xfwgq6zswl',a=document.createElement('script'),b;a.type='text/javascript',a.async=!0,a.src='https://cse.google.com/cse.js?cx='+c,b=document.getElementsByTagName('script')[0],b.parentNode.insertBefore(a,b)})()</script></body></html>
+<a href=https://blog.euc-rt.me/>Not to be confused with Pterodactyl...</a>
+</p>
+<p class="credits theme-by text-muted">
+<a href=https://gohugo.io>Hugo v0.86.0</a> powered &nbsp;&bull;&nbsp; Theme <a href=https://github.com/halogenica/beautifulhugo>Beautiful Hugo</a> adapted from <a href=https://deanattali.com/beautiful-jekyll/>Beautiful Jekyll</a>
+</p>
+</div>
+</div>
+</div>
+</footer>
+<script src=https://blog.euc-rt.me/js/katex.min.js></script>
+<script src=https://blog.euc-rt.me/js/auto-render.min.js></script>
+<script src=https://blog.euc-rt.me/js/jquery.min.js></script>
+<script src=https://blog.euc-rt.me/js/bootstrap.min.js></script>
+<script src=https://blog.euc-rt.me/js/main.js></script>
+<script src=https://blog.euc-rt.me/js/highlight.min.js></script>
+<script>hljs.initHighlightingOnLoad()</script>
+<script>$(document).ready(function(){$("pre.chroma").css("padding","0")})</script><script>renderMathInElement(document.body)</script><script src=https://blog.euc-rt.me/js/photoswipe.min.js></script>
+<script src=https://blog.euc-rt.me/js/photoswipe-ui-default.min.js></script><script src=https://blog.euc-rt.me/js/load-photoswipe.js></script>
+<script>(function(){var c='006263833525848905237:3xfwgq6zswl',a=document.createElement('script'),b;a.type='text/javascript',a.async=!0,a.src='https://cse.google.com/cse.js?cx='+c,b=document.getElementsByTagName('script')[0],b.parentNode.insertBefore(a,b)})()</script>
+</body>
+</html>

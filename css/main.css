@@ -1,19 +1,21 @@
 /* --- General --- */
 
 body {
-  font-family: 'Lora', 'Times New Roman', serif;
+  font-family: 'Quicksand', 'Lora', 'Times New Roman', serif;
   font-size: 18px;
-  color: #404040;
+  font-weight: 300;
+  color:#404040;
   position: relative;
   background: #FFF;
   display: flex;
   flex-flow: column;
   height: 100vh;
 }
+
 @media (prefers-color-scheme: dark) {
   body {
-    background: black;
-    color: white;
+    background: #121212;
+    color: #EBEBF599
   }
 }
 .container[role=main] {
@@ -41,11 +43,11 @@ p a {
 }
 @media (prefers-color-scheme: dark) {
   p a {
-    color: #50afff;
+    color: #00b344;
   }
 }
 h1,h2,h3,h4,h5,h6 {
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Quicksand', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 800;
 }
 a {
@@ -53,12 +55,18 @@ a {
 }
 @media (prefers-color-scheme: dark) {
   a {
-    color: #50afff;
+    color: #00b344;
   }
 }
 a:hover,
 a:focus {
   color: #0085a1;
+}
+@media (prefers-color-scheme: dark) {
+  a:hover,
+  a:focus {
+    color: #30D158FF;
+  }
 }
 blockquote {
   color: #808080;
@@ -191,12 +199,12 @@ img {
   color: #0085a1;
 }
 
+@media (prefers-color-scheme: dark) {
 .navbar-custom .navbar-brand:hover,
 .navbar-custom .navbar-brand:focus ,
 .navbar-custom .nav li a:hover,
 .navbar-custom .nav li a:focus {
-  @media (prefers-color-scheme: dark) {
-    color: #b0e0ff;
+    color: #30D158FF;
   }
 }
 
@@ -389,6 +397,9 @@ footer div.disclaimer {
 @media (prefers-color-scheme: dark) {
   footer div.disclaimer {
     color:black;
+    background-color: #FF9F0AFF;
+    border-left-color: #FFD60AFF;
+    border-right-color: #FFD60AFF;
   }
 }
 
@@ -527,6 +538,14 @@ footer div.disclaimer {
   color: #008AFF;
   text-decoration: none;
   padding: 0px 5px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .blog-tags a {
+    color: #30D158FF;
+    text-decoration: none;
+    padding: 0px 5px;
+  }
 }
 
 .blog-tags a:before {

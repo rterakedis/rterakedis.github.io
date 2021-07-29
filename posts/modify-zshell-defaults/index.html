@@ -1,15 +1,164 @@
-<!doctype html><html lang=en itemscope itemtype=http://schema.org/WebPage><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><title>Modify ZShell Defaults in macOS - Robert Terakedis</title><meta name=description content="Making Terminal More Useful!"><meta name=author content="Robert Terakedis"><script type=application/ld+json>{"@context":"http://schema.org","@type":"WebSite","name":"Robert Terakedis","url":"https:\/\/blog.euc-rt.me\/"}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Organization","name":"","url":"https:\/\/blog.euc-rt.me\/"}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https:\/\/blog.euc-rt.me\/","name":"home"}},{"@type":"ListItem","position":3,"item":{"@id":"https:\/\/blog.euc-rt.me\/posts\/modify-zshell-defaults\/","name":"Modify zshell defaults in MAC os"}}]}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Article","author":{"name":"Robert Terakedis"},"headline":"Modify ZShell Defaults in macOS","description":"I\u0026rsquo;m finding myself using the Terminal quite a bit more in my job. I spent a few minutes over the past few days looking at different ways to make the default terminal layout in macOS better. While there are many plugins out there for doing this (Oh-My-Zsh), I wanted to do something a little more straightforward.\nHow You Change zsh Default Layouts Armin Briegel has a great article about customizing the zsh prompt in his moving to zsh series.","inLanguage":"en","wordCount":447,"datePublished":"2020-09-21T00:00:00","dateModified":"2020-09-21T00:00:00","image":"https:\/\/blog.euc-rt.me\/img\/avatar-icon.png","keywords":["macOS, Apple, Terminal"],"mainEntityOfPage":"https:\/\/blog.euc-rt.me\/posts\/modify-zshell-defaults\/","publisher":{"@type":"Organization","name":"https:\/\/blog.euc-rt.me\/","logo":{"@type":"ImageObject","url":"https:\/\/blog.euc-rt.me\/img\/avatar-icon.png","height":60,"width":60}}}</script><meta property="og:title" content="Modify ZShell Defaults in macOS"><meta property="og:description" content="Making Terminal More Useful!"><meta property="og:image" content="https://blog.euc-rt.me/img/avatar-icon.png"><meta property="og:url" content="https://blog.euc-rt.me/posts/modify-zshell-defaults/"><meta property="og:type" content="website"><meta property="og:site_name" content="Robert Terakedis"><meta name=twitter:title content="Modify ZShell Defaults in macOS"><meta name=twitter:description content="Making Terminal More Useful!"><meta name=twitter:image content="https://blog.euc-rt.me/img/avatar-icon.png"><meta name=twitter:card content="summary"><meta name=twitter:site content="@robterakedis"><meta name=twitter:creator content="@robterakedis"><link href=https://blog.euc-rt.me/img/favicon.ico rel=icon type=image/x-icon><meta name=generator content="Hugo 0.85.0"><link rel=alternate href=https://blog.euc-rt.me/index.xml type=application/rss+xml title="Robert Terakedis"><link rel=stylesheet href=https://blog.euc-rt.me/fontawesome/css/all.css><link rel=stylesheet href=https://blog.euc-rt.me/css/bootstrap.min.css><link rel=stylesheet href=https://blog.euc-rt.me/css/main.css><link rel=stylesheet href=https://blog.euc-rt.me/css/fonts.css><link rel=stylesheet href=https://blog.euc-rt.me/css/highlight.min.css><link rel=stylesheet href=https://blog.euc-rt.me/css/codeblock.css><link rel=stylesheet href=https://blog.euc-rt.me/css/photoswipe.min.css><link rel=stylesheet href=https://blog.euc-rt.me/css/photoswipe.default-skin.min.css><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga('create','UA-9354949-17','auto'),ga('send','pageview'))</script><script async src=https://www.google-analytics.com/analytics.js></script></head><body><nav class="navbar navbar-default navbar-fixed-top navbar-custom"><div class=container-fluid><div class=navbar-header><button type=button class=navbar-toggle data-toggle=collapse data-target=#main-navbar>
+<!doctype html><html lang=en itemscope itemtype=http://schema.org/WebPage>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>Modify ZShell Defaults in macOS - Robert Terakedis</title>
+<meta name=description content="Making Terminal More Useful!">
+<meta name=author content="Robert Terakedis"><script type=application/ld+json>{"@context":"http://schema.org","@type":"WebSite","name":"Robert Terakedis","url":"https:\/\/blog.euc-rt.me\/"}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Organization","name":"","url":"https:\/\/blog.euc-rt.me\/"}</script>
+<script type=application/ld+json>{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https:\/\/blog.euc-rt.me\/","name":"home"}},{"@type":"ListItem","position":3,"item":{"@id":"https:\/\/blog.euc-rt.me\/posts\/modify-zshell-defaults\/","name":"Modify zshell defaults in MAC os"}}]}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Article","author":{"name":"Robert Terakedis"},"headline":"Modify ZShell Defaults in macOS","description":"I\u0026rsquo;m finding myself using the Terminal quite a bit more in my job. I spent a few minutes over the past few days looking at different ways to make the default terminal layout in macOS better. While there are many plugins out there for doing this (Oh-My-Zsh), I wanted to do something a little more straightforward.\nHow You Change zsh Default Layouts Armin Briegel has a great article about customizing the zsh prompt in his moving to zsh series.","inLanguage":"en","wordCount":447,"datePublished":"2020-09-21T00:00:00","dateModified":"2020-09-21T00:00:00","image":"https:\/\/blog.euc-rt.me\/img\/avatar-icon.png","keywords":["macOS, Apple, Terminal"],"mainEntityOfPage":"https:\/\/blog.euc-rt.me\/posts\/modify-zshell-defaults\/","publisher":{"@type":"Organization","name":"https:\/\/blog.euc-rt.me\/","logo":{"@type":"ImageObject","url":"https:\/\/blog.euc-rt.me\/img\/avatar-icon.png","height":60,"width":60}}}</script>
+<meta property="og:title" content="Modify ZShell Defaults in macOS">
+<meta property="og:description" content="Making Terminal More Useful!">
+<meta property="og:image" content="https://blog.euc-rt.me/img/avatar-icon.png">
+<meta property="og:url" content="https://blog.euc-rt.me/posts/modify-zshell-defaults/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Robert Terakedis">
+<meta name=twitter:title content="Modify ZShell Defaults in macOS">
+<meta name=twitter:description content="Making Terminal More Useful!">
+<meta name=twitter:image content="https://blog.euc-rt.me/img/avatar-icon.png">
+<meta name=twitter:card content="summary">
+<meta name=twitter:site content="@robterakedis">
+<meta name=twitter:creator content="@robterakedis">
+<link href=https://blog.euc-rt.me/img/favicon.ico rel=icon type=image/x-icon>
+<meta name=generator content="Hugo 0.86.0">
+<link rel=alternate href=https://blog.euc-rt.me/index.xml type=application/rss+xml title="Robert Terakedis">
+<link rel=stylesheet href=https://blog.euc-rt.me/fontawesome/css/all.css>
+<link rel=stylesheet href=https://blog.euc-rt.me/css/bootstrap.min.css>
+<link rel=stylesheet href=https://blog.euc-rt.me/css/main.css><link rel=stylesheet href=https://blog.euc-rt.me/css/fonts.css>
+<link rel=stylesheet href=https://blog.euc-rt.me/css/highlight.min.css><link rel=stylesheet href=https://blog.euc-rt.me/css/codeblock.css><link rel=stylesheet href=https://blog.euc-rt.me/css/photoswipe.min.css>
+<link rel=stylesheet href=https://blog.euc-rt.me/css/photoswipe.default-skin.min.css>
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga('create','UA-9354949-17','auto'),ga('send','pageview'))</script>
+<script async src=https://www.google-analytics.com/analytics.js></script>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+<div class=container-fluid>
+<div class=navbar-header>
+<button type=button class=navbar-toggle data-toggle=collapse data-target=#main-navbar>
 <span class=sr-only>Toggle navigation</span>
-<span class=icon-bar></span><span class=icon-bar></span><span class=icon-bar></span></button>
-<a class=navbar-brand href=https://blog.euc-rt.me/>Robert Terakedis</a></div><div class="collapse navbar-collapse" id=main-navbar><ul class="nav navbar-nav navbar-right"><li><a title=About href=/about/>About</a></li><li class=navlinks-container><a class=navlinks-parent>My Work Content</a><div class=navlinks-children><a href=https://techzone.vmware.com/users/robert-terakedis>VMware EUC TechZone</a>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+</button>
+<a class=navbar-brand href=https://blog.euc-rt.me/>Robert Terakedis</a>
+</div>
+<div class="collapse navbar-collapse" id=main-navbar>
+<ul class="nav navbar-nav navbar-right">
+<li>
+<a title=About href=/about/>About</a>
+</li>
+<li class=navlinks-container>
+<a class=navlinks-parent>My Work Content</a>
+<div class=navlinks-children>
+<a href=https://techzone.vmware.com/users/robert-terakedis>VMware EUC TechZone</a>
 <a href=https://communities.vmware.com/people/rterakedis/activity>VMware Tech Network</a>
 <a href=https://github.com/vmware-samples/euc-samples/tree/master/macOS-Samples>VMware EUC Samples</a>
-<a href=https://blogs.vmware.com/euc/author/rterakedis>VMware EUC Blog</a></div></li><li class=navlinks-container><a class=navlinks-parent>Resources</a><div class=navlinks-children><a href=/stickers/>Stickers</a>
-<a href=/gettingstarted/>Getting Started</a></div></li><li><a title=Tags href=/tags>Tags</a></li><li><a href=#modalSearch data-toggle=modal data-target=#modalSearch style=outline:none><span class="hidden-sm hidden-md hidden-lg">Search</span> <span id=searchGlyph class="glyphicon glyphicon-search"></span></a></li></ul></div><div class=avatar-container><div class=avatar-img-border><a title="Robert Terakedis" href=https://blog.euc-rt.me/><img class=avatar-img src=https://blog.euc-rt.me/img/avatar-icon.png alt="Robert Terakedis" style=height:100px;width:100px></a></div></div></div></nav><div id=modalSearch class="modal fade" role=dialog><div class=modal-dialog><div class=modal-content><div class=modal-header><button type=button class=close data-dismiss=modal>&#215;</button><h4 class=modal-title>Search Robert Terakedis</h4></div><div class=modal-body><gcse:search></gcse:search></div><div class=modal-footer><button type=button class="btn btn-default" data-dismiss=modal>Close</button></div></div></div></div><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<a href=https://blogs.vmware.com/euc/author/rterakedis>VMware EUC Blog</a>
+</div>
+</li>
+<li class=navlinks-container>
+<a class=navlinks-parent>Resources</a>
+<div class=navlinks-children>
+<a href=/stickers/>Stickers</a>
+<a href=/gettingstarted/>Getting Started</a>
+</div>
+</li>
+<li>
+<a title=Tags href=/tags>Tags</a>
+</li>
+<li>
+<a href=#modalSearch data-toggle=modal data-target=#modalSearch style=outline:none>
+<span class="hidden-sm hidden-md hidden-lg">Search</span> <span id=searchGlyph class="glyphicon glyphicon-search"></span>
+</a>
+</li>
+</ul>
+</div>
+<div class=avatar-container>
+<div class=avatar-img-border>
+<a title="Robert Terakedis" href=https://blog.euc-rt.me/>
+<img class=avatar-img src=https://blog.euc-rt.me/img/avatar-icon.png alt="Robert Terakedis" style=height:100px;width:100px>
+</a>
+</div>
+</div>
+</div>
+</nav>
+<div id=modalSearch class="modal fade" role=dialog>
+<div class=modal-dialog>
+<div class=modal-content>
+<div class=modal-header>
+<button type=button class=close data-dismiss=modal>&#215;</button>
+<h4 class=modal-title>Search Robert Terakedis</h4>
+</div>
+<div class=modal-body>
+<gcse:search></gcse:search>
+</div>
+<div class=modal-footer>
+<button type=button class="btn btn-default" data-dismiss=modal>Close</button>
+</div>
+</div>
+</div>
+</div>
+<div class=pswp tabindex=-1 role=dialog aria-hidden=true>
+<div class=pswp__bg></div>
+<div class=pswp__scroll-wrap>
+<div class=pswp__container>
+<div class=pswp__item></div>
+<div class=pswp__item></div>
+<div class=pswp__item></div>
+</div>
+<div class="pswp__ui pswp__ui--hidden">
+<div class=pswp__top-bar>
+<div class=pswp__counter></div>
+<button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
 <button class="pswp__button pswp__button--share" title=Share></button>
 <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
-<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><header class=header-section><div class="intro-header no-img"><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><div class=posts-heading><h1>Modify ZShell Defaults in macOS</h1><hr class=small><h2 class=posts-subheading>Making Terminal More Useful!</h2></div></div></div></div></div></header><div class=container role=main><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><article role=main class=blog-post><p>I&rsquo;m finding myself using the Terminal quite a bit more in my job. I spent a few minutes over the past few days looking at different ways to make the default terminal layout in macOS better. While there are many plugins out there for doing this (<a href=https://github.com/ohmyzsh/ohmyzsh>Oh-My-Zsh</a>), I wanted to do something a little more straightforward.</p><h2 id=how-you-change-zsh-default-layouts>How You Change zsh Default Layouts</h2><p>Armin Briegel has a great article about customizing the zsh prompt in his <a href=https://scriptingosx.com/2019/06/moving-to-zsh/>moving to zsh</a> series. The basics come down to the following - make some changes to the file at <code>~/.zshrc</code> and then enjoy the fruits of your labor! This file is also where you can add zsh functions (e.g. reusable pieces of code.)</p><h2 id=my-current-zsh-defaults>My Current zsh Defaults</h2><p>Here&rsquo;s the contents of my <code>~/.zshrc</code> file:</p><div class=highlight><pre class=chroma><code class=language-BASH data-lang=BASH><span class=nv>PROMPT</span><span class=o>=</span><span class=s1>&#39;%(?.%F{green}√.%F{red}?%?)%f %B%F{240}%1~%f%b %# &#39;</span>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+<div class=pswp__preloader>
+<div class=pswp__preloader__icn>
+<div class=pswp__preloader__cut>
+<div class=pswp__preloader__donut></div>
+</div>
+</div>
+</div>
+</div>
+<div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+<div class=pswp__share-tooltip></div>
+</div>
+<button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+</button>
+<div class=pswp__caption>
+<div class=pswp__caption__center></div>
+</div>
+</div>
+</div>
+</div>
+<header class=header-section>
+<div class="intro-header no-img">
+<div class=container>
+<div class=row>
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<div class=posts-heading>
+<h1>Modify ZShell Defaults in macOS</h1>
+<hr class=small>
+<h2 class=posts-subheading>Making Terminal More Useful!</h2>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<div class=container role=main>
+<div class=row>
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<article role=main class=blog-post>
+<p>I&rsquo;m finding myself using the Terminal quite a bit more in my job. I spent a few minutes over the past few days looking at different ways to make the default terminal layout in macOS better. While there are many plugins out there for doing this (<a href=https://github.com/ohmyzsh/ohmyzsh>Oh-My-Zsh</a>), I wanted to do something a little more straightforward.</p>
+<h2 id=how-you-change-zsh-default-layouts>How You Change zsh Default Layouts</h2>
+<p>Armin Briegel has a great article about customizing the zsh prompt in his <a href=https://scriptingosx.com/2019/06/moving-to-zsh/>moving to zsh</a> series. The basics come down to the following - make some changes to the file at <code>~/.zshrc</code> and then enjoy the fruits of your labor! This file is also where you can add zsh functions (e.g. reusable pieces of code.)</p>
+<h2 id=my-current-zsh-defaults>My Current zsh Defaults</h2>
+<p>Here&rsquo;s the contents of my <code>~/.zshrc</code> file:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-BASH data-lang=BASH><span class=nv>PROMPT</span><span class=o>=</span><span class=s1>&#39;%(?.%F{green}√.%F{red}?%?)%f %B%F{240}%1~%f%b %# &#39;</span>
 
 <span class=nb>export</span> <span class=nv>PATH</span><span class=o>=</span><span class=nv>$HOME</span>/.gem/ruby/X.X.0/bin:<span class=nv>$PATH</span>
 <span class=nb>export</span> <span class=nv>GEM_HOME</span><span class=o>=</span><span class=nv>$HOME</span>/gems
@@ -49,14 +198,142 @@ mpgc <span class=o>()</span> <span class=o>{</span>
 up<span class=o>()</span> <span class=o>{</span> 
     <span class=nb>cd</span> <span class=k>$(</span><span class=nb>eval</span> <span class=nb>printf</span> <span class=s1>&#39;../&#39;</span>%.0s <span class=o>{</span>1..<span class=nv>$1</span><span class=o>}</span><span class=k>)</span> <span class=o>&amp;&amp;</span> pwd<span class=p>;</span> 
 <span class=o>}</span>
-</code></pre></div><h3 id=breaking-down-the-defaults>Breaking Down the Defaults</h3><p>The first line (<code>PROMPT='%(?.%F{green}√.%F{red}?%?)%f %B%F{240}%1~%f%b %# '</code>) was pulled straight from Armin&rsquo;s <a href=https://scriptingosx.com/2019/07/moving-to-zsh-06-customizing-the-zsh-prompt/>Customizing the zsh prompt</a> article. I love it because it&rsquo;s generally very minimal, but when you start diving into the filesystem it starts to give you an idea of where you&rsquo;re at. He&rsquo;s also embedded a return-code indicator, which is handy when running long commands.</p><p>The next three export lines are probably recognizable by anyone building Jekyll websites.</p><p>The next 3 sections of code are functions. In my job, I create a number of video files that get shared via Powerpoints and/or posted to YouTube. These 3 functions are shortcut command lines to use <a href=https://ffmpeg.org/>FFmpeg</a> and drastically reduce the file size on video content. Basically, I can take an MP4 file output from Camtasia, and run <code>mp4c video.mp4</code> to kick off an FFmpeg compression that outputs that same file (reduced in size) as <code>video-opt.mp4</code>. Credit to <a href=https://github.com/jprichards>jprichards</a> for the code for this one.</p><p>The last function I found on <a href=https://www.reddit.com/r/commandline/comments/9md3pp/a_very_useful_bashrc_file/>Reddit</a> and find myself doing this exact thing constantly. It&rsquo;s going to be handy being able to simply type <code>up 3</code> to change directories.</p><div class=blog-tags><a href=https://blog.euc-rt.me//tags/macos/>macOS</a>&nbsp;
+</code></pre></div><h3 id=breaking-down-the-defaults>Breaking Down the Defaults</h3>
+<p>The first line (<code>PROMPT='%(?.%F{green}√.%F{red}?%?)%f %B%F{240}%1~%f%b %# '</code>) was pulled straight from Armin&rsquo;s <a href=https://scriptingosx.com/2019/07/moving-to-zsh-06-customizing-the-zsh-prompt/>Customizing the zsh prompt</a> article. I love it because it&rsquo;s generally very minimal, but when you start diving into the filesystem it starts to give you an idea of where you&rsquo;re at. He&rsquo;s also embedded a return-code indicator, which is handy when running long commands.</p>
+<p>The next three export lines are probably recognizable by anyone building Jekyll websites.</p>
+<p>The next 3 sections of code are functions. In my job, I create a number of video files that get shared via Powerpoints and/or posted to YouTube. These 3 functions are shortcut command lines to use <a href=https://ffmpeg.org/>FFmpeg</a> and drastically reduce the file size on video content. Basically, I can take an MP4 file output from Camtasia, and run <code>mp4c video.mp4</code> to kick off an FFmpeg compression that outputs that same file (reduced in size) as <code>video-opt.mp4</code>. Credit to <a href=https://github.com/jprichards>jprichards</a> for the code for this one.</p>
+<p>The last function I found on <a href=https://www.reddit.com/r/commandline/comments/9md3pp/a_very_useful_bashrc_file/>Reddit</a> and find myself doing this exact thing constantly. It&rsquo;s going to be handy being able to simply type <code>up 3</code> to change directories.</p>
+<div class=blog-tags>
+<a href=https://blog.euc-rt.me//tags/macos/>macOS</a>&nbsp;
 <a href=https://blog.euc-rt.me//tags/apple/>Apple</a>&nbsp;
-<a href=https://blog.euc-rt.me//tags/terminal/>Terminal</a>&nbsp;</div><hr><section id=social-share><div class="list-inline footer-links"><div class=share-box aria-hidden=true><ul class=share><li><a href="//twitter.com/share?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fmodify-zshell-defaults%2f&text=Modify%20ZShell%20Defaults%20in%20macOS&via=robterakedis" target=_blank title="Share on Twitter"><i class="fab fa-twitter"></i></a></li><li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.euc-rt.me%2fposts%2fmodify-zshell-defaults%2f" target=_blank title="Share on Facebook"><i class="fab fa-facebook"></i></a></li><li><a href="//reddit.com/submit?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fmodify-zshell-defaults%2f&title=Modify%20ZShell%20Defaults%20in%20macOS" target=_blank title="Share on Reddit"><i class="fab fa-reddit"></i></a></li><li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fmodify-zshell-defaults%2f&title=Modify%20ZShell%20Defaults%20in%20macOS" target=_blank title="Share on LinkedIn"><i class="fab fa-linkedin"></i></a></li><li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fmodify-zshell-defaults%2f&title=Modify%20ZShell%20Defaults%20in%20macOS" target=_blank title="Share on StumbleUpon"><i class="fab fa-stumbleupon"></i></a></li><li><a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fmodify-zshell-defaults%2f&description=Modify%20ZShell%20Defaults%20in%20macOS" target=_blank title="Share on Pinterest"><i class="fab fa-pinterest"></i></a></li></ul></div></div></section><h4 class=see-also>See also</h4><ul><li><a href=/posts/new-key-added-softwareupdate-command-macos/>New Key Added to SoftwareUpdate Command in macOS</a></li><li><a href=/posts/converting-jamf-custom-schema-json-workspace-one-uem/>Converting Jamf Custom Schema JSON for Workspace ONE UEM</a></li><li><a href=/posts/troubleshooting-macos-management-with-workspace-one/>Troubleshooting macOS Management with Workspace ONE</a></li><li><a href=/posts/deploying-nomad-over-vmware-per-app-tunnel/>Deploying NoMAD over VMware Per-App Tunnel</a></li><li><a href=/posts/macos-bigsur-kerberos-sso-over-vpn/>macOS Big Sur and Kerberos SSO via Per-App Tunnel</a></li></ul></article><ul class="pager blog-pager"><li class=previous><a href=https://blog.euc-rt.me/posts/macos-bigsur-kerberos-sso-over-vpn/ data-toggle=tooltip data-placement=top title="macOS Big Sur and Kerberos SSO via Per-App Tunnel">&larr; Previous Post</a></li><li class=next><a href=https://blog.euc-rt.me/posts/deploying-nomad-over-vmware-per-app-tunnel/ data-toggle=tooltip data-placement=top title="Deploying NoMAD over VMware Per-App Tunnel">Next Post &rarr;</a></li></ul><script src=https://utteranc.es/client.js repo=rterakedis/rterakedis.github.io issue-term=pathname theme=github-light crossorigin=anonymous async></script></div></div></div><footer><div class=container><div class=row><div class=disclaimer><b>Disclaimer:</b> The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.</div></div><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><ul class="list-inline text-center footer-links"><li><a href=https://github.com/rterakedis title=GitHub><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
-<i class="fab fa-github fa-stack-1x fa-inverse"></i></span></a></li><li><a href=https://twitter.com/robterakedis title=Twitter><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
-<i class="fab fa-twitter fa-stack-1x fa-inverse"></i></span></a></li><li><a href=https://linkedin.com/in/terakedis title=LinkedIn><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
-<i class="fab fa-linkedin fa-stack-1x fa-inverse"></i></span></a></li><li><a href title=RSS><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
-<i class="fas fa-rss fa-stack-1x fa-inverse"></i></span></a></li></ul><p class="credits copyright text-muted"><a href=https://blog.euc-rt.me>Robert Terakedis</a>
+<a href=https://blog.euc-rt.me//tags/terminal/>Terminal</a>&nbsp;
+</div>
+<hr>
+<section id=social-share>
+<div class="list-inline footer-links">
+<div class=share-box aria-hidden=true>
+<ul class=share>
+<li>
+<a href="//twitter.com/share?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fmodify-zshell-defaults%2f&text=Modify%20ZShell%20Defaults%20in%20macOS&via=robterakedis" target=_blank title="Share on Twitter">
+<i class="fab fa-twitter"></i>
+</a>
+</li>
+<li>
+<a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.euc-rt.me%2fposts%2fmodify-zshell-defaults%2f" target=_blank title="Share on Facebook">
+<i class="fab fa-facebook"></i>
+</a>
+</li>
+<li>
+<a href="//reddit.com/submit?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fmodify-zshell-defaults%2f&title=Modify%20ZShell%20Defaults%20in%20macOS" target=_blank title="Share on Reddit">
+<i class="fab fa-reddit"></i>
+</a>
+</li>
+<li>
+<a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fmodify-zshell-defaults%2f&title=Modify%20ZShell%20Defaults%20in%20macOS" target=_blank title="Share on LinkedIn">
+<i class="fab fa-linkedin"></i>
+</a>
+</li>
+<li>
+<a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fmodify-zshell-defaults%2f&title=Modify%20ZShell%20Defaults%20in%20macOS" target=_blank title="Share on StumbleUpon">
+<i class="fab fa-stumbleupon"></i>
+</a>
+</li>
+<li>
+<a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fmodify-zshell-defaults%2f&description=Modify%20ZShell%20Defaults%20in%20macOS" target=_blank title="Share on Pinterest">
+<i class="fab fa-pinterest"></i>
+</a>
+</li>
+</ul>
+</div>
+</div>
+</section>
+<h4 class=see-also>See also</h4>
+<ul>
+<li><a href=/posts/new-key-added-softwareupdate-command-macos/>New Key Added to SoftwareUpdate Command in macOS</a></li>
+<li><a href=/posts/converting-jamf-custom-schema-json-workspace-one-uem/>Converting Jamf Custom Schema JSON for Workspace ONE UEM</a></li>
+<li><a href=/posts/troubleshooting-macos-management-with-workspace-one/>Troubleshooting macOS Management with Workspace ONE</a></li>
+<li><a href=/posts/deploying-nomad-over-vmware-per-app-tunnel/>Deploying NoMAD over VMware Per-App Tunnel</a></li>
+<li><a href=/posts/macos-bigsur-kerberos-sso-over-vpn/>macOS Big Sur and Kerberos SSO via Per-App Tunnel</a></li>
+</ul>
+</article>
+<ul class="pager blog-pager">
+<li class=previous>
+<a href=https://blog.euc-rt.me/posts/macos-bigsur-kerberos-sso-over-vpn/ data-toggle=tooltip data-placement=top title="macOS Big Sur and Kerberos SSO via Per-App Tunnel">&larr; Previous Post</a>
+</li>
+<li class=next>
+<a href=https://blog.euc-rt.me/posts/deploying-nomad-over-vmware-per-app-tunnel/ data-toggle=tooltip data-placement=top title="Deploying NoMAD over VMware Per-App Tunnel">Next Post &rarr;</a>
+</li>
+</ul>
+<script src=https://utteranc.es/client.js repo=rterakedis/rterakedis.github.io issue-term=pathname theme=github-dark crossorigin=anonymous async></script>
+</div>
+</div>
+</div>
+<footer>
+<div class=container>
+<div class=row>
+<div class=disclaimer>
+<b>Disclaimer:</b> The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.
+</div>
+</div>
+<div class=row>
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<ul class="list-inline text-center footer-links">
+<li>
+<a href=https://github.com/rterakedis title=GitHub>
+<span class="fa-stack fa-lg">
+<i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-github fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+</li>
+<li>
+<a href=https://twitter.com/robterakedis title=Twitter>
+<span class="fa-stack fa-lg">
+<i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+</li>
+<li>
+<a href=https://linkedin.com/in/terakedis title=LinkedIn>
+<span class="fa-stack fa-lg">
+<i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+</li>
+<li>
+<a href title=RSS>
+<span class="fa-stack fa-lg">
+<i class="fas fa-circle fa-stack-2x"></i>
+<i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+</li>
+</ul>
+<p class="credits copyright text-muted">
+<a href=https://blog.euc-rt.me>Robert Terakedis</a>
 &nbsp;&bull;&nbsp;&copy;
 2021
 &nbsp;&bull;&nbsp;
-<a href=https://blog.euc-rt.me/>Not to be confused with Pterodactyl...</a></p><p class="credits theme-by text-muted"><a href=https://gohugo.io>Hugo v0.85.0</a> powered &nbsp;&bull;&nbsp; Theme <a href=https://github.com/halogenica/beautifulhugo>Beautiful Hugo</a> adapted from <a href=https://deanattali.com/beautiful-jekyll/>Beautiful Jekyll</a></p></div></div></div></footer><script src=https://blog.euc-rt.me/js/katex.min.js></script><script src=https://blog.euc-rt.me/js/auto-render.min.js></script><script src=https://blog.euc-rt.me/js/jquery.min.js></script><script src=https://blog.euc-rt.me/js/bootstrap.min.js></script><script src=https://blog.euc-rt.me/js/main.js></script><script src=https://blog.euc-rt.me/js/highlight.min.js></script><script>hljs.initHighlightingOnLoad()</script><script>$(document).ready(function(){$("pre.chroma").css("padding","0")})</script><script>renderMathInElement(document.body)</script><script src=https://blog.euc-rt.me/js/photoswipe.min.js></script><script src=https://blog.euc-rt.me/js/photoswipe-ui-default.min.js></script><script src=https://blog.euc-rt.me/js/load-photoswipe.js></script><script>(function(){var c='006263833525848905237:3xfwgq6zswl',a=document.createElement('script'),b;a.type='text/javascript',a.async=!0,a.src='https://cse.google.com/cse.js?cx='+c,b=document.getElementsByTagName('script')[0],b.parentNode.insertBefore(a,b)})()</script></body></html>
+<a href=https://blog.euc-rt.me/>Not to be confused with Pterodactyl...</a>
+</p>
+<p class="credits theme-by text-muted">
+<a href=https://gohugo.io>Hugo v0.86.0</a> powered &nbsp;&bull;&nbsp; Theme <a href=https://github.com/halogenica/beautifulhugo>Beautiful Hugo</a> adapted from <a href=https://deanattali.com/beautiful-jekyll/>Beautiful Jekyll</a>
+</p>
+</div>
+</div>
+</div>
+</footer>
+<script src=https://blog.euc-rt.me/js/katex.min.js></script>
+<script src=https://blog.euc-rt.me/js/auto-render.min.js></script>
+<script src=https://blog.euc-rt.me/js/jquery.min.js></script>
+<script src=https://blog.euc-rt.me/js/bootstrap.min.js></script>
+<script src=https://blog.euc-rt.me/js/main.js></script>
+<script src=https://blog.euc-rt.me/js/highlight.min.js></script>
+<script>hljs.initHighlightingOnLoad()</script>
+<script>$(document).ready(function(){$("pre.chroma").css("padding","0")})</script><script>renderMathInElement(document.body)</script><script src=https://blog.euc-rt.me/js/photoswipe.min.js></script>
+<script src=https://blog.euc-rt.me/js/photoswipe-ui-default.min.js></script><script src=https://blog.euc-rt.me/js/load-photoswipe.js></script>
+<script>(function(){var c='006263833525848905237:3xfwgq6zswl',a=document.createElement('script'),b;a.type='text/javascript',a.async=!0,a.src='https://cse.google.com/cse.js?cx='+c,b=document.getElementsByTagName('script')[0],b.parentNode.insertBefore(a,b)})()</script>
+</body>
+</html>

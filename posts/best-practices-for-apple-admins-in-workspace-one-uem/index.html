@@ -1,22 +1,321 @@
-<!doctype html><html lang=en itemscope itemtype=http://schema.org/WebPage><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><title>Best Practices for Apple Admins in Workspace ONE UEM - Robert Terakedis</title><meta name=description content="Avoid learning these things the hard way!"><meta name=author content="Robert Terakedis"><script type=application/ld+json>{"@context":"http://schema.org","@type":"WebSite","name":"Robert Terakedis","url":"https:\/\/blog.euc-rt.me\/"}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Organization","name":"","url":"https:\/\/blog.euc-rt.me\/"}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https:\/\/blog.euc-rt.me\/","name":"home"}},{"@type":"ListItem","position":3,"item":{"@id":"https:\/\/blog.euc-rt.me\/posts\/best-practices-for-apple-admins-in-workspace-one-uem\/","name":"Best practices for apple admins in workspace one uem"}}]}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Article","author":{"name":"Robert Terakedis"},"headline":"Best Practices for Apple Admins in Workspace ONE UEM","description":"I was recently reading a post about What to do when you have to lay off your Jamf administrator, and it got me thinking. The Workspace ONE UEM documentation generally specifies what you need from a software and hardware perspective in pre-requisites. That said, over the years I\u0026rsquo;ve come to know a few unwritten (or written but obscure) best practices for setting up Workspace ONE UEM to manage Apple devices. Hopefully you find this post helpful, but I welcome any comments and feedback!","inLanguage":"en","wordCount":1303,"datePublished":"2021-07-15T00:00:00","dateModified":"2021-07-15T00:00:00","image":"https:\/\/blog.euc-rt.me\/img\/avatar-icon.png","keywords":["workspace-one, macos, apple"],"mainEntityOfPage":"https:\/\/blog.euc-rt.me\/posts\/best-practices-for-apple-admins-in-workspace-one-uem\/","publisher":{"@type":"Organization","name":"https:\/\/blog.euc-rt.me\/","logo":{"@type":"ImageObject","url":"https:\/\/blog.euc-rt.me\/img\/avatar-icon.png","height":60,"width":60}}}</script><meta property="og:title" content="Best Practices for Apple Admins in Workspace ONE UEM"><meta property="og:description" content="Avoid learning these things the hard way!"><meta property="og:image" content="https://blog.euc-rt.me/img/avatar-icon.png"><meta property="og:url" content="https://blog.euc-rt.me/posts/best-practices-for-apple-admins-in-workspace-one-uem/"><meta property="og:type" content="website"><meta property="og:site_name" content="Robert Terakedis"><meta name=twitter:title content="Best Practices for Apple Admins in Workspace ONE UEM"><meta name=twitter:description content="Avoid learning these things the hard way!"><meta name=twitter:image content="https://blog.euc-rt.me/img/avatar-icon.png"><meta name=twitter:card content="summary"><meta name=twitter:site content="@robterakedis"><meta name=twitter:creator content="@robterakedis"><link href=https://blog.euc-rt.me/img/favicon.ico rel=icon type=image/x-icon><meta name=generator content="Hugo 0.85.0"><link rel=alternate href=https://blog.euc-rt.me/index.xml type=application/rss+xml title="Robert Terakedis"><link rel=stylesheet href=https://blog.euc-rt.me/fontawesome/css/all.css><link rel=stylesheet href=https://blog.euc-rt.me/css/bootstrap.min.css><link rel=stylesheet href=https://blog.euc-rt.me/css/main.css><link rel=stylesheet href=https://blog.euc-rt.me/css/fonts.css><link rel=stylesheet href=https://blog.euc-rt.me/css/highlight.min.css><link rel=stylesheet href=https://blog.euc-rt.me/css/codeblock.css><link rel=stylesheet href=https://blog.euc-rt.me/css/photoswipe.min.css><link rel=stylesheet href=https://blog.euc-rt.me/css/photoswipe.default-skin.min.css><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga('create','UA-9354949-17','auto'),ga('send','pageview'))</script><script async src=https://www.google-analytics.com/analytics.js></script></head><body><nav class="navbar navbar-default navbar-fixed-top navbar-custom"><div class=container-fluid><div class=navbar-header><button type=button class=navbar-toggle data-toggle=collapse data-target=#main-navbar>
+<!doctype html><html lang=en itemscope itemtype=http://schema.org/WebPage>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>Best Practices for Apple Admins in Workspace ONE UEM - Robert Terakedis</title>
+<meta name=description content="Avoid learning these things the hard way!">
+<meta name=author content="Robert Terakedis"><script type=application/ld+json>{"@context":"http://schema.org","@type":"WebSite","name":"Robert Terakedis","url":"https:\/\/blog.euc-rt.me\/"}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Organization","name":"","url":"https:\/\/blog.euc-rt.me\/"}</script>
+<script type=application/ld+json>{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https:\/\/blog.euc-rt.me\/","name":"home"}},{"@type":"ListItem","position":3,"item":{"@id":"https:\/\/blog.euc-rt.me\/posts\/best-practices-for-apple-admins-in-workspace-one-uem\/","name":"Best practices for apple admins in workspace one uem"}}]}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Article","author":{"name":"Robert Terakedis"},"headline":"Best Practices for Apple Admins in Workspace ONE UEM","description":"I was recently reading a post about What to do when you have to lay off your Jamf administrator, and it got me thinking. The Workspace ONE UEM documentation generally specifies what you need from a software and hardware perspective in pre-requisites. That said, over the years I\u0026rsquo;ve come to know a few unwritten (or written but obscure) best practices for setting up Workspace ONE UEM to manage Apple devices. Hopefully you find this post helpful, but I welcome any comments and feedback!","inLanguage":"en","wordCount":1303,"datePublished":"2021-07-15T00:00:00","dateModified":"2021-07-15T00:00:00","image":"https:\/\/blog.euc-rt.me\/img\/avatar-icon.png","keywords":["workspace-one, macos, apple"],"mainEntityOfPage":"https:\/\/blog.euc-rt.me\/posts\/best-practices-for-apple-admins-in-workspace-one-uem\/","publisher":{"@type":"Organization","name":"https:\/\/blog.euc-rt.me\/","logo":{"@type":"ImageObject","url":"https:\/\/blog.euc-rt.me\/img\/avatar-icon.png","height":60,"width":60}}}</script>
+<meta property="og:title" content="Best Practices for Apple Admins in Workspace ONE UEM">
+<meta property="og:description" content="Avoid learning these things the hard way!">
+<meta property="og:image" content="https://blog.euc-rt.me/img/avatar-icon.png">
+<meta property="og:url" content="https://blog.euc-rt.me/posts/best-practices-for-apple-admins-in-workspace-one-uem/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Robert Terakedis">
+<meta name=twitter:title content="Best Practices for Apple Admins in Workspace ONE UEM">
+<meta name=twitter:description content="Avoid learning these things the hard way!">
+<meta name=twitter:image content="https://blog.euc-rt.me/img/avatar-icon.png">
+<meta name=twitter:card content="summary">
+<meta name=twitter:site content="@robterakedis">
+<meta name=twitter:creator content="@robterakedis">
+<link href=https://blog.euc-rt.me/img/favicon.ico rel=icon type=image/x-icon>
+<meta name=generator content="Hugo 0.86.0">
+<link rel=alternate href=https://blog.euc-rt.me/index.xml type=application/rss+xml title="Robert Terakedis">
+<link rel=stylesheet href=https://blog.euc-rt.me/fontawesome/css/all.css>
+<link rel=stylesheet href=https://blog.euc-rt.me/css/bootstrap.min.css>
+<link rel=stylesheet href=https://blog.euc-rt.me/css/main.css><link rel=stylesheet href=https://blog.euc-rt.me/css/fonts.css>
+<link rel=stylesheet href=https://blog.euc-rt.me/css/highlight.min.css><link rel=stylesheet href=https://blog.euc-rt.me/css/codeblock.css><link rel=stylesheet href=https://blog.euc-rt.me/css/photoswipe.min.css>
+<link rel=stylesheet href=https://blog.euc-rt.me/css/photoswipe.default-skin.min.css>
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga('create','UA-9354949-17','auto'),ga('send','pageview'))</script>
+<script async src=https://www.google-analytics.com/analytics.js></script>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+<div class=container-fluid>
+<div class=navbar-header>
+<button type=button class=navbar-toggle data-toggle=collapse data-target=#main-navbar>
 <span class=sr-only>Toggle navigation</span>
-<span class=icon-bar></span><span class=icon-bar></span><span class=icon-bar></span></button>
-<a class=navbar-brand href=https://blog.euc-rt.me/>Robert Terakedis</a></div><div class="collapse navbar-collapse" id=main-navbar><ul class="nav navbar-nav navbar-right"><li><a title=About href=/about/>About</a></li><li class=navlinks-container><a class=navlinks-parent>My Work Content</a><div class=navlinks-children><a href=https://techzone.vmware.com/users/robert-terakedis>VMware EUC TechZone</a>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+</button>
+<a class=navbar-brand href=https://blog.euc-rt.me/>Robert Terakedis</a>
+</div>
+<div class="collapse navbar-collapse" id=main-navbar>
+<ul class="nav navbar-nav navbar-right">
+<li>
+<a title=About href=/about/>About</a>
+</li>
+<li class=navlinks-container>
+<a class=navlinks-parent>My Work Content</a>
+<div class=navlinks-children>
+<a href=https://techzone.vmware.com/users/robert-terakedis>VMware EUC TechZone</a>
 <a href=https://communities.vmware.com/people/rterakedis/activity>VMware Tech Network</a>
 <a href=https://github.com/vmware-samples/euc-samples/tree/master/macOS-Samples>VMware EUC Samples</a>
-<a href=https://blogs.vmware.com/euc/author/rterakedis>VMware EUC Blog</a></div></li><li class=navlinks-container><a class=navlinks-parent>Resources</a><div class=navlinks-children><a href=/stickers/>Stickers</a>
-<a href=/gettingstarted/>Getting Started</a></div></li><li><a title=Tags href=/tags>Tags</a></li><li><a href=#modalSearch data-toggle=modal data-target=#modalSearch style=outline:none><span class="hidden-sm hidden-md hidden-lg">Search</span> <span id=searchGlyph class="glyphicon glyphicon-search"></span></a></li></ul></div><div class=avatar-container><div class=avatar-img-border><a title="Robert Terakedis" href=https://blog.euc-rt.me/><img class=avatar-img src=https://blog.euc-rt.me/img/avatar-icon.png alt="Robert Terakedis" style=height:100px;width:100px></a></div></div></div></nav><div id=modalSearch class="modal fade" role=dialog><div class=modal-dialog><div class=modal-content><div class=modal-header><button type=button class=close data-dismiss=modal>&#215;</button><h4 class=modal-title>Search Robert Terakedis</h4></div><div class=modal-body><gcse:search></gcse:search></div><div class=modal-footer><button type=button class="btn btn-default" data-dismiss=modal>Close</button></div></div></div></div><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<a href=https://blogs.vmware.com/euc/author/rterakedis>VMware EUC Blog</a>
+</div>
+</li>
+<li class=navlinks-container>
+<a class=navlinks-parent>Resources</a>
+<div class=navlinks-children>
+<a href=/stickers/>Stickers</a>
+<a href=/gettingstarted/>Getting Started</a>
+</div>
+</li>
+<li>
+<a title=Tags href=/tags>Tags</a>
+</li>
+<li>
+<a href=#modalSearch data-toggle=modal data-target=#modalSearch style=outline:none>
+<span class="hidden-sm hidden-md hidden-lg">Search</span> <span id=searchGlyph class="glyphicon glyphicon-search"></span>
+</a>
+</li>
+</ul>
+</div>
+<div class=avatar-container>
+<div class=avatar-img-border>
+<a title="Robert Terakedis" href=https://blog.euc-rt.me/>
+<img class=avatar-img src=https://blog.euc-rt.me/img/avatar-icon.png alt="Robert Terakedis" style=height:100px;width:100px>
+</a>
+</div>
+</div>
+</div>
+</nav>
+<div id=modalSearch class="modal fade" role=dialog>
+<div class=modal-dialog>
+<div class=modal-content>
+<div class=modal-header>
+<button type=button class=close data-dismiss=modal>&#215;</button>
+<h4 class=modal-title>Search Robert Terakedis</h4>
+</div>
+<div class=modal-body>
+<gcse:search></gcse:search>
+</div>
+<div class=modal-footer>
+<button type=button class="btn btn-default" data-dismiss=modal>Close</button>
+</div>
+</div>
+</div>
+</div>
+<div class=pswp tabindex=-1 role=dialog aria-hidden=true>
+<div class=pswp__bg></div>
+<div class=pswp__scroll-wrap>
+<div class=pswp__container>
+<div class=pswp__item></div>
+<div class=pswp__item></div>
+<div class=pswp__item></div>
+</div>
+<div class="pswp__ui pswp__ui--hidden">
+<div class=pswp__top-bar>
+<div class=pswp__counter></div>
+<button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
 <button class="pswp__button pswp__button--share" title=Share></button>
 <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
-<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><header class=header-section><div class="intro-header no-img"><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><div class=posts-heading><h1>Best Practices for Apple Admins in Workspace ONE UEM</h1><hr class=small><h2 class=posts-subheading>Avoid learning these things the hard way!</h2></div></div></div></div></div></header><div class=container role=main><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><article role=main class=blog-post><p>I was recently reading a post about <a href=https://macostechs.com/2021/05/what-to-do-when-you-have-to-lay-off-your-jamf-administrator/>What to do when you have to lay off your Jamf administrator</a>, and it got me thinking. The <a href=https://docs.vmware.com/en/VMware-Workspace-ONE-UEM/2102/UEM_Recommended_Architecture/GUID-AWT-RECARCH-INTRO.html>Workspace ONE UEM documentation</a> generally specifies what you <strong>need</strong> from a software and hardware perspective in pre-requisites. That said, over the years I&rsquo;ve come to know a few unwritten (or written but obscure) best practices for setting up Workspace ONE UEM to manage Apple devices. Hopefully you find this post helpful, but I welcome any comments and feedback!</p><h2 id=best-practices-for-apple-services-pre-requisites>Best Practices for Apple Services Pre-Requisites</h2><p>When your organization pursues the intiial setup for many of Apple&rsquo;s services, there are some best practices to follow which helps maintain supportability in unforseen circumstances. Additionally, many of the accounts you create to manage Apple-related services should be dedicated for that specific service. In other words, an Apple ID created for push certificate creation <em><strong>should not</strong></em> be used to sign-in to the App Store or iCloud on an iPhone. That said, let&rsquo;s dig into some of the critical best practices that I&rsquo;ve seen over the years.</p><h3 id=admin-apple-ids-for-abm-asm>Admin Apple ID&rsquo;s for ABM (ASM)</h3><p>Apple calls out a number of pertinent <a href=https://support.apple.com/guide/apple-school-manager/program-requirements-asm6d9dc7acf/1/web/1#apd186482fc3>pre-requisites for Administrator Apple ID&rsquo;s</a> in ABM/ASM that are worth noting:</p><ol><li>The email address hasn&rsquo;t been used as an Apple ID for any other Apple service, website, App Store, or iCloud content.</li><li>This email address DOES need to route to a <em>real person</em> as it will receive critical notifications about ABM/ASM.</li></ol><p>Because Apple wants this initial admin account to be a real person, I highly recommend signing up using an alias email address (or distribution list email address) for your real org-based email address. By doing this, you need not worry if you&rsquo;ve already used your org-based email address as an Apple ID in other services. Additionally, should you decide to leave the organization, the alias can be moved to someone else&rsquo;s mailbox (or one or more new email addresses added to the Distribution List). The idea here is to make business continuity easier. The Distribution List option also adds flexibility if you have other administrators that would benefit from awareness of program and software license agreement changes.</p><blockquote><p><strong>NOTE:</strong> Use an email alias and NOT a shared mailbox, as this eliminates any overhead related to managing the additional mailbox and keeps ABM-related emails front-and-center.</p></blockquote><p>Once your Admin ID is created and you have access to ABM (or ASM), set up additional administrators immediately and work with those individuals to ensure they go through the entire setup process (including 2-factor authentication). Also, set a recurring calendar reminder for your group of administrators to validate logins/credentials are working if they will not be actively managing ABM. If an organization loses access to all the administrator accounts, it can be painful to re-establish access and could potentially involve downtime related to Apple Business Manager programs (automated enrollment and volume licensed apps).</p><h3 id=push-certificates-portal-admin-apple-id>Push Certificates Portal Admin Apple ID</h3><p>Push Certificates (used for <a href=https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html#//apple_ref/doc/uid/TP40008194-CH8-SW1>APNS</a> messaging), are unfortunately tied to a single Apple ID. Once a device is enrolled using an APNS push certificate, that certificate chain must be maintained (renewed) for continued functioning AND cannot be changed without re-enrolling the device. In other words, if you lose access to the account that created the Push Certificate, eventually your devices stop responding to MDM. Because of the criticality of this piece, <strong>DO NOT tie this Apple ID to a single Admin user.</strong></p><p>Prior to setting up Push Certificates, create a new Apple ID at <a href=appleid.apple.com>appleid.apple.com</a> using an email alias for a Distribution List or Group in your organization. This distribution list should contain all the users in your organization that will be managing MDM (which may or maynot be the same as those folks added as admins for ABM/ASM) Additionally, work with your co-administrators to immediately configure a set of <a href=https://support.apple.com/en-us/HT204915>Trusted Phone Numbers</a>. Yes, you should have multiple trusted phone numbers just in case of emergency! Then, ensure everyone knows how to login to the <a href=https://identity.apple.com/pushcert/>Push Certificates Portal</a> and keep the password in a shared password vault.</p><blockquote><p><strong>REMEMBER:</strong> The crticial point with the Push Certificates Apple ID is that you need access to that account in order to periodically renew your APNS certificates. Without this capability, you&rsquo;ll lose the ability to manage your devices.</p></blockquote><h3 id=locations-and-mdm-servers-in-apple-business-manager>Locations and MDM Servers in Apple Business Manager</h3><p>Locations and MDM Servers in ABM equate to a container holding volume-purchased app/book licenses and devices (respectively) for management. Over the years, I&rsquo;ve known organizations which aimed to keep the number of MDM servers or Locations small as possible. To be honest, I never understood this thought process (or the organizational politics that discouraged liberal use of this ABM feature). I encourage you to create as many as you need to adequately test new configurations. With ABM, you can move devices and licenses easily between different Locations/Servers, allowing you the following opportunities:</p><ul><li>Testing new configurations in a Sibling (same level) Organization group</li><li>Testing new configurations in a Child Organization group (overriding or replacing)</li><li>Using a spare paid (non-free) license for testing in a UAT environment</li><li>Purchasing additional &ldquo;Free&rdquo; licenses for testing in a UAT environment</li></ul><p>My point is this, Apple gives you a great deal of flexibility to move devices and app/book licenses around. Combine this with the multi-tenancy (Org-Group Heirarchy) of Workspace ONE and you get a great deal of flexibility for testing app or device deployment changes without &ldquo;testing in production&rdquo;. That is, unless you firmly believe in YOLO&rsquo;ing your UEM environment&mldr; (NOT recommended!)</p><h2 id=best-practices-for-workspace-one>Best Practices for Workspace ONE</h2><h3 id=define-multiple-customer-level-administrators>Define Multiple Customer-Level Administrators</h3><p>As a best practice, you should never have a single UEM admin user at the top of your Workspace ONE org structure. I would recommend having at least two (one of which is the manager of the UEM Admins) and if possible keep them geographically distributed (for business continuity). That said, having folks with access isn&rsquo;t enough. Create documentation on how to revoke admin privileges and create new admin accounts. Keep this documentation readily available in case of emergency (or if you have a place to store business continuity documention, keep it there).</p><h3 id=define-additional-support-contacts>Define Additional Support Contacts</h3><p>Work with your sales reps to ensure there are multiple contacts in your organization that can open support tickets. You don&rsquo;t want to wait for a major outage to then discover there&rsquo;s noone listed as a valid support contact with VMware support.</p><h3 id=define-a-basic-uem-admin-recovery-account>Define a Basic UEM Admin Recovery Account</h3><p>It may be tempting to force all your admins to log in with corporate directory-based credentials, but it is critical to maintain at least one basic (non-directory) account in UEM. If you experience an issue with your directory integration, you would not be able to make any corrections to the configuration in UEM without a non-directory user available.</p><blockquote><p><strong>REMEMBER:</strong> The Basic UEM admin account should still point to a real email address (or distribution list) in the case of password resets and notifications.</p></blockquote><h3 id=encourage-custom-apps-for-ios>Encourage Custom Apps for iOS</h3><p>If you&rsquo;re an organization that develops enterprise iOS apps and signs them with Enterprise (In-House) signing certificates, I strongly recommend moving to <a href=https://developer.apple.com/wwdc19/304>Custom Apps</a>. I&rsquo;ve seen many times in the past where an organization runs into a fire-drill when the provisioning package for their Enterprise iOS app expires and they need to find the correct iOS app developer who can create the new provisioning package for the UEM administrator. Custom Apps eliminate this headache. Yes, it may require some process changes for your developers and require some coordination with you for the app purchase in ABM, but it is the way forward.</p><h2 id=wrapping-up>Wrapping Up</h2><p>I&rsquo;m sure over time I&rsquo;ll think of more to add to this list, but I wanted to make sure I got some of these ideas in my head down on &ldquo;paper.&rdquo; Please feel free to add a comment below if you think I&rsquo;ve missed something.</p><div class=blog-tags><a href=https://blog.euc-rt.me//tags/workspace-one/>workspace-one</a>&nbsp;
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+<div class=pswp__preloader>
+<div class=pswp__preloader__icn>
+<div class=pswp__preloader__cut>
+<div class=pswp__preloader__donut></div>
+</div>
+</div>
+</div>
+</div>
+<div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+<div class=pswp__share-tooltip></div>
+</div>
+<button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+</button>
+<div class=pswp__caption>
+<div class=pswp__caption__center></div>
+</div>
+</div>
+</div>
+</div>
+<header class=header-section>
+<div class="intro-header no-img">
+<div class=container>
+<div class=row>
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<div class=posts-heading>
+<h1>Best Practices for Apple Admins in Workspace ONE UEM</h1>
+<hr class=small>
+<h2 class=posts-subheading>Avoid learning these things the hard way!</h2>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<div class=container role=main>
+<div class=row>
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<article role=main class=blog-post>
+<p>I was recently reading a post about <a href=https://macostechs.com/2021/05/what-to-do-when-you-have-to-lay-off-your-jamf-administrator/>What to do when you have to lay off your Jamf administrator</a>, and it got me thinking. The <a href=https://docs.vmware.com/en/VMware-Workspace-ONE-UEM/2102/UEM_Recommended_Architecture/GUID-AWT-RECARCH-INTRO.html>Workspace ONE UEM documentation</a> generally specifies what you <strong>need</strong> from a software and hardware perspective in pre-requisites. That said, over the years I&rsquo;ve come to know a few unwritten (or written but obscure) best practices for setting up Workspace ONE UEM to manage Apple devices. Hopefully you find this post helpful, but I welcome any comments and feedback!</p>
+<h2 id=best-practices-for-apple-services-pre-requisites>Best Practices for Apple Services Pre-Requisites</h2>
+<p>When your organization pursues the intiial setup for many of Apple&rsquo;s services, there are some best practices to follow which helps maintain supportability in unforseen circumstances. Additionally, many of the accounts you create to manage Apple-related services should be dedicated for that specific service. In other words, an Apple ID created for push certificate creation <em><strong>should not</strong></em> be used to sign-in to the App Store or iCloud on an iPhone. That said, let&rsquo;s dig into some of the critical best practices that I&rsquo;ve seen over the years.</p>
+<h3 id=admin-apple-ids-for-abm-asm>Admin Apple ID&rsquo;s for ABM (ASM)</h3>
+<p>Apple calls out a number of pertinent <a href=https://support.apple.com/guide/apple-school-manager/program-requirements-asm6d9dc7acf/1/web/1#apd186482fc3>pre-requisites for Administrator Apple ID&rsquo;s</a> in ABM/ASM that are worth noting:</p>
+<ol>
+<li>The email address hasn&rsquo;t been used as an Apple ID for any other Apple service, website, App Store, or iCloud content.</li>
+<li>This email address DOES need to route to a <em>real person</em> as it will receive critical notifications about ABM/ASM.</li>
+</ol>
+<p>Because Apple wants this initial admin account to be a real person, I highly recommend signing up using an alias email address (or distribution list email address) for your real org-based email address. By doing this, you need not worry if you&rsquo;ve already used your org-based email address as an Apple ID in other services. Additionally, should you decide to leave the organization, the alias can be moved to someone else&rsquo;s mailbox (or one or more new email addresses added to the Distribution List). The idea here is to make business continuity easier. The Distribution List option also adds flexibility if you have other administrators that would benefit from awareness of program and software license agreement changes.</p>
+<blockquote>
+<p><strong>NOTE:</strong> Use an email alias and NOT a shared mailbox, as this eliminates any overhead related to managing the additional mailbox and keeps ABM-related emails front-and-center.</p>
+</blockquote>
+<p>Once your Admin ID is created and you have access to ABM (or ASM), set up additional administrators immediately and work with those individuals to ensure they go through the entire setup process (including 2-factor authentication). Also, set a recurring calendar reminder for your group of administrators to validate logins/credentials are working if they will not be actively managing ABM. If an organization loses access to all the administrator accounts, it can be painful to re-establish access and could potentially involve downtime related to Apple Business Manager programs (automated enrollment and volume licensed apps).</p>
+<h3 id=push-certificates-portal-admin-apple-id>Push Certificates Portal Admin Apple ID</h3>
+<p>Push Certificates (used for <a href=https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html#//apple_ref/doc/uid/TP40008194-CH8-SW1>APNS</a> messaging), are unfortunately tied to a single Apple ID. Once a device is enrolled using an APNS push certificate, that certificate chain must be maintained (renewed) for continued functioning AND cannot be changed without re-enrolling the device. In other words, if you lose access to the account that created the Push Certificate, eventually your devices stop responding to MDM. Because of the criticality of this piece, <strong>DO NOT tie this Apple ID to a single Admin user.</strong></p>
+<p>Prior to setting up Push Certificates, create a new Apple ID at <a href=appleid.apple.com>appleid.apple.com</a> using an email alias for a Distribution List or Group in your organization. This distribution list should contain all the users in your organization that will be managing MDM (which may or maynot be the same as those folks added as admins for ABM/ASM) Additionally, work with your co-administrators to immediately configure a set of <a href=https://support.apple.com/en-us/HT204915>Trusted Phone Numbers</a>. Yes, you should have multiple trusted phone numbers just in case of emergency! Then, ensure everyone knows how to login to the <a href=https://identity.apple.com/pushcert/>Push Certificates Portal</a> and keep the password in a shared password vault.</p>
+<blockquote>
+<p><strong>REMEMBER:</strong> The crticial point with the Push Certificates Apple ID is that you need access to that account in order to periodically renew your APNS certificates. Without this capability, you&rsquo;ll lose the ability to manage your devices.</p>
+</blockquote>
+<h3 id=locations-and-mdm-servers-in-apple-business-manager>Locations and MDM Servers in Apple Business Manager</h3>
+<p>Locations and MDM Servers in ABM equate to a container holding volume-purchased app/book licenses and devices (respectively) for management. Over the years, I&rsquo;ve known organizations which aimed to keep the number of MDM servers or Locations small as possible. To be honest, I never understood this thought process (or the organizational politics that discouraged liberal use of this ABM feature). I encourage you to create as many as you need to adequately test new configurations. With ABM, you can move devices and licenses easily between different Locations/Servers, allowing you the following opportunities:</p>
+<ul>
+<li>Testing new configurations in a Sibling (same level) Organization group</li>
+<li>Testing new configurations in a Child Organization group (overriding or replacing)</li>
+<li>Using a spare paid (non-free) license for testing in a UAT environment</li>
+<li>Purchasing additional &ldquo;Free&rdquo; licenses for testing in a UAT environment</li>
+</ul>
+<p>My point is this, Apple gives you a great deal of flexibility to move devices and app/book licenses around. Combine this with the multi-tenancy (Org-Group Heirarchy) of Workspace ONE and you get a great deal of flexibility for testing app or device deployment changes without &ldquo;testing in production&rdquo;. That is, unless you firmly believe in YOLO&rsquo;ing your UEM environment&mldr; (NOT recommended!)</p>
+<h2 id=best-practices-for-workspace-one>Best Practices for Workspace ONE</h2>
+<h3 id=define-multiple-customer-level-administrators>Define Multiple Customer-Level Administrators</h3>
+<p>As a best practice, you should never have a single UEM admin user at the top of your Workspace ONE org structure. I would recommend having at least two (one of which is the manager of the UEM Admins) and if possible keep them geographically distributed (for business continuity). That said, having folks with access isn&rsquo;t enough. Create documentation on how to revoke admin privileges and create new admin accounts. Keep this documentation readily available in case of emergency (or if you have a place to store business continuity documention, keep it there).</p>
+<h3 id=define-additional-support-contacts>Define Additional Support Contacts</h3>
+<p>Work with your sales reps to ensure there are multiple contacts in your organization that can open support tickets. You don&rsquo;t want to wait for a major outage to then discover there&rsquo;s noone listed as a valid support contact with VMware support.</p>
+<h3 id=define-a-basic-uem-admin-recovery-account>Define a Basic UEM Admin Recovery Account</h3>
+<p>It may be tempting to force all your admins to log in with corporate directory-based credentials, but it is critical to maintain at least one basic (non-directory) account in UEM. If you experience an issue with your directory integration, you would not be able to make any corrections to the configuration in UEM without a non-directory user available.</p>
+<blockquote>
+<p><strong>REMEMBER:</strong> The Basic UEM admin account should still point to a real email address (or distribution list) in the case of password resets and notifications.</p>
+</blockquote>
+<h3 id=encourage-custom-apps-for-ios>Encourage Custom Apps for iOS</h3>
+<p>If you&rsquo;re an organization that develops enterprise iOS apps and signs them with Enterprise (In-House) signing certificates, I strongly recommend moving to <a href=https://developer.apple.com/wwdc19/304>Custom Apps</a>. I&rsquo;ve seen many times in the past where an organization runs into a fire-drill when the provisioning package for their Enterprise iOS app expires and they need to find the correct iOS app developer who can create the new provisioning package for the UEM administrator. Custom Apps eliminate this headache. Yes, it may require some process changes for your developers and require some coordination with you for the app purchase in ABM, but it is the way forward.</p>
+<h2 id=wrapping-up>Wrapping Up</h2>
+<p>I&rsquo;m sure over time I&rsquo;ll think of more to add to this list, but I wanted to make sure I got some of these ideas in my head down on &ldquo;paper.&rdquo; Please feel free to add a comment below if you think I&rsquo;ve missed something.</p>
+<div class=blog-tags>
+<a href=https://blog.euc-rt.me//tags/workspace-one/>workspace-one</a>&nbsp;
 <a href=https://blog.euc-rt.me//tags/macos/>macos</a>&nbsp;
-<a href=https://blog.euc-rt.me//tags/apple/>apple</a>&nbsp;</div><hr><section id=social-share><div class="list-inline footer-links"><div class=share-box aria-hidden=true><ul class=share><li><a href="//twitter.com/share?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fbest-practices-for-apple-admins-in-workspace-one-uem%2f&text=Best%20Practices%20for%20Apple%20Admins%20in%20Workspace%20ONE%20UEM&via=robterakedis" target=_blank title="Share on Twitter"><i class="fab fa-twitter"></i></a></li><li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.euc-rt.me%2fposts%2fbest-practices-for-apple-admins-in-workspace-one-uem%2f" target=_blank title="Share on Facebook"><i class="fab fa-facebook"></i></a></li><li><a href="//reddit.com/submit?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fbest-practices-for-apple-admins-in-workspace-one-uem%2f&title=Best%20Practices%20for%20Apple%20Admins%20in%20Workspace%20ONE%20UEM" target=_blank title="Share on Reddit"><i class="fab fa-reddit"></i></a></li><li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fbest-practices-for-apple-admins-in-workspace-one-uem%2f&title=Best%20Practices%20for%20Apple%20Admins%20in%20Workspace%20ONE%20UEM" target=_blank title="Share on LinkedIn"><i class="fab fa-linkedin"></i></a></li><li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fbest-practices-for-apple-admins-in-workspace-one-uem%2f&title=Best%20Practices%20for%20Apple%20Admins%20in%20Workspace%20ONE%20UEM" target=_blank title="Share on StumbleUpon"><i class="fab fa-stumbleupon"></i></a></li><li><a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fbest-practices-for-apple-admins-in-workspace-one-uem%2f&description=Best%20Practices%20for%20Apple%20Admins%20in%20Workspace%20ONE%20UEM" target=_blank title="Share on Pinterest"><i class="fab fa-pinterest"></i></a></li></ul></div></div></section></article><ul class="pager blog-pager"><li class=previous><a href=https://blog.euc-rt.me/posts/new-key-added-softwareupdate-command-macos/ data-toggle=tooltip data-placement=top title="New Key Added to SoftwareUpdate Command in macOS">&larr; Previous Post</a></li></ul><script src=https://utteranc.es/client.js repo=rterakedis/rterakedis.github.io issue-term=pathname theme=github-light crossorigin=anonymous async></script></div></div></div><footer><div class=container><div class=row><div class=disclaimer><b>Disclaimer:</b> The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.</div></div><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><ul class="list-inline text-center footer-links"><li><a href=https://github.com/rterakedis title=GitHub><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
-<i class="fab fa-github fa-stack-1x fa-inverse"></i></span></a></li><li><a href=https://twitter.com/robterakedis title=Twitter><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
-<i class="fab fa-twitter fa-stack-1x fa-inverse"></i></span></a></li><li><a href=https://linkedin.com/in/terakedis title=LinkedIn><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
-<i class="fab fa-linkedin fa-stack-1x fa-inverse"></i></span></a></li><li><a href title=RSS><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
-<i class="fas fa-rss fa-stack-1x fa-inverse"></i></span></a></li></ul><p class="credits copyright text-muted"><a href=https://blog.euc-rt.me>Robert Terakedis</a>
+<a href=https://blog.euc-rt.me//tags/apple/>apple</a>&nbsp;
+</div>
+<hr>
+<section id=social-share>
+<div class="list-inline footer-links">
+<div class=share-box aria-hidden=true>
+<ul class=share>
+<li>
+<a href="//twitter.com/share?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fbest-practices-for-apple-admins-in-workspace-one-uem%2f&text=Best%20Practices%20for%20Apple%20Admins%20in%20Workspace%20ONE%20UEM&via=robterakedis" target=_blank title="Share on Twitter">
+<i class="fab fa-twitter"></i>
+</a>
+</li>
+<li>
+<a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.euc-rt.me%2fposts%2fbest-practices-for-apple-admins-in-workspace-one-uem%2f" target=_blank title="Share on Facebook">
+<i class="fab fa-facebook"></i>
+</a>
+</li>
+<li>
+<a href="//reddit.com/submit?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fbest-practices-for-apple-admins-in-workspace-one-uem%2f&title=Best%20Practices%20for%20Apple%20Admins%20in%20Workspace%20ONE%20UEM" target=_blank title="Share on Reddit">
+<i class="fab fa-reddit"></i>
+</a>
+</li>
+<li>
+<a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fbest-practices-for-apple-admins-in-workspace-one-uem%2f&title=Best%20Practices%20for%20Apple%20Admins%20in%20Workspace%20ONE%20UEM" target=_blank title="Share on LinkedIn">
+<i class="fab fa-linkedin"></i>
+</a>
+</li>
+<li>
+<a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fbest-practices-for-apple-admins-in-workspace-one-uem%2f&title=Best%20Practices%20for%20Apple%20Admins%20in%20Workspace%20ONE%20UEM" target=_blank title="Share on StumbleUpon">
+<i class="fab fa-stumbleupon"></i>
+</a>
+</li>
+<li>
+<a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fbest-practices-for-apple-admins-in-workspace-one-uem%2f&description=Best%20Practices%20for%20Apple%20Admins%20in%20Workspace%20ONE%20UEM" target=_blank title="Share on Pinterest">
+<i class="fab fa-pinterest"></i>
+</a>
+</li>
+</ul>
+</div>
+</div>
+</section>
+</article>
+<ul class="pager blog-pager">
+<li class=previous>
+<a href=https://blog.euc-rt.me/posts/new-key-added-softwareupdate-command-macos/ data-toggle=tooltip data-placement=top title="New Key Added to SoftwareUpdate Command in macOS">&larr; Previous Post</a>
+</li>
+</ul>
+<script src=https://utteranc.es/client.js repo=rterakedis/rterakedis.github.io issue-term=pathname theme=github-dark crossorigin=anonymous async></script>
+</div>
+</div>
+</div>
+<footer>
+<div class=container>
+<div class=row>
+<div class=disclaimer>
+<b>Disclaimer:</b> The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.
+</div>
+</div>
+<div class=row>
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<ul class="list-inline text-center footer-links">
+<li>
+<a href=https://github.com/rterakedis title=GitHub>
+<span class="fa-stack fa-lg">
+<i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-github fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+</li>
+<li>
+<a href=https://twitter.com/robterakedis title=Twitter>
+<span class="fa-stack fa-lg">
+<i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+</li>
+<li>
+<a href=https://linkedin.com/in/terakedis title=LinkedIn>
+<span class="fa-stack fa-lg">
+<i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+</li>
+<li>
+<a href title=RSS>
+<span class="fa-stack fa-lg">
+<i class="fas fa-circle fa-stack-2x"></i>
+<i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+</li>
+</ul>
+<p class="credits copyright text-muted">
+<a href=https://blog.euc-rt.me>Robert Terakedis</a>
 &nbsp;&bull;&nbsp;&copy;
 2021
 &nbsp;&bull;&nbsp;
-<a href=https://blog.euc-rt.me/>Not to be confused with Pterodactyl...</a></p><p class="credits theme-by text-muted"><a href=https://gohugo.io>Hugo v0.85.0</a> powered &nbsp;&bull;&nbsp; Theme <a href=https://github.com/halogenica/beautifulhugo>Beautiful Hugo</a> adapted from <a href=https://deanattali.com/beautiful-jekyll/>Beautiful Jekyll</a></p></div></div></div></footer><script src=https://blog.euc-rt.me/js/katex.min.js></script><script src=https://blog.euc-rt.me/js/auto-render.min.js></script><script src=https://blog.euc-rt.me/js/jquery.min.js></script><script src=https://blog.euc-rt.me/js/bootstrap.min.js></script><script src=https://blog.euc-rt.me/js/main.js></script><script src=https://blog.euc-rt.me/js/highlight.min.js></script><script>hljs.initHighlightingOnLoad()</script><script>$(document).ready(function(){$("pre.chroma").css("padding","0")})</script><script>renderMathInElement(document.body)</script><script src=https://blog.euc-rt.me/js/photoswipe.min.js></script><script src=https://blog.euc-rt.me/js/photoswipe-ui-default.min.js></script><script src=https://blog.euc-rt.me/js/load-photoswipe.js></script><script>(function(){var c='006263833525848905237:3xfwgq6zswl',a=document.createElement('script'),b;a.type='text/javascript',a.async=!0,a.src='https://cse.google.com/cse.js?cx='+c,b=document.getElementsByTagName('script')[0],b.parentNode.insertBefore(a,b)})()</script></body></html>
+<a href=https://blog.euc-rt.me/>Not to be confused with Pterodactyl...</a>
+</p>
+<p class="credits theme-by text-muted">
+<a href=https://gohugo.io>Hugo v0.86.0</a> powered &nbsp;&bull;&nbsp; Theme <a href=https://github.com/halogenica/beautifulhugo>Beautiful Hugo</a> adapted from <a href=https://deanattali.com/beautiful-jekyll/>Beautiful Jekyll</a>
+</p>
+</div>
+</div>
+</div>
+</footer>
+<script src=https://blog.euc-rt.me/js/katex.min.js></script>
+<script src=https://blog.euc-rt.me/js/auto-render.min.js></script>
+<script src=https://blog.euc-rt.me/js/jquery.min.js></script>
+<script src=https://blog.euc-rt.me/js/bootstrap.min.js></script>
+<script src=https://blog.euc-rt.me/js/main.js></script>
+<script src=https://blog.euc-rt.me/js/highlight.min.js></script>
+<script>hljs.initHighlightingOnLoad()</script>
+<script>$(document).ready(function(){$("pre.chroma").css("padding","0")})</script><script>renderMathInElement(document.body)</script><script src=https://blog.euc-rt.me/js/photoswipe.min.js></script>
+<script src=https://blog.euc-rt.me/js/photoswipe-ui-default.min.js></script><script src=https://blog.euc-rt.me/js/load-photoswipe.js></script>
+<script>(function(){var c='006263833525848905237:3xfwgq6zswl',a=document.createElement('script'),b;a.type='text/javascript',a.async=!0,a.src='https://cse.google.com/cse.js?cx='+c,b=document.getElementsByTagName('script')[0],b.parentNode.insertBefore(a,b)})()</script>
+</body>
+</html>
