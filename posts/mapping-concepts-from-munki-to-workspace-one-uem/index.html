@@ -6,7 +6,7 @@
 <title>Mapping Concepts from Munki to WS1 UEM - Robert Terakedis</title>
 <meta name=description content="What happens where for non-store macOS apps">
 <meta name=author content="Robert Terakedis"><script type=application/ld+json>{"@context":"http://schema.org","@type":"WebSite","name":"Robert Terakedis","url":"https:\/\/blog.euc-rt.me\/"}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Organization","name":"","url":"https:\/\/blog.euc-rt.me\/"}</script>
-<script type=application/ld+json>{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https:\/\/blog.euc-rt.me\/","name":"home"}},{"@type":"ListItem","position":3,"item":{"@id":"https:\/\/blog.euc-rt.me\/posts\/mapping-concepts-from-munki-to-workspace-one-uem\/","name":"Mapping concepts from munki to ws1 uem"}}]}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Article","author":{"name":"Robert Terakedis"},"headline":"Mapping Concepts from Munki to WS1 UEM","description":"Since Workspace ONE UEM version 9.3, VMware has included the open-source munki binaries in the Workspace ONE Intelligent Hub for macOS. The intent of this integration was to give macOS admins the ability to distribute 3rd-party non-store macOS apps, without the need to host any backing instrastructure for munki. Because this integration was meant to give admins some of the commonly used functionality, it was not integrated in such a way to include support for ALL munki\u0026rsquo;s functionality.","inLanguage":"en","wordCount":653,"datePublished":"2021-08-23T00:00:00","dateModified":"2021-08-23T00:00:00","image":"https:\/\/blog.euc-rt.me\/img\/avatar-icon.webp","keywords":["macOS, munki"],"mainEntityOfPage":"https:\/\/blog.euc-rt.me\/posts\/mapping-concepts-from-munki-to-workspace-one-uem\/","publisher":{"@type":"Organization","name":"https:\/\/blog.euc-rt.me\/","logo":{"@type":"ImageObject","url":"https:\/\/blog.euc-rt.me\/img\/avatar-icon.webp","height":60,"width":60}}}</script>
+<script type=application/ld+json>{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https:\/\/blog.euc-rt.me\/","name":"home"}},{"@type":"ListItem","position":3,"item":{"@id":"https:\/\/blog.euc-rt.me\/posts\/mapping-concepts-from-munki-to-workspace-one-uem\/","name":"Mapping concepts from munki to ws1 uem"}}]}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Article","author":{"name":"Robert Terakedis"},"headline":"Mapping Concepts from Munki to WS1 UEM","description":"Since Workspace ONE UEM version 9.3, VMware has included the open-source munki binaries in the Workspace ONE Intelligent Hub for macOS. The intent of this integration was to give macOS admins the ability to distribute 3rd-party non-store macOS apps, without the need to host any backing instrastructure for munki. Because this integration was meant to give admins some of the commonly used functionality, it was not integrated in such a way to include support for ALL munki\u0026rsquo;s functionality.","inLanguage":"en","wordCount":685,"datePublished":"2021-08-23T00:00:00","dateModified":"2021-08-23T00:00:00","image":"https:\/\/blog.euc-rt.me\/img\/avatar-icon.webp","keywords":["macOS, munki"],"mainEntityOfPage":"https:\/\/blog.euc-rt.me\/posts\/mapping-concepts-from-munki-to-workspace-one-uem\/","publisher":{"@type":"Organization","name":"https:\/\/blog.euc-rt.me\/","logo":{"@type":"ImageObject","url":"https:\/\/blog.euc-rt.me\/img\/avatar-icon.webp","height":60,"width":60}}}</script>
 <meta property="og:title" content="Mapping Concepts from Munki to WS1 UEM">
 <meta property="og:description" content="What happens where for non-store macOS apps">
 <meta property="og:image" content="https://blog.euc-rt.me/img/avatar-icon.webp">
@@ -169,7 +169,7 @@
 <tbody>
 <tr>
 <td>Catalogs</td>
-<td>Workspace ONE Intelligent Hub dynamically builds a this device-side based on assigned Apps</td>
+<td>Workspace ONE Intelligent Hub dynamically builds this device-side based on assigned Apps</td>
 </tr>
 <tr>
 <td>Manifests</td>
@@ -190,6 +190,7 @@
 </tbody>
 </table>
 <h3 id=munki-pkginfo-files>Munki pkginfo Files</h3>
+<p>Now that you understand the back-end components of Munki and how they equate in Workspace ONE UEM, let&rsquo;s look at the actual pkginfo file that is used to build the catalogs & manifests.</p>
 <table>
 <thead>
 <tr>
