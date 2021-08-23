@@ -3,18 +3,18 @@
 <meta charset=utf-8>
 <meta http-equiv=x-ua-compatible content="IE=edge">
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
-<title>macOS Catalina Kerberos SSO over VPN Followup - Robert Terakedis</title>
-<meta name=description content="Making Some Progress, But Still Awaiting A Fix!">
+<title>Mapping Concepts from Munki to WS1 UEM - Robert Terakedis</title>
+<meta name=description content="What happens where for non-store macOS apps">
 <meta name=author content="Robert Terakedis"><script type=application/ld+json>{"@context":"http://schema.org","@type":"WebSite","name":"Robert Terakedis","url":"https:\/\/blog.euc-rt.me\/"}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Organization","name":"","url":"https:\/\/blog.euc-rt.me\/"}</script>
-<script type=application/ld+json>{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https:\/\/blog.euc-rt.me\/","name":"home"}},{"@type":"ListItem","position":3,"item":{"@id":"https:\/\/blog.euc-rt.me\/posts\/macos-catalina-kerberos-sso-over-vpn-followup\/","name":"MAC os catalina kerberos sso over VPN followup"}}]}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Article","author":{"name":"Robert Terakedis"},"headline":"macOS Catalina Kerberos SSO over VPN Followup","description":"I\u0026rsquo;ve been going back and forth with Apple about some of the issues I previously found using the macOS Catalina Kerberos SSO over Per-App VPN. As it turns out, they acknowledged some of the issues I was seeing and are supposedly working on a fix. I\u0026rsquo;ve been watching the past few beta releases for macOS, and I\u0026rsquo;ve not yet seen anything in the release notes to indicate they\u0026rsquo;ve implemented any fixes.","inLanguage":"en","wordCount":443,"datePublished":"2020-03-22T00:00:00","dateModified":"2020-03-22T00:00:00","image":"https:\/\/blog.euc-rt.me\/img\/avatar-icon.webp","keywords":["macOS, SSO, VPN"],"mainEntityOfPage":"https:\/\/blog.euc-rt.me\/posts\/macos-catalina-kerberos-sso-over-vpn-followup\/","publisher":{"@type":"Organization","name":"https:\/\/blog.euc-rt.me\/","logo":{"@type":"ImageObject","url":"https:\/\/blog.euc-rt.me\/img\/avatar-icon.webp","height":60,"width":60}}}</script>
-<meta property="og:title" content="macOS Catalina Kerberos SSO over VPN Followup">
-<meta property="og:description" content="Making Some Progress, But Still Awaiting A Fix!">
+<script type=application/ld+json>{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https:\/\/blog.euc-rt.me\/","name":"home"}},{"@type":"ListItem","position":3,"item":{"@id":"https:\/\/blog.euc-rt.me\/posts\/mapping-concepts-from-munki-to-workspace-one-uem\/","name":"Mapping concepts from munki to ws1 uem"}}]}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Article","author":{"name":"Robert Terakedis"},"headline":"Mapping Concepts from Munki to WS1 UEM","description":"Since Workspace ONE UEM version 9.3, VMware has included the open-source munki binaries in the Workspace ONE Intelligent Hub for macOS. The intent of this integration was to give macOS admins the ability to distribute 3rd-party non-store macOS apps, without the need to host any backing instrastructure for munki. Because this integration was meant to give admins some of the commonly used functionality, it was not integrated in such a way to include support for ALL munki\u0026rsquo;s functionality.","inLanguage":"en","wordCount":653,"datePublished":"2021-08-23T00:00:00","dateModified":"2021-08-23T00:00:00","image":"https:\/\/blog.euc-rt.me\/img\/avatar-icon.webp","keywords":["macOS, munki"],"mainEntityOfPage":"https:\/\/blog.euc-rt.me\/posts\/mapping-concepts-from-munki-to-workspace-one-uem\/","publisher":{"@type":"Organization","name":"https:\/\/blog.euc-rt.me\/","logo":{"@type":"ImageObject","url":"https:\/\/blog.euc-rt.me\/img\/avatar-icon.webp","height":60,"width":60}}}</script>
+<meta property="og:title" content="Mapping Concepts from Munki to WS1 UEM">
+<meta property="og:description" content="What happens where for non-store macOS apps">
 <meta property="og:image" content="https://blog.euc-rt.me/img/avatar-icon.webp">
-<meta property="og:url" content="https://blog.euc-rt.me/posts/macos-catalina-kerberos-sso-over-vpn-followup/">
+<meta property="og:url" content="https://blog.euc-rt.me/posts/mapping-concepts-from-munki-to-workspace-one-uem/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Robert Terakedis">
-<meta name=twitter:title content="macOS Catalina Kerberos SSO over VPN Followup">
-<meta name=twitter:description content="Making Some Progress, But Still Awaiting A Fix!">
+<meta name=twitter:title content="Mapping Concepts from Munki to WS1 UEM">
+<meta name=twitter:description content="What happens where for non-store macOS apps">
 <meta name=twitter:image content="https://blog.euc-rt.me/img/avatar-icon.webp">
 <meta name=twitter:card content="summary">
 <meta name=twitter:site content="@robterakedis">
@@ -140,9 +140,9 @@
 <div class=row>
 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 <div class=posts-heading>
-<h1>macOS Catalina Kerberos SSO over VPN Followup</h1>
+<h1>Mapping Concepts from Munki to WS1 UEM</h1>
 <hr class=small>
-<h2 class=posts-subheading>Making Some Progress, But Still Awaiting A Fix!</h2>
+<h2 class=posts-subheading>What happens where for non-store macOS apps</h2>
 </div>
 </div>
 </div>
@@ -153,72 +153,128 @@
 <div class=row>
 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 <article role=main class=blog-post>
-<p>I&rsquo;ve been going back and forth with Apple about some of the issues I previously found using the <a href=https://blog.euc-rt.me/2020-02-04-macOS-Catalina-Kerberos-SSO-Over-VPN/>macOS Catalina Kerberos SSO over Per-App VPN</a>. As it turns out, they acknowledged some of the issues I was seeing and are <em>supposedly</em> working on a fix. I&rsquo;ve been watching the past few beta releases for macOS, and I&rsquo;ve not yet seen anything in the release notes to indicate they&rsquo;ve implemented any fixes.</p>
-<h2 id=partial-workaround>Partial Workaround</h2>
-<p>In the meantime, they did offer up a partial workaround. It would seem some of the functionality in the Kerberos SSO extension in macOS Catalina is based on the MIT library built-in to macOS. If you remember from the last post, one of the problems that I saw was an inability to change the user&rsquo;s AD password over per-App VPN. Doing so gave me a warning “Password Change Failed. Configuration file does not specify default realm”. This didn&rsquo;t really make sense as you&rsquo;re required to specify the realm in the Kerberos SSO extension MDM payload, and I could confirm that the parameter was being included in the XML for the payload.</p>
-<p>Apple offered up that to get around that issue, we had to create an <code>/etc/krb5.conf</code> file and add the following two lines in it:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-Bash data-lang=Bash><span class=o>[</span>libdefaults<span class=o>]</span>
- <span class=nv>default_realm</span> <span class=o>=</span> EXAMPLE.ORG 
-</code></pre></div><p>I was also instructed to run <code>pkill -9 KerberosExtension</code> to kill the Kerberos Extension to ensure it reloaded the configuration and read the krb5.conf file.</p>
-<h2 id=results-post-workaround>Results Post-Workaround</h2>
-<p>I ran through the same validation tests again and here&rsquo;s what happened:</p>
+<p>Since Workspace ONE UEM version 9.3, VMware has included the open-source <a href=https://github.com/munki/munki>munki</a> binaries in the Workspace ONE Intelligent Hub for macOS. The intent of this integration was to give macOS admins the ability to distribute 3rd-party non-store macOS apps, without the need to host any backing instrastructure for munki. Because this integration was meant to give admins some of the commonly used functionality, it was not integrated in such a way to include support for ALL munki&rsquo;s functionality. This has left some confusion in the community, particularly with Workspace ONE UEM administrators with extensive munki knowledge/background.</p>
+<h2 id=purpose>Purpose</h2>
+<p>I frequently see questions about <em>what</em> munki functionality works in Workspace ONE UEM. I&rsquo;m hoping this post helps lay out some common usage parameters in munki, and how they equate to functionality in Workspace ONE UEM. If you identify a gap (due to new/existing munki functionality), or a new way that workspace ONE handles particular functionality, please leave a comment below!</p>
+<h2 id=converting-munki-functionalityterminology-to-workspace-one-uem>Converting &ldquo;munki&rdquo; Functionality/Terminology to Workspace ONE UEM</h2>
+<p>First off it&rsquo;s helpful to understand how some of the common components to munki map to elements inside Workspace ONE UEM.</p>
+<h3 id=munki-infrastructure>Munki &ldquo;Infrastructure&rdquo;</h3>
 <table>
 <thead>
 <tr>
-<th>Testing Item</th>
-<th>Per-App VPN (Tunnel)</th>
-<th>GlobalProtect (VPN)</th>
+<th>Munki Component</th>
+<th>Workspace ONE Equivalent</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Kerberos Ticket Obtained over VPN</td>
-<td>Yes!</td>
-<td>Yes!</td>
+<td>Catalogs</td>
+<td>Workspace ONE Intelligent Hub dynamically builds a this device-side based on assigned Apps</td>
 </tr>
 <tr>
-<td>Password Expiration Date Correct</td>
-<td>No!</td>
-<td>No!</td>
+<td>Manifests</td>
+<td>Workspace ONE Intelligent Hub dynamically builds this device-side based on assigned Apps</td>
 </tr>
 <tr>
-<td>Extension Detects local PW different from AD</td>
-<td>No!</td>
-<td>Yes!</td>
+<td>Managed Software Center</td>
+<td>Workspace ONE Intelligent Hub&rsquo;s App Catalog replaces this tool</td>
 </tr>
 <tr>
-<td>User Change AD Password via Extension over VPN</td>
-<td><strong>Yes!</strong></td>
-<td><strong>Yes!</strong></td>
+<td>Repository</td>
+<td>Workspace ONE UEM acts as the repository, hosting all installable files securely in Workspace ONE UEM (On-Premises) or Content Delivery Network (SaaS)</td>
+</tr>
+<tr>
+<td>Autopkg(r)</td>
+<td>While not exactly a munki components, many folks use this in conjunction with their munki environment. There&rsquo;s currently no processor to provide direct integration with Workspace ONE UEM. That said, you can use the &ldquo;munki&rdquo; version of many recipes to obtain the binary and pkginfo.plist for upload into Workspace ONE UEM. Additionally, the recent version of Workspace ONE Admin Assistant includes command line functionality to upload binaries and pkginfo files to Workspace ONE UEM (if you&rsquo;re attempting to script an entire workflow).</td>
 </tr>
 </tbody>
 </table>
-<p>Apple also instructed me to continue testing and capture logs using the following procedure:</p>
-<ol>
-<li>Enable the necessary debug modes by running:</li>
-</ol>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>$ sudo log config --mode <span class=s2>&#34;level:debug,persist:debug&#34;</span> --subsystem com.apple.AppSSO
-$ sudo log config --mode <span class=s2>&#34;level:debug,persist:debug&#34;</span> --subsystem com.apple.Heimdal
-$ sudo log config --mode <span class=s2>&#34;level:debug,persist:debug&#34;</span> --subsystem org.h5l.gss
-</code></pre></div><ol start=2>
-<li>run pkill -9 KerberosExtension AppSSOAgent KerberosMenuExtra</li>
-</ol>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>$ pkill -9 KerberosExtension AppSSOAgent KerberosMenuExtra
-</code></pre></div><ol start=3>
-<li>Reproduce the issue.</li>
-<li>Gather and send us a sysdiagnose (sudo sysdiagnose).</li>
-<li>Please also note the timestamps.</li>
-<li>To reset the logs run:</li>
-</ol>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>$ sudo log config --subsystem com.apple.AppSSO --reset
-$ sudo log config --subsystem com.apple.Heimdal --reset
-$ sudo log config --subsystem org.h5l.gss --reset
-</code></pre></div><h2 id=next-steps>Next Steps</h2>
-<p>I&rsquo;ll be continuing to test this and working with our internal Tunnel team. I&rsquo;m hoping to get Apple additional information so they can see what is causing the remaining issues. I&rsquo;m excited to get this working and having the ability to leverage this Extension while off-network. Feel free to leave comments below!</p>
+<h3 id=munki-pkginfo-files>Munki pkginfo Files</h3>
+<table>
+<thead>
+<tr>
+<th>Pkginfo Key</th>
+<th>Mapping that key to Workspace ONE UEM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>autoremove</td>
+<td>Remove on Unenroll setting in “Restrictions” for App Assignment</td>
+</tr>
+<tr>
+<td>blocking_applications</td>
+<td>Blocking Apps in App Configuration</td>
+</tr>
+<tr>
+<td>catalogs & manifests</td>
+<td>Smart Groups in App Assignments</td>
+</tr>
+<tr>
+<td>display_name</td>
+<td>Modify the name value in the plist generated by Workspace ONE Admin Assistant</td>
+</tr>
+<tr>
+<td>force_install_after_date</td>
+<td>Combine “Auto” deployment with “Installation Begins On” in App Assignment</td>
+</tr>
+<tr>
+<td>installable_condition & Conditional Items</td>
+<td>Smart Groups in App Assignments (or FreeStyle Orchestrator when released)</td>
+</tr>
+<tr>
+<td>installs, receipts</td>
+<td>Modify the plist generated by Workspace ONE Admin Assistant to add this key-value pair/array</td>
+</tr>
+<tr>
+<td>items_to_copy</td>
+<td>Supported if added to the pkginfo plist prior to uploading in Workspace ONE UEM - not currently displayed in UI</td>
+</tr>
+<tr>
+<td>installer_choices_xml</td>
+<td>Supported if added to the pkginfo plist prior to uploading in Workspace ONE UEM - not currently displayed in UI</td>
+</tr>
+<tr>
+<td>minimum_os_version & maximum_os_version</td>
+<td>Smart Groups in App Assignments</td>
+</tr>
+<tr>
+<td>_script (installcheck, pre/post, etc)</td>
+<td>Scripts tab in App Configuration</td>
+</tr>
+<tr>
+<td>_alert (preinstall, preuninstall, etc)</td>
+<td>Use hubcli in the relative “_script” in the Scripts tab in App Configuration</td>
+</tr>
+<tr>
+<td>requires</td>
+<td>Use the upcoming <em>FreeStyle Orchestrator</em> functionality to create a workflow with the required app installation order</td>
+</tr>
+<tr>
+<td>RestartAction</td>
+<td>Deployment tab in App Configuration</td>
+</tr>
+<tr>
+<td>supported_architectures</td>
+<td>Smart Groups in App Assignments</td>
+</tr>
+<tr>
+<td>uninstall_method</td>
+<td>Scripts tab in App Configuration</td>
+</tr>
+</tbody>
+</table>
+<h2 id=closing-commentary>Closing Commentary</h2>
+<p>In my opinion, I&rsquo;ve seen this integration help new-to-Workspace ONE UEM administrators quickly get macOS app deployment tamed in their environment. Especially from the perspective of the &ldquo;accidental MacAdmin,&rdquo; this integration brings macOS non-store app management into a similarly familiar look and feel to non-store app management on other platforms. If you are looking to do more comparison between the two app deployment systems, you can find more information at the following two resources:</p>
+<ul>
+<li><a href=https://techzone.vmware.com/deploying-third-party-macos-applications-vmware-workspace-one-operational-tutorial>Deploying 3rd-Party Apps with Workspace ONE UEM</a></li>
+<li><a href=https://github.com/munki/munki/wiki>Munki Wiki</a></li>
+</ul>
+<p>If you find a functionality gap that seems to be a blocker, I encourage you to add it to the <a href=https://wsone.ideas.aha.io/>Workspace ONE UEM Feature Request Portal</a>.</p>
+<p>Comments welcome!</p>
 <div class=blog-tags>
 <a href=https://blog.euc-rt.me//tags/macos/>macOS</a>&nbsp;
-<a href=https://blog.euc-rt.me//tags/sso/>SSO</a>&nbsp;
-<a href=https://blog.euc-rt.me//tags/vpn/>VPN</a>&nbsp;
+<a href=https://blog.euc-rt.me//tags/munki/>munki</a>&nbsp;
 </div>
 <hr>
 <section id=social-share>
@@ -226,32 +282,32 @@ $ sudo log config --subsystem org.h5l.gss --reset
 <div class=share-box aria-hidden=true>
 <ul class=share>
 <li>
-<a href="//twitter.com/share?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fmacos-catalina-kerberos-sso-over-vpn-followup%2f&text=macOS%20Catalina%20Kerberos%20SSO%20over%20VPN%20Followup&via=robterakedis" target=_blank title="Share on Twitter">
+<a href="//twitter.com/share?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fmapping-concepts-from-munki-to-workspace-one-uem%2f&text=Mapping%20Concepts%20from%20Munki%20to%20WS1%20UEM&via=robterakedis" target=_blank title="Share on Twitter">
 <i class="fab fa-twitter"></i>
 </a>
 </li>
 <li>
-<a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.euc-rt.me%2fposts%2fmacos-catalina-kerberos-sso-over-vpn-followup%2f" target=_blank title="Share on Facebook">
+<a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.euc-rt.me%2fposts%2fmapping-concepts-from-munki-to-workspace-one-uem%2f" target=_blank title="Share on Facebook">
 <i class="fab fa-facebook"></i>
 </a>
 </li>
 <li>
-<a href="//reddit.com/submit?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fmacos-catalina-kerberos-sso-over-vpn-followup%2f&title=macOS%20Catalina%20Kerberos%20SSO%20over%20VPN%20Followup" target=_blank title="Share on Reddit">
+<a href="//reddit.com/submit?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fmapping-concepts-from-munki-to-workspace-one-uem%2f&title=Mapping%20Concepts%20from%20Munki%20to%20WS1%20UEM" target=_blank title="Share on Reddit">
 <i class="fab fa-reddit"></i>
 </a>
 </li>
 <li>
-<a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fmacos-catalina-kerberos-sso-over-vpn-followup%2f&title=macOS%20Catalina%20Kerberos%20SSO%20over%20VPN%20Followup" target=_blank title="Share on LinkedIn">
+<a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fmapping-concepts-from-munki-to-workspace-one-uem%2f&title=Mapping%20Concepts%20from%20Munki%20to%20WS1%20UEM" target=_blank title="Share on LinkedIn">
 <i class="fab fa-linkedin"></i>
 </a>
 </li>
 <li>
-<a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fmacos-catalina-kerberos-sso-over-vpn-followup%2f&title=macOS%20Catalina%20Kerberos%20SSO%20over%20VPN%20Followup" target=_blank title="Share on StumbleUpon">
+<a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fmapping-concepts-from-munki-to-workspace-one-uem%2f&title=Mapping%20Concepts%20from%20Munki%20to%20WS1%20UEM" target=_blank title="Share on StumbleUpon">
 <i class="fab fa-stumbleupon"></i>
 </a>
 </li>
 <li>
-<a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fmacos-catalina-kerberos-sso-over-vpn-followup%2f&description=macOS%20Catalina%20Kerberos%20SSO%20over%20VPN%20Followup" target=_blank title="Share on Pinterest">
+<a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fmapping-concepts-from-munki-to-workspace-one-uem%2f&description=Mapping%20Concepts%20from%20Munki%20to%20WS1%20UEM" target=_blank title="Share on Pinterest">
 <i class="fab fa-pinterest"></i>
 </a>
 </li>
@@ -261,19 +317,16 @@ $ sudo log config --subsystem org.h5l.gss --reset
 </section>
 <h4 class=see-also>See also</h4>
 <ul>
-<li><a href=/posts/mapping-concepts-from-munki-to-workspace-one-uem/>Mapping Concepts from Munki to WS1 UEM</a></li>
 <li><a href=/posts/new-key-added-softwareupdate-command-macos/>New Key Added to SoftwareUpdate Command in macOS</a></li>
 <li><a href=/posts/converting-jamf-custom-schema-json-workspace-one-uem/>Converting Jamf Custom Schema JSON for Workspace ONE UEM</a></li>
 <li><a href=/posts/troubleshooting-macos-management-with-workspace-one/>Troubleshooting macOS Management with Workspace ONE</a></li>
 <li><a href=/posts/deploying-nomad-over-vmware-per-app-tunnel/>Deploying NoMAD over VMware Per-App Tunnel</a></li>
+<li><a href=/posts/modify-zshell-defaults/>Modify ZShell Defaults in macOS</a></li>
 </ul>
 </article>
 <ul class="pager blog-pager">
 <li class=previous>
-<a href=https://blog.euc-rt.me/2020-03-06-organizing-adapted-digital-bullet-journal-ipad-goodnotes/ data-toggle=tooltip data-placement=top title="My Adapted Digital Bullet Journal via iPad Pro and GoodNotes 5">&larr; Previous Post</a>
-</li>
-<li class=next>
-<a href=https://blog.euc-rt.me/posts/2020-08-09-building-basic-azure-homelab-workspace-one-uem/ data-toggle=tooltip data-placement=top title="Building a Basic Azure HomeLab for Testing Workspace ONE UEM">Next Post &rarr;</a>
+<a href=https://blog.euc-rt.me/posts/best-practices-for-apple-admins-in-workspace-one-uem/ data-toggle=tooltip data-placement=top title="Best Practices for Apple Admins in Workspace ONE UEM">&larr; Previous Post</a>
 </li>
 </ul>
 <script src=https://utteranc.es/client.js repo=rterakedis/rterakedis.github.io issue-term=pathname theme=github-dark crossorigin=anonymous async></script>
