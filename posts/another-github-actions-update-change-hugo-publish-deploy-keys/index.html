@@ -3,18 +3,18 @@
 <meta charset=utf-8>
 <meta http-equiv=x-ua-compatible content="IE=edge">
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
-<title>Updated GitHub Actions to Publish Hugo Site From Private to Public Repo - Robert Terakedis</title>
-<meta name=description content="Still keeping half-baked ideas and drafts private!">
+<title>Another GitHub Actions Update - Using Deploy Keys Instead Of Secrets - Robert Terakedis</title>
+<meta name=description content="Constraining the Github Actions Deployment Key to the Repo instead of the Account">
 <meta name=author content="Robert Terakedis"><script type=application/ld+json>{"@context":"http://schema.org","@type":"WebSite","name":"Robert Terakedis","url":"https:\/\/blog.euc-rt.me\/"}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Organization","name":"","url":"https:\/\/blog.euc-rt.me\/"}</script>
-<script type=application/ld+json>{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https:\/\/blog.euc-rt.me\/","name":"home"}},{"@type":"ListItem","position":3,"item":{"@id":"https:\/\/blog.euc-rt.me\/posts\/updated-github-actions-publish-private-hugo-repo-to-public-pages-site\/","name":"Updated git hub actions to publish hugo site from private to public repo"}}]}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Article","author":{"name":"Robert Terakedis"},"headline":"Updated GitHub Actions to Publish Hugo Site From Private to Public Repo","description":"When I restarted my blogging journey last year, I went with Hugo to generate a static website hosted as a GitHub Pages site. As mentioned, Blogger and WordPress always suffered recurring problems, and maintenance with WordPress still turned into a time suck due to its complexity. By comparison, GitHub has been a nearly painless hosting provider, and the way I\u0026rsquo;ve configured it has allowed me to keep drafts hidden by staging in a private repository.","inLanguage":"en","wordCount":744,"datePublished":"2021-02-13T00:00:00","dateModified":"2021-02-13T00:00:00","image":"https:\/\/blog.euc-rt.me\/img\/avatar-icon.webp","keywords":["GitHub, Actions, Hugo"],"mainEntityOfPage":"https:\/\/blog.euc-rt.me\/posts\/updated-github-actions-publish-private-hugo-repo-to-public-pages-site\/","publisher":{"@type":"Organization","name":"https:\/\/blog.euc-rt.me\/","logo":{"@type":"ImageObject","url":"https:\/\/blog.euc-rt.me\/img\/avatar-icon.webp","height":60,"width":60}}}</script>
-<meta property="og:title" content="Updated GitHub Actions to Publish Hugo Site From Private to Public Repo">
-<meta property="og:description" content="Still keeping half-baked ideas and drafts private!">
+<script type=application/ld+json>{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https:\/\/blog.euc-rt.me\/","name":"home"}},{"@type":"ListItem","position":3,"item":{"@id":"https:\/\/blog.euc-rt.me\/posts\/another-github-actions-update-change-hugo-publish-deploy-keys\/","name":"Another git hub actions update using deploy keys instead of secrets"}}]}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Article","author":{"name":"Robert Terakedis"},"headline":"Another GitHub Actions Update - Using Deploy Keys Instead Of Secrets","description":"When I restarted my blogging journey in 2020, I switched from Jekyll to Hugo hosted in GitHub pages. It\u0026rsquo;s been a relatively painless journey, and kudos to GitHub as a rock-solid hosting provider. I\u0026rsquo;ve covered it before (Initial Setup and First Update), but I\u0026rsquo;ve been incredibly happy with private-to-public publishing workflow that allows me to keep drafts and work-in-progress hidden. That said, a recent comment gave me reason to make another update to the Workflow.","inLanguage":"en","wordCount":1167,"datePublished":"2021-12-10T00:00:00","dateModified":"2021-12-10T00:00:00","image":"https:\/\/blog.euc-rt.me\/img\/avatar-icon.webp","keywords":["GitHub, Actions, Hugo"],"mainEntityOfPage":"https:\/\/blog.euc-rt.me\/posts\/another-github-actions-update-change-hugo-publish-deploy-keys\/","publisher":{"@type":"Organization","name":"https:\/\/blog.euc-rt.me\/","logo":{"@type":"ImageObject","url":"https:\/\/blog.euc-rt.me\/img\/avatar-icon.webp","height":60,"width":60}}}</script>
+<meta property="og:title" content="Another GitHub Actions Update - Using Deploy Keys Instead Of Secrets">
+<meta property="og:description" content="Constraining the Github Actions Deployment Key to the Repo instead of the Account">
 <meta property="og:image" content="https://blog.euc-rt.me/img/avatar-icon.webp">
-<meta property="og:url" content="https://blog.euc-rt.me/posts/updated-github-actions-publish-private-hugo-repo-to-public-pages-site/">
+<meta property="og:url" content="https://blog.euc-rt.me/posts/another-github-actions-update-change-hugo-publish-deploy-keys/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Robert Terakedis">
-<meta name=twitter:title content="Updated GitHub Actions to Publish Hugo Site From Private to Public …">
-<meta name=twitter:description content="Still keeping half-baked ideas and drafts private!">
+<meta name=twitter:title content="Another GitHub Actions Update - Using Deploy Keys Instead Of Secrets">
+<meta name=twitter:description content="Constraining the Github Actions Deployment Key to the Repo instead of the Account">
 <meta name=twitter:image content="https://blog.euc-rt.me/img/avatar-icon.webp">
 <meta name=twitter:card content="summary">
 <meta name=twitter:site content="@robterakedis">
@@ -140,9 +140,9 @@
 <div class=row>
 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 <div class=posts-heading>
-<h1>Updated GitHub Actions to Publish Hugo Site From Private to Public Repo</h1>
+<h1>Another GitHub Actions Update - Using Deploy Keys Instead Of Secrets</h1>
 <hr class=small>
-<h2 class=posts-subheading>Still keeping half-baked ideas and drafts private!</h2>
+<h2 class=posts-subheading>Constraining the Github Actions Deployment Key to the Repo instead of the Account</h2>
 </div>
 </div>
 </div>
@@ -153,30 +153,70 @@
 <div class=row>
 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 <article role=main class=blog-post>
-<p>When I restarted my blogging journey last year, I went with Hugo to generate a static website hosted as a GitHub Pages site. As mentioned, Blogger and WordPress always suffered recurring problems, and maintenance with WordPress still turned into a time suck due to its complexity. By comparison, GitHub has been a nearly painless hosting provider, and the way I&rsquo;ve configured it has allowed me to keep drafts hidden by staging in a private repository.</p>
-<h2 id=my-workflow>My Workflow</h2>
-<p>As I sit down to blog, I start a new post by adding a new markdown page into my <em>posts</em> directory. In the front matter, I use the key-value pair <code>draft: true</code> to notate that the content is still under construction. In other words, my front matter starts to look like the following:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-YAML data-lang=YAML><span class=nn>---</span><span class=w>
-</span><span class=w></span><span class=nt>title</span><span class=p>:</span><span class=w> </span><span class=s2>&#34;Updated GitHub Actions to Publish Hugo Site From Private to Public Repo.&#34;</span><span class=w>
-</span><span class=w></span><span class=nt>subtitle</span><span class=p>:</span><span class=w> </span><span class=s2>&#34;Still keeping half-baked ideas and drafts private!&#34;</span><span class=w>
-</span><span class=w></span><span class=nt>date</span><span class=p>:</span><span class=w> </span><span class=ld>2021-02-13</span><span class=w>
-</span><span class=w></span><span class=nt>draft</span><span class=p>:</span><span class=w> </span><span class=kc>true</span><span class=w>
-</span><span class=w></span><span class=nt>tags</span><span class=p>:</span><span class=w> </span><span class=p>[</span><span class=s2>&#34;GitHub&#34;</span><span class=p>,</span><span class=w> </span><span class=s2>&#34;Actions&#34;</span><span class=p>,</span><span class=w> </span><span class=s2>&#34;Hugo&#34;</span><span class=p>]</span><span class=w>
-</span><span class=w></span><span class=nn>---</span><span class=w>
-</span></code></pre></div><p>Now, as I get to a good stopping point (either writing in Visual Studio Code for macOS or using <a href=https://workingcopyapp.com>Working Copy</a> and <a href=https://ia.net/writer>iA Writer</a> on my iPad), I can check-in the updated version of that post to my private GitHub repo. My Github Action workflow on the private repository notices when I push code to the main/master. Within the GitHub Action, the Hugo command building the static site ignores drafts, which means the front matter must contain <code>draft: false</code> for Hugo to generate the static webpage (and therefore the content getting copied to the public repository). If content does get developed and copied to the public repository, GitHub Pages (e.g. the live version of my blog) reflects those changes.</p>
-<h2 id=publishing-hugo-site-from-a-private-repo-to-public-github-pages>Publishing Hugo Site from a Private Repo to Public GitHub Pages</h2>
-<p>Remember I published the content of my Github Action in <a href=https://blog.euc-rt.me/posts/github-actions-publish-private-hugo-repo-to-public-pages-site/>GitHub Actions Publish Private Hugo Repo to Public Pages Site</a>. That Action had worked well for me, &mldr; until it didn&rsquo;t. As I attempted to push a new draft recently, the GitHub Actions workflow failed. The specific failure pointed to <a href=https://github.blog/changelog/2020-10-01-github-actions-deprecating-set-env-and-add-path-commands/>GitHub deprecating set-env and add-path commands</a>. Ironically, the YAML file contained neither of those two commands! What?! One of the Actions I sourced from the marketplace was misbehaving.</p>
-<p>I set to work updating all the actions and am happy to report the new workflow working as expected.</p>
-<p>As a reminder, here&rsquo;s how it works:</p>
+<p>When I restarted my blogging journey in 2020, I switched from Jekyll to Hugo hosted in GitHub pages. It&rsquo;s been a relatively painless journey, and kudos to GitHub as a rock-solid hosting provider. I&rsquo;ve covered it before (<a href=https://blog.euc-rt.me/posts/github-actions-publish-private-hugo-repo-to-public-pages-site/>Initial Setup</a> and <a href=https://blog.euc-rt.me/posts/updated-github-actions-publish-private-hugo-repo-to-public-pages-site/>First Update</a>), but I&rsquo;ve been incredibly happy with private-to-public publishing workflow that allows me to keep drafts and work-in-progress hidden. That said, a recent comment gave me reason to make another update to the Workflow. Read on for more detail&mldr;</p>
+<h2 id=updating-security-for-hugo-private-to-public-publishing-workflow>Updating Security for Hugo Private-to-Public Publishing Workflow</h2>
+<p>I initially set up my publishing workflow to use a <a href=https://docs.github.com/en/rest/overview/other-authentication-methods#via-oauth-and-personal-access-tokens>Personal Access Token</a> to deploy the Hugo site to the public GitHub pages repository. To do this, I configured the Personal Access Token and then saved it as a <a href=https://docs.github.com/en/actions/security-guides/encrypted-secrets>Secret</a>. You can see this being leveraged in the Action&rsquo;s <code>main.yml</code> file in the <code>token</code> field (<code>${{ secrets.ACCESS_TOKEN }}</code>):</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-YAML data-lang=YAML><span class=w>    </span><span class=c># Deploy the Static Site to Public Repo (GitHub Pages)</span><span class=w>
+</span><span class=w>    </span>- <span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>Deploy 🚀</span><span class=w>
+</span><span class=w>      </span><span class=nt>uses</span><span class=p>:</span><span class=w> </span><span class=l>JamesIves/github-pages-deploy-action@4.0.0</span><span class=w>
+</span><span class=w>      </span><span class=nt>with</span><span class=p>:</span><span class=w>
+</span><span class=w>        </span><span class=nt>token</span><span class=p>:</span><span class=w>  </span><span class=l>${{ secrets.ACCESS_TOKEN }}</span><span class=w>
+</span><span class=w>        </span><span class=nt>repository-name</span><span class=p>:</span><span class=w> </span><span class=l>rterakedis/rterakedis.github.io</span><span class=w>
+</span><span class=w>        </span><span class=nt>branch</span><span class=p>:</span><span class=w> </span><span class=l>master</span><span class=w> </span><span class=c># The branch the action should deploy to.</span><span class=w>
+</span><span class=w>        </span><span class=nt>folder</span><span class=p>:</span><span class=w> </span><span class=l>docs</span><span class=w> </span><span class=c># The folder the action should deploy.</span><span class=w>
+</span></code></pre></div><p>A recent comment (Thanks Stefan!) on my (<a href=https://blog.euc-rt.me/posts/github-actions-publish-private-hugo-repo-to-public-pages-site/>Initial Setup</a> brought to my attention a better way to handle security in the publishing workflow. The commenter made the suggestion to leverage <a href=https://docs.github.com/en/developers/overview/managing-deploy-keys#deploy-keys>Deploy Keys</a>, rather than Personal Access Tokens. By making this change, the Deploy Key access rights are limited to the repository where I need that key for publishing. Contrast this to the access rights granted by a personal access token, which basically gives access to any of the repos within my GitHub account. The deploy key makes far more sense in limiting scope of access in the event the secret is leaked or discovered.</p>
+<h2 id=adding-a-deploy-key-to-the-public-repository>Adding a Deploy Key to the Public Repository</h2>
+<p>A Deploy Key is an SSH key set you configure in your repository to grant client read-only (or read-write) access. Before making any changes to GitHub Actions, I had to configure the new Deploy Key for the repository containing the GitHub Pages site (i.e. the Public-facing Repository). Here&rsquo;s how to do it:</p>
 <ol>
-<li>The &ldquo;name: Checkout&rdquo; step pulls down the repository to <code>/home/runner/work/&lt;Repo Name>/&lt;Repo Name></code> on the Ubuntu Runner</li>
-<li>The &ldquo;name: Hugo Setup&rdquo; step downloads and installs the latest non-extended Hugo binary</li>
-<li>The &ldquo;name: Run Hugo&rdquo; step is where Hugo parses the files from my private GitHub repo and builds the static site based the <code>config.toml</code> file (in my case, ./docs).</li>
-<li>Once parsing completes (and ./docs contains the static site), the workflow uses a Personal Access Token to connect to the Public repository and commit all the new/changed files.</li>
+<li>On your computer, generate a passwordless SSH key (example: <code>ssh-keygen -f id_gha -t rsa -m pem -b 4096 -C "youremailhere@example.com" -N ""</code>)
+<ol>
+<li><em><strong>NOTE</strong></em> The command generates both your private and public keys (<code>id_gha</code> and <code>id_gha.pub</code>). Be sure to generate them in a directory where you want them saved/secured. You <strong>do not</strong> want your working directory to be the local working directory for your GitHub repo, as you could inadvertently publish them to GitHub!</li>
 </ol>
-<p>Remember, GitHub provides a Free/Personal account up to 2000 minutes of GitHub Actions time per month. In my case, each run of the workflow is taking about 30 seconds. If you find yourself bumping up against this limit, you can quickly reduce your runs by creating a &ldquo;working&rdquo; branch to save your work-in-progress. Then you can publish more content at a single time by merging those changes into master and kicking off a new build - things to ponder.</p>
+</li>
+<li>Browse to the Public Repository where GitHub Pages is hosted.</li>
+<li>Click on the <strong>Settings</strong> tab for the repository
+<ol>
+<li><em><strong>NOTE</strong></em> If your browser is windowed, it may be hidden in the elipsis <strong>&mldr;</strong> to the right)</li>
+</ol>
+</li>
+<li>Click on <strong>Deploy Keys</strong></li>
+<li>Click on <strong>Add Deploy Key</strong></li>
+<li>Enter a title for the key (i.e. <code>GH-Actions-Workflow</code>), paste the contents of the public key file (starts with <code>ssh-rsa</code>), and click the checkbox for <strong>Allow Write Access</strong></li>
+<li>Click the <strong>Add Key</strong> button to save the public key to your repository</li>
+</ol>
+<h2 id=changing-the-github-actions-workflow-to-use-the-deploy-key>Changing the GitHub Actions Workflow to Use the Deploy Key</h2>
+<p>With the Deploy Key added to the Public Repo hosting my GitHub pages website, I now need to change the GitHub Actions workflow for my private repository. Since I was previously using a Personal Access Token, I need to make changes to both the Secrets AND the workflow to start using the Deploy Key. The detail on how to use the Deploy Key for the <code>Deploy</code> step in my workflow came from <a href=https://github.com/JamesIves/github-pages-deploy-action/tree/dev#using-an-ssh-deploy-key->JamesIves' documentation</a>. Here&rsquo;s what I did:</p>
+<h3 id=changes-in-github>Changes in GitHub</h3>
+<p>First, I needed to make some changes within the settings for the public repo where I host my blog.</p>
+<ol>
+<li>Browse to the Public Repository where GitHub Pages is hosted.</li>
+<li>Click on the <strong>Settings</strong> tab for the repository
+<ol>
+<li><em><strong>NOTE</strong></em> If your browser is windowed, it may be hidden in the elipsis <strong>&mldr;</strong> to the right)</li>
+</ol>
+</li>
+<li>Click on <strong>Secrets</strong></li>
+<li>Click on <strong>New Repository Secret</strong></li>
+<li>Enter a name (i.e. <code>DEPLOY_KEY</code>) and paste the contents of the private key file (starts with <code>-----BEGIN</code>)
+<ol>
+<li><em><strong>NOTE</strong></em> Be sure to paste the <em>entire</em> contents of the file, including the <code>-----BEGIN RSA PRIVATE KEY-----</code> and <code>-----END RSA PRIVATE KEY-----</code> lines.</li>
+</ol>
+</li>
+<li>Click on <strong>Add Secret</strong></li>
+</ol>
+<h3 id=changes-in-code>Changes in Code</h3>
+<p>Once GitHub changes were complete, I had to then make some changes to the YAML file that details my GitHub Actions workflow. Here&rsquo;s how:</p>
+<ol>
+<li>Open the <code>main.yml</code> file in the <code>/.github/workflows</code> folder in my private repository code.</li>
+<li>Find the step starting with <code>name: Deploy 🚀</code></li>
+<li>Changed the line from <code>token: ${{ secrets.ACCESS_TOKEN }}</code> to <code>ssh-key: ${{ secrets.DEPLOY_KEY }}</code></li>
+<li>Save the file and commit the YAML file to GitHub</li>
+</ol>
+<blockquote>
+<p><strong>NOTE:</strong> I also took the opportunity to change the revision of the Deploy Step&rsquo;s <code>uses:</code> line to take advantage of the latest code. See below&mldr;</p>
+</blockquote>
 <h2 id=show-me-the-code>Show me the Code!</h2>
-<p>Here is my updated <code>main.yml</code> file!</p>
+<p>Here is my entire newly updated <code>main.yml</code> file!</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-YAML data-lang=YAML><span class=c># This is a basic workflow to help you get started with Actions</span><span class=w>
 </span><span class=w>
 </span><span class=w></span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>Hugo Build &amp; Deploy - Private to Public</span><span class=w>
@@ -199,13 +239,13 @@
 </span><span class=w>    
 </span><span class=w>    </span><span class=c># Check Out Repository:   https://github.com/marketplace/actions/deploy-to-github-pages</span><span class=w>
 </span><span class=w>    </span>- <span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>Checkout 🛎️</span><span class=w>
-</span><span class=w>      </span><span class=nt>uses</span><span class=p>:</span><span class=w> </span><span class=l>actions/checkout@v2.3.4 </span><span class=w>
+</span><span class=w>      </span><span class=nt>uses</span><span class=p>:</span><span class=w> </span><span class=l>actions/checkout@v2.4.0 </span><span class=w>
 </span><span class=w>      </span><span class=nt>with</span><span class=p>:</span><span class=w>
 </span><span class=w>        </span><span class=nt>persist-credentials</span><span class=p>:</span><span class=w> </span><span class=kc>false</span><span class=w>
 </span><span class=w>
 </span><span class=w>    </span><span class=c># Setup Hugo</span><span class=w>
 </span><span class=w>    </span>- <span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>Hugo setup</span><span class=w>
-</span><span class=w>      </span><span class=nt>uses</span><span class=p>:</span><span class=w> </span><span class=l>peaceiris/actions-hugo@v2.4.13</span><span class=w>
+</span><span class=w>      </span><span class=nt>uses</span><span class=p>:</span><span class=w> </span><span class=l>peaceiris/actions-hugo@v2.5.0</span><span class=w>
 </span><span class=w>      </span><span class=nt>with</span><span class=p>:</span><span class=w>
 </span><span class=w>        </span><span class=c># The Hugo version to download (if necessary) and use. Example: 0.58.2</span><span class=w>
 </span><span class=w>        </span><span class=nt>hugo-version</span><span class=p>:</span><span class=w> </span><span class=s1>&#39;latest&#39;</span><span class=w>
@@ -219,13 +259,39 @@
 </span><span class=w>
 </span><span class=w>    </span><span class=c># Deploy the Static Site to Public Repo (GitHub Pages)</span><span class=w>
 </span><span class=w>    </span>- <span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>Deploy 🚀</span><span class=w>
-</span><span class=w>      </span><span class=nt>uses</span><span class=p>:</span><span class=w> </span><span class=l>JamesIves/github-pages-deploy-action@4.0.0</span><span class=w>
+</span><span class=w>      </span><span class=nt>uses</span><span class=p>:</span><span class=w> </span><span class=l>JamesIves/github-pages-deploy-action@4.1.7</span><span class=w>
 </span><span class=w>      </span><span class=nt>with</span><span class=p>:</span><span class=w>
-</span><span class=w>        </span><span class=nt>token</span><span class=p>:</span><span class=w>  </span><span class=l>${{ secrets.ACCESS_TOKEN }}</span><span class=w>
+</span><span class=w>        </span><span class=nt>ssh-key</span><span class=p>:</span><span class=w>  </span><span class=l>${{ secrets.DEPLOY_KEY }}</span><span class=w>
 </span><span class=w>        </span><span class=nt>repository-name</span><span class=p>:</span><span class=w> </span><span class=l>rterakedis/rterakedis.github.io</span><span class=w>
 </span><span class=w>        </span><span class=nt>branch</span><span class=p>:</span><span class=w> </span><span class=l>master</span><span class=w> </span><span class=c># The branch the action should deploy to.</span><span class=w>
 </span><span class=w>        </span><span class=nt>folder</span><span class=p>:</span><span class=w> </span><span class=l>docs</span><span class=w> </span><span class=c># The folder the action should deploy.</span><span class=w>
-</span></code></pre></div><h2 id=thoughts>Thoughts?</h2>
+</span></code></pre></div><h2 id=clean-up-the-personal-access-token>Clean Up the Personal Access Token</h2>
+<p>Since I wasn&rsquo;t using the Personal Access Token for anything else in GitHub, I decided to do some cleanup. I highly recommend this as the token can grant more access than you&rsquo;d want if the token/secret was ever leaked or stolen. Here&rsquo;s how I went about cleaning up:</p>
+<h3 id=remove-the-secret>Remove the Secret</h3>
+<ol>
+<li>Browse to the Public Repository where GitHub Pages is hosted.</li>
+<li>Click on the <strong>Settings</strong> tab for the repository
+<ol>
+<li><em><strong>NOTE</strong></em> If your browser is windowed, it may be hidden in the elipsis <strong>&mldr;</strong> to the right)</li>
+</ol>
+</li>
+<li>Click on <strong>Secrets</strong></li>
+<li>Click <strong>REMOVE</strong> next to the Personal Access Token Secret (i.e. <code>ACCESS_TOKEN</code>), and then click <strong>Yes, Remove this Token</strong></li>
+</ol>
+<h3 id=remove-the-token>Remove the Token</h3>
+<ol>
+<li>Click on your account in the right corner and click on <strong>Settings</strong> to go to your Account Settings
+<ol>
+<li>Do not confuse <em>Account Settings</em> with <em>Repo Settings</em>. The <em>Account Settings</em> screen actually says &ldquo;Account Settings&rdquo; in the top of the left-side menu</li>
+</ol>
+</li>
+<li>Click on <strong>Developer Settings</strong></li>
+<li>Click on <strong>Personal Access Tokens</strong></li>
+<li>Click <strong>Delete</strong> next to your <code>GH-Hugo-Workflow</code> token</li>
+<li>Click <strong>I Understand, delete this token</strong></li>
+</ol>
+<p>All cleaned up!</p>
+<h2 id=thoughts>Thoughts?</h2>
 <p>Let me know if you&rsquo;ve set up something similar for blogging. Are you using GitHub Actions to automate your publishing workflow? What has been your experience?</p>
 <div class=blog-tags>
 <a href=https://blog.euc-rt.me//tags/github/>GitHub</a>&nbsp;
@@ -238,32 +304,32 @@
 <div class=share-box aria-hidden=true>
 <ul class=share>
 <li>
-<a href="//twitter.com/share?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fupdated-github-actions-publish-private-hugo-repo-to-public-pages-site%2f&text=Updated%20GitHub%20Actions%20to%20Publish%20Hugo%20Site%20From%20Private%20to%20Public%20Repo&via=robterakedis" target=_blank title="Share on Twitter">
+<a href="//twitter.com/share?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fanother-github-actions-update-change-hugo-publish-deploy-keys%2f&text=Another%20GitHub%20Actions%20Update%20-%20Using%20Deploy%20Keys%20Instead%20Of%20Secrets&via=robterakedis" target=_blank title="Share on Twitter">
 <i class="fab fa-twitter"></i>
 </a>
 </li>
 <li>
-<a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.euc-rt.me%2fposts%2fupdated-github-actions-publish-private-hugo-repo-to-public-pages-site%2f" target=_blank title="Share on Facebook">
+<a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.euc-rt.me%2fposts%2fanother-github-actions-update-change-hugo-publish-deploy-keys%2f" target=_blank title="Share on Facebook">
 <i class="fab fa-facebook"></i>
 </a>
 </li>
 <li>
-<a href="//reddit.com/submit?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fupdated-github-actions-publish-private-hugo-repo-to-public-pages-site%2f&title=Updated%20GitHub%20Actions%20to%20Publish%20Hugo%20Site%20From%20Private%20to%20Public%20Repo" target=_blank title="Share on Reddit">
+<a href="//reddit.com/submit?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fanother-github-actions-update-change-hugo-publish-deploy-keys%2f&title=Another%20GitHub%20Actions%20Update%20-%20Using%20Deploy%20Keys%20Instead%20Of%20Secrets" target=_blank title="Share on Reddit">
 <i class="fab fa-reddit"></i>
 </a>
 </li>
 <li>
-<a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fupdated-github-actions-publish-private-hugo-repo-to-public-pages-site%2f&title=Updated%20GitHub%20Actions%20to%20Publish%20Hugo%20Site%20From%20Private%20to%20Public%20Repo" target=_blank title="Share on LinkedIn">
+<a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fanother-github-actions-update-change-hugo-publish-deploy-keys%2f&title=Another%20GitHub%20Actions%20Update%20-%20Using%20Deploy%20Keys%20Instead%20Of%20Secrets" target=_blank title="Share on LinkedIn">
 <i class="fab fa-linkedin"></i>
 </a>
 </li>
 <li>
-<a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fupdated-github-actions-publish-private-hugo-repo-to-public-pages-site%2f&title=Updated%20GitHub%20Actions%20to%20Publish%20Hugo%20Site%20From%20Private%20to%20Public%20Repo" target=_blank title="Share on StumbleUpon">
+<a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fanother-github-actions-update-change-hugo-publish-deploy-keys%2f&title=Another%20GitHub%20Actions%20Update%20-%20Using%20Deploy%20Keys%20Instead%20Of%20Secrets" target=_blank title="Share on StumbleUpon">
 <i class="fab fa-stumbleupon"></i>
 </a>
 </li>
 <li>
-<a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fupdated-github-actions-publish-private-hugo-repo-to-public-pages-site%2f&description=Updated%20GitHub%20Actions%20to%20Publish%20Hugo%20Site%20From%20Private%20to%20Public%20Repo" target=_blank title="Share on Pinterest">
+<a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fanother-github-actions-update-change-hugo-publish-deploy-keys%2f&description=Another%20GitHub%20Actions%20Update%20-%20Using%20Deploy%20Keys%20Instead%20Of%20Secrets" target=_blank title="Share on Pinterest">
 <i class="fab fa-pinterest"></i>
 </a>
 </li>
@@ -273,17 +339,14 @@
 </section>
 <h4 class=see-also>See also</h4>
 <ul>
-<li><a href=/posts/another-github-actions-update-change-hugo-publish-deploy-keys/>Another GitHub Actions Update - Using Deploy Keys Instead Of Secrets</a></li>
+<li><a href=/posts/updated-github-actions-publish-private-hugo-repo-to-public-pages-site/>Updated GitHub Actions to Publish Hugo Site From Private to Public Repo</a></li>
 <li><a href=/posts/github-actions-publish-private-hugo-repo-to-public-pages-site/>Using GitHub Actions to Publish Hugo Site From Private to Public Repo</a></li>
 <li><a href=/2018-06-15-welcome-to-jekyll/>Welcome to Hugo (from Jekyll)</a></li>
 </ul>
 </article>
 <ul class="pager blog-pager">
 <li class=previous>
-<a href=https://blog.euc-rt.me/posts/troubleshooting-macos-management-with-workspace-one/ data-toggle=tooltip data-placement=top title="Troubleshooting macOS Management with Workspace ONE">&larr; Previous Post</a>
-</li>
-<li class=next>
-<a href=https://blog.euc-rt.me/posts/converting-jamf-custom-schema-json-workspace-one-uem/ data-toggle=tooltip data-placement=top title="Converting Jamf Custom Schema JSON for Workspace ONE UEM">Next Post &rarr;</a>
+<a href=https://blog.euc-rt.me/posts/mapping-concepts-from-munki-to-workspace-one-uem/ data-toggle=tooltip data-placement=top title="Mapping Concepts from Munki to WS1 UEM">&larr; Previous Post</a>
 </li>
 </ul>
 <script src=https://utteranc.es/client.js repo=rterakedis/rterakedis.github.io issue-term=pathname theme=github-dark crossorigin=anonymous async></script>

@@ -6,7 +6,7 @@
 <title>Getting Started with Apple Device Management - Robert Terakedis</title>
 <meta name=description content="Where to start if you're new to UEM and Apple.">
 <meta name=author content="Robert Terakedis"><script type=application/ld+json>{"@context":"http://schema.org","@type":"WebSite","name":"Robert Terakedis","url":"https:\/\/blog.euc-rt.me\/"}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Organization","name":"","url":"https:\/\/blog.euc-rt.me\/"}</script>
-<script type=application/ld+json>{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https:\/\/blog.euc-rt.me\/","name":"home"}},{"@type":"ListItem","position":3,"item":{"@id":"https:\/\/blog.euc-rt.me\/gettingstarted\/","name":"Getting started with apple device management"}}]}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Article","author":{"name":"Robert Terakedis"},"headline":"Getting Started with Apple Device Management","description":"One of the most common questions I get is where a device administrator can get started learning about Apple device management with Workspace ONE. More to come on this topic shortly!","inLanguage":"en","wordCount":31,"datePublished":"0001-01-01T00:00:00","dateModified":"0001-01-01T00:00:00","image":"https:\/\/blog.euc-rt.me\/img\/avatar-icon.webp","keywords":[""],"mainEntityOfPage":"https:\/\/blog.euc-rt.me\/gettingstarted\/","publisher":{"@type":"Organization","name":"https:\/\/blog.euc-rt.me\/","logo":{"@type":"ImageObject","url":"https:\/\/blog.euc-rt.me\/img\/avatar-icon.webp","height":60,"width":60}}}</script>
+<script type=application/ld+json>{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https:\/\/blog.euc-rt.me\/","name":"home"}},{"@type":"ListItem","position":3,"item":{"@id":"https:\/\/blog.euc-rt.me\/gettingstarted\/","name":"Getting started with apple device management"}}]}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Article","author":{"name":"Robert Terakedis"},"headline":"Getting Started with Apple Device Management","description":"One of the most common questions I get is where a device administrator can get started learning about Apple device management with Workspace ONE. This is not an exhaustive list, but I did hope to help point you to some great resources:\nUnderstanding MDM Protocol Apple\u0026rsquo;s MDM protocol is the foundation on which every MDM\/EMM vendor relies. You\u0026rsquo;ll be far more effective at troubleshooting the more you understand this protocol, and how it works.","inLanguage":"en","wordCount":172,"datePublished":"0001-01-01T00:00:00","dateModified":"0001-01-01T00:00:00","image":"https:\/\/blog.euc-rt.me\/img\/avatar-icon.webp","keywords":[""],"mainEntityOfPage":"https:\/\/blog.euc-rt.me\/gettingstarted\/","publisher":{"@type":"Organization","name":"https:\/\/blog.euc-rt.me\/","logo":{"@type":"ImageObject","url":"https:\/\/blog.euc-rt.me\/img\/avatar-icon.webp","height":60,"width":60}}}</script>
 <meta property="og:title" content="Getting Started with Apple Device Management">
 <meta property="og:description" content="Where to start if you're new to UEM and Apple.">
 <meta property="og:image" content="https://blog.euc-rt.me/img/avatar-icon.webp">
@@ -20,7 +20,7 @@
 <meta name=twitter:site content="@robterakedis">
 <meta name=twitter:creator content="@robterakedis">
 <link href=https://blog.euc-rt.me/img/favicon.ico rel=icon type=image/x-icon>
-<meta name=generator content="Hugo 0.87.0">
+<meta name=generator content="Hugo 0.90.0">
 <link rel=alternate href=https://blog.euc-rt.me/index.xml type=application/rss+xml title="Robert Terakedis">
 <link rel=stylesheet href=https://blog.euc-rt.me/fontawesome/css/all.css>
 <link rel=stylesheet href=https://blog.euc-rt.me/css/bootstrap.min.css>
@@ -153,7 +153,33 @@
 <div class=row>
 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 <article role=main class=blog-post>
-<p>One of the most common questions I get is where a device administrator can get started learning about Apple device management with Workspace ONE. More to come on this topic shortly!</p>
+<p>One of the most common questions I get is where a device administrator can get started learning about Apple device management with Workspace ONE. This is not an exhaustive list, but I did hope to help point you to some great resources:</p>
+<h1 id=understanding-mdm-protocol>Understanding MDM Protocol</h1>
+<p>Apple&rsquo;s MDM protocol is the foundation on which every MDM/EMM vendor relies. You&rsquo;ll be far more effective at troubleshooting the more you understand this protocol, and how it works.</p>
+<blockquote>
+<p>Sidenote that you&rsquo;ll also need to start watching for updates on Apple&rsquo;s <em>version 2.0</em> of the protocol &ndash;> <a href=https://developer.apple.com/videos/play/wwdc2021/10131/>Declarative Device Management</a>.</p>
+</blockquote>
+<h2 id=the-high-level-stuff>The High Level Stuff</h2>
+<p>Use these links to start gaining a basic understanding of MDM and how it works. What are commands, queries, profiles, and restrictions?</p>
+<ul>
+<li>
+<p><a href=https://support.apple.com/guide/mdm/welcome/web>MDM for IT Administrators Guide</a></p>
+<ul>
+<li><a href=https://support.apple.com/guide/mdm/mdm-overview-mdmbf9e668/web>MDM Overview for Apple Devices</a></li>
+<li><a href=https://support.apple.com/guide/mdm/enrollment-types-mdmf85b71179/1/web/1.0>Enrollment Types for Mobile Device Management with Apple Devices</a></li>
+<li><a href=https://support.apple.com/guide/mdm/complete-payload-list-mdm5370d089/1/web/1.0>Complete MDM Payload List for Apple Devices</a></li>
+<li><a href=https://support.apple.com/guide/mdm/restrictions-overview-mdm2phf95672/1/web/1.0>MDM Restrictions Overview for Apple Devices</a></li>
+<li><a href=https://support.apple.com/guide/mdm/queries-overview-mdm4f3ee8847/1/web/1.0>Queries Overview for Apple Devices Enrolled in MDM</a></li>
+</ul>
+</li>
+<li></li>
+</ul>
+<h2 id=the-deep-dive-stuff>The Deep Dive Stuff</h2>
+<ul>
+<li><a href=https://support.apple.com/guide/mdm/mdm-overview-mdmbf9e668/web>Device Management Developer Documentation</a></li>
+<li></li>
+</ul>
+<h1 id=understanding-app-management>Understanding App Management</h1>
 <hr>
 <section id=social-share>
 <div class="list-inline footer-links">
@@ -251,7 +277,7 @@
 <a href=https://blog.euc-rt.me/>Not to be confused with Pterodactyl...</a>
 </p>
 <p class="credits theme-by text-muted">
-<a href=https://gohugo.io>Hugo v0.87.0</a> powered &nbsp;&bull;&nbsp; Theme <a href=https://github.com/halogenica/beautifulhugo>Beautiful Hugo</a> adapted from <a href=https://deanattali.com/beautiful-jekyll/>Beautiful Jekyll</a>
+<a href=https://gohugo.io>Hugo v0.90.0</a> powered &nbsp;&bull;&nbsp; Theme <a href=https://github.com/halogenica/beautifulhugo>Beautiful Hugo</a> adapted from <a href=https://deanattali.com/beautiful-jekyll/>Beautiful Jekyll</a>
 </p>
 </div>
 </div>
