@@ -3,17 +3,17 @@
 <meta charset=utf-8>
 <meta http-equiv=x-ua-compatible content="IE=edge">
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
-<title>Another GitHub Actions Update - Using Deploy Keys Instead Of Secrets - Robert Terakedis</title>
+<title>Another GitHub Actions Update - Using Deploy Keys Instead Of Personal Access Tokens - Robert Terakedis</title>
 <meta name=description content="Constraining the Github Actions Deployment Key to the Repo instead of the Account">
 <meta name=author content="Robert Terakedis"><script type=application/ld+json>{"@context":"http://schema.org","@type":"WebSite","name":"Robert Terakedis","url":"https:\/\/blog.euc-rt.me\/"}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Organization","name":"","url":"https:\/\/blog.euc-rt.me\/"}</script>
-<script type=application/ld+json>{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https:\/\/blog.euc-rt.me\/","name":"home"}},{"@type":"ListItem","position":3,"item":{"@id":"https:\/\/blog.euc-rt.me\/posts\/another-github-actions-update-change-hugo-publish-deploy-keys\/","name":"Another git hub actions update using deploy keys instead of secrets"}}]}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Article","author":{"name":"Robert Terakedis"},"headline":"Another GitHub Actions Update - Using Deploy Keys Instead Of Secrets","description":"When I restarted my blogging journey in 2020, I switched from Jekyll to Hugo hosted in GitHub pages. It\u0026rsquo;s been a relatively painless journey, and kudos to GitHub as a rock-solid hosting provider. I\u0026rsquo;ve covered it before (Initial Setup and First Update), but I\u0026rsquo;ve been incredibly happy with private-to-public publishing workflow that allows me to keep drafts and work-in-progress hidden. That said, a recent comment gave me reason to make another update to the Workflow.","inLanguage":"en","wordCount":1167,"datePublished":"2021-12-10T00:00:00","dateModified":"2021-12-10T00:00:00","image":"https:\/\/blog.euc-rt.me\/img\/avatar-icon.webp","keywords":["GitHub, Actions, Hugo"],"mainEntityOfPage":"https:\/\/blog.euc-rt.me\/posts\/another-github-actions-update-change-hugo-publish-deploy-keys\/","publisher":{"@type":"Organization","name":"https:\/\/blog.euc-rt.me\/","logo":{"@type":"ImageObject","url":"https:\/\/blog.euc-rt.me\/img\/avatar-icon.webp","height":60,"width":60}}}</script>
-<meta property="og:title" content="Another GitHub Actions Update - Using Deploy Keys Instead Of Secrets">
+<script type=application/ld+json>{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https:\/\/blog.euc-rt.me\/","name":"home"}},{"@type":"ListItem","position":3,"item":{"@id":"https:\/\/blog.euc-rt.me\/posts\/another-github-actions-update-change-hugo-publish-deploy-keys\/","name":"Another git hub actions update using deploy keys instead of personal access tokens"}}]}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Article","author":{"name":"Robert Terakedis"},"headline":"Another GitHub Actions Update - Using Deploy Keys Instead Of Personal Access Tokens","description":"When I restarted my blogging journey in 2020, I switched from Jekyll to Hugo hosted in GitHub pages. It\u0026rsquo;s been a relatively painless journey, and kudos to GitHub as a rock-solid hosting provider. I\u0026rsquo;ve covered it before (Initial Setup and First Update), but I\u0026rsquo;ve been incredibly happy with private-to-public publishing workflow that allows me to keep drafts and work-in-progress hidden. That said, a recent comment gave me reason to make another update to the Workflow.","inLanguage":"en","wordCount":1167,"datePublished":"2021-12-10T00:00:00","dateModified":"2021-12-10T00:00:00","image":"https:\/\/blog.euc-rt.me\/img\/avatar-icon.webp","keywords":["GitHub, Actions, Hugo"],"mainEntityOfPage":"https:\/\/blog.euc-rt.me\/posts\/another-github-actions-update-change-hugo-publish-deploy-keys\/","publisher":{"@type":"Organization","name":"https:\/\/blog.euc-rt.me\/","logo":{"@type":"ImageObject","url":"https:\/\/blog.euc-rt.me\/img\/avatar-icon.webp","height":60,"width":60}}}</script>
+<meta property="og:title" content="Another GitHub Actions Update - Using Deploy Keys Instead Of Personal Access Tokens">
 <meta property="og:description" content="Constraining the Github Actions Deployment Key to the Repo instead of the Account">
 <meta property="og:image" content="https://blog.euc-rt.me/img/avatar-icon.webp">
 <meta property="og:url" content="https://blog.euc-rt.me/posts/another-github-actions-update-change-hugo-publish-deploy-keys/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Robert Terakedis">
-<meta name=twitter:title content="Another GitHub Actions Update - Using Deploy Keys Instead Of Secrets">
+<meta name=twitter:title content="Another GitHub Actions Update - Using Deploy Keys Instead Of Personal …">
 <meta name=twitter:description content="Constraining the Github Actions Deployment Key to the Repo instead of the Account">
 <meta name=twitter:image content="https://blog.euc-rt.me/img/avatar-icon.webp">
 <meta name=twitter:card content="summary">
@@ -140,7 +140,7 @@
 <div class=row>
 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 <div class=posts-heading>
-<h1>Another GitHub Actions Update - Using Deploy Keys Instead Of Secrets</h1>
+<h1>Another GitHub Actions Update - Using Deploy Keys Instead Of Personal Access Tokens</h1>
 <hr class=small>
 <h2 class=posts-subheading>Constraining the Github Actions Deployment Key to the Repo instead of the Account</h2>
 </div>
@@ -304,7 +304,7 @@
 <div class=share-box aria-hidden=true>
 <ul class=share>
 <li>
-<a href="//twitter.com/share?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fanother-github-actions-update-change-hugo-publish-deploy-keys%2f&text=Another%20GitHub%20Actions%20Update%20-%20Using%20Deploy%20Keys%20Instead%20Of%20Secrets&via=robterakedis" target=_blank title="Share on Twitter">
+<a href="//twitter.com/share?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fanother-github-actions-update-change-hugo-publish-deploy-keys%2f&text=Another%20GitHub%20Actions%20Update%20-%20Using%20Deploy%20Keys%20Instead%20Of%20Personal%20Access%20Tokens&via=robterakedis" target=_blank title="Share on Twitter">
 <i class="fab fa-twitter"></i>
 </a>
 </li>
@@ -314,22 +314,22 @@
 </a>
 </li>
 <li>
-<a href="//reddit.com/submit?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fanother-github-actions-update-change-hugo-publish-deploy-keys%2f&title=Another%20GitHub%20Actions%20Update%20-%20Using%20Deploy%20Keys%20Instead%20Of%20Secrets" target=_blank title="Share on Reddit">
+<a href="//reddit.com/submit?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fanother-github-actions-update-change-hugo-publish-deploy-keys%2f&title=Another%20GitHub%20Actions%20Update%20-%20Using%20Deploy%20Keys%20Instead%20Of%20Personal%20Access%20Tokens" target=_blank title="Share on Reddit">
 <i class="fab fa-reddit"></i>
 </a>
 </li>
 <li>
-<a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fanother-github-actions-update-change-hugo-publish-deploy-keys%2f&title=Another%20GitHub%20Actions%20Update%20-%20Using%20Deploy%20Keys%20Instead%20Of%20Secrets" target=_blank title="Share on LinkedIn">
+<a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fanother-github-actions-update-change-hugo-publish-deploy-keys%2f&title=Another%20GitHub%20Actions%20Update%20-%20Using%20Deploy%20Keys%20Instead%20Of%20Personal%20Access%20Tokens" target=_blank title="Share on LinkedIn">
 <i class="fab fa-linkedin"></i>
 </a>
 </li>
 <li>
-<a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fanother-github-actions-update-change-hugo-publish-deploy-keys%2f&title=Another%20GitHub%20Actions%20Update%20-%20Using%20Deploy%20Keys%20Instead%20Of%20Secrets" target=_blank title="Share on StumbleUpon">
+<a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fanother-github-actions-update-change-hugo-publish-deploy-keys%2f&title=Another%20GitHub%20Actions%20Update%20-%20Using%20Deploy%20Keys%20Instead%20Of%20Personal%20Access%20Tokens" target=_blank title="Share on StumbleUpon">
 <i class="fab fa-stumbleupon"></i>
 </a>
 </li>
 <li>
-<a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fanother-github-actions-update-change-hugo-publish-deploy-keys%2f&description=Another%20GitHub%20Actions%20Update%20-%20Using%20Deploy%20Keys%20Instead%20Of%20Secrets" target=_blank title="Share on Pinterest">
+<a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fblog.euc-rt.me%2fposts%2fanother-github-actions-update-change-hugo-publish-deploy-keys%2f&description=Another%20GitHub%20Actions%20Update%20-%20Using%20Deploy%20Keys%20Instead%20Of%20Personal%20Access%20Tokens" target=_blank title="Share on Pinterest">
 <i class="fab fa-pinterest"></i>
 </a>
 </li>
