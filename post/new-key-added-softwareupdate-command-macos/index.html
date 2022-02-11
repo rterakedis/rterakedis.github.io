@@ -1,4 +1,4 @@
-<!doctype html><html lang=en data-figures class=page>
+<!doctype html><html lang=en data-figures=true class=page>
 <head>
 <title>New Key Added to SoftwareUpdate Command in macOS | Robert Terakedis</title>
 <meta charset=utf-8>
@@ -8,14 +8,14 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','XXXXXXXXXX')</script>
 <meta property="og:locale" content="en">
 <meta property="og:type" content="article">
-<meta name=description content="When Big Sur released, I noticed an issue trying to discover what macOS versions were available in SoftwareUpdate. I worked around this by using the …">
+<meta name=description content="a New Key Added to SoftwareUpdate Command in macOS -- List-Full-Installers">
 <meta name=twitter:card content="summary">
 <meta name=twitter:creator content="@robterakedis">
 <meta name=twitter:title content="New Key Added to SoftwareUpdate Command in macOS">
 <meta property="og:url" content="https://blog.euc-rt.me/post/new-key-added-softwareupdate-command-macos/">
 <meta property="og:title" content="New Key Added to SoftwareUpdate Command in macOS">
-<meta property="og:description" content="When Big Sur released, I noticed an issue trying to discover what macOS versions were available in SoftwareUpdate. I worked around this by using the …">
-<meta property="og:image" content="https://blog.euc-rt.me/images/thumbnail.png">
+<meta property="og:description" content="a New Key Added to SoftwareUpdate Command in macOS -- List-Full-Installers">
+<meta property="og:image" content="https://blog.euc-rt.me/post/new-key-added-softwareupdate-command-macos/img/avatar-icon.webp">
 <link rel=apple-touch-icon sizes=180x180 href=https://blog.euc-rt.me/icons/apple-touch-icon.png>
 <link rel=icon type=image/png sizes=32x32 href=https://blog.euc-rt.me/icons/favicon-32x32.png>
 <link rel=manifest href=https://blog.euc-rt.me/icons/site.webmanifest>
@@ -24,7 +24,7 @@
 <link rel=preload href=https://blog.euc-rt.me/js/bundle.min.061d04727b51b0a8fafe2f15b9370a961f33306e7af52abd00d69c906f5d825f1599306159d7756d7d2b4f359767a170625ae541d1f37d05c1daa4d5c7feec25.js as=script integrity="sha512-Bh0EcntRsKj6/i8VuTcKlh8zMG569Sq9ANackG9dgl8VmTBhWdd1bX0rTzWXZ6FwYlrlQdHzfQXB2qTVx/7sJQ==" crossorigin=anonymous>
 <link rel=stylesheet type=text/css href=https://blog.euc-rt.me/css/styles.a9aa5a850b6d000ffa686c86df9efe2bd23d6c5caa96df36ef5e532bf479061341c2e227cc7bc2c7c56615c1cb3fd0d129282112f3ed11b28e9bba3807813247.css integrity="sha512-qapahQttAA/6aGyG357+K9I9bFyqlt82715TK/R5BhNBwuInzHvCx8VmFcHLP9DRKSghEvPtEbKOm7o4B4EyRw==" crossorigin=anonymous>
 </head>
-<body data-code=50 data-lines=false id=documentTop>
+<body data-code=10 data-lines=false id=documentTop>
 <header class=nav_header>
 <nav class=nav><a href=https://blog.euc-rt.me/ class="nav_brand nav_item" title="Robert Terakedis">
 <img src=https://blog.euc-rt.me/img/avatar-icon-50.webp class=logo alt="Robert Terakedis">
@@ -80,8 +80,9 @@
 <div class=post_meta>
 <span><svg class="icon"><use xlink:href="#calendar"/></svg></span>
 <span class=post_date>
-Mar 19, 2021</span>
+Mar 19, 2020</span>
 <span class=post_time> · 3 min read</span><span>&nbsp;· <a href=https://blog.euc-rt.me/tags/macos title=macOS class="post_tag button button_translucent">macOS
+</a><a href=https://blog.euc-rt.me/tags/terminal title=Terminal class="post_tag button button_translucent">Terminal
 </a>
 </span>
 <span class=page_only>&nbsp;·
@@ -98,46 +99,47 @@ Share on:
 </div>
 </span>
 </div>
-<div class=post_body><p>When Big Sur released, I noticed an issue trying to discover what macOS versions were available in SoftwareUpdate. I worked around this by using the <a href=https://github.com/munki/macadmin-scripts/blob/main/installinstallmacos.py>installinstallmacos.py script</a> to download full installers from the store. This script/tool is solid, but I was really hoping to be able to just do the updates using softwareupdate. Awhile back I filed feedback with Apple to the following:</p>
+<div class=post_body><h2 id=background>Background</h2>
+<p>When Big Sur released, I noticed an issue trying to discover what macOS versions were available in SoftwareUpdate. I worked around this by using the <a href=https://github.com/munki/macadmin-scripts/blob/main/installinstallmacos.py>installinstallmacos.py script</a> to download full installers from the store. This script/tool is solid, but I was really hoping to be able to just do the updates using softwareupdate. Awhile back I filed feedback with Apple to the following:</p>
 <blockquote>
 <p>The --fetch-full-installer parameter for the softwareupdate command line tool is awesome, but there's currently no way to discover the list of available values for the --full-installer-version parameter. Can you please add a --list-installer-versions parameter (or something to that effect) that would show the list of available full installer versions that softwareupdate can download? My understanding is the installer versions relate to the product marketing version (like 11.0, or 10.15.7), but as those versions are added/removed it would be nice easily discover that from the command line.</p>
 </blockquote>
 <p>I admittedly forgot about the feedback after filing it (hoping that someday someone might see it and care).</p>
 <h2 id=new-functionality-arrives>New Functionality Arrives</h2>
 <p>To my surprise, I saw a note replying in December saying they fixed this in a new release. The response was vague and pointed to the "About this mac" functionality, which seemed odd. Nevertheless, I went into the command line and started poking around. I ran the <code>softwareupdate</code> command with the help parameter and found a new option:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-BASH data-lang=BASH><span class=ln> 1</span>softwareupdate --help
-<span class=ln> 2</span>usage: softwareupdate &lt;cmd&gt; <span class=o>[</span>&lt;args&gt; ...<span class=o>]</span>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=ln> 1</span>softwareupdate --help
+<span class=ln> 2</span>usage: softwareupdate &lt;cmd&gt; [&lt;args&gt; ...]
 <span class=ln> 3</span>
 <span class=ln> 4</span>** Manage Updates:
-<span class=ln> 5</span>	-l <span class=p>|</span> --list		List all appropriate update labels <span class=o>(</span>options:  --no-scan, --product-types<span class=o>)</span>
-<span class=ln> 6</span>	-d <span class=p>|</span> --download		Download Only
-<span class=ln> 7</span>	-i <span class=p>|</span> --install		Install
+<span class=ln> 5</span>	-l | --list		List all appropriate update labels (options:  --no-scan, --product-types)
+<span class=ln> 6</span>	-d | --download		Download Only
+<span class=ln> 7</span>	-i | --install		Install
 <span class=ln> 8</span>		&lt;label&gt; ...	specific updates
-<span class=ln> 9</span>		-a <span class=p>|</span> --all		All appropriate updates
-<span class=ln>10</span>		-R <span class=p>|</span> --restart		Automatically restart <span class=o>(</span>or shut down<span class=o>)</span> <span class=k>if</span> required to <span class=nb>complete</span> installation.
-<span class=ln>11</span>		-r <span class=p>|</span> --recommended	Only recommended updates
+<span class=ln> 9</span>		-a | --all		All appropriate updates
+<span class=ln>10</span>		-R | --restart		Automatically restart (or shut down) if required to complete installation.
+<span class=ln>11</span>		-r | --recommended	Only recommended updates
 <span class=ln>12</span>	--list-full-installers		List the available macOS Installers
 <span class=ln>13</span>	--fetch-full-installer		Install the latest recommended macOS Installer
 <span class=ln>14</span>		--full-installer-version	The version of macOS to install. Ex: --full-installer-version 10.15
-<span class=ln>15</span>	--install-rosetta	Install Rosetta <span class=m>2</span>
+<span class=ln>15</span>	--install-rosetta	Install Rosetta 2
 <span class=ln>16</span>	--background		Trigger a background scan and update operation
 <span class=ln>17</span>
 <span class=ln>18</span>** Other Tools:
 <span class=ln>19</span>	--dump-state		Log the internal state of the SU daemon to /var/log/install.log
 <span class=ln>20</span>	--evaluate-products	Evaluate a list of product keys specified by the --products option 
 <span class=ln>21</span>	--history		Show the install history.  By default, only displays updates installed by softwareupdate.  
-<span class=ln>22</span>	--all 			Include all processes in <span class=nb>history</span> <span class=o>(</span>including App installs<span class=o>)</span> 
+<span class=ln>22</span>	--all 			Include all processes in history (including App installs) 
 <span class=ln>23</span>
 <span class=ln>24</span>** Options:
-<span class=ln>25</span>	--no-scan		Do not scan when listing or installing updates <span class=o>(</span>use available updates previously scanned<span class=o>)</span>
-<span class=ln>26</span>	--product-types &lt;type&gt;		Limit a scan to a particular product <span class=nb>type</span> only - ignoring all others
-<span class=ln>27</span>		Ex:  --product-types macOS  <span class=o>||</span> --product-types macOS,Safari 
-<span class=ln>28</span>	--products		A comma-separated <span class=o>(</span>no spaces<span class=o>)</span> list of product keys to operate on. 
-<span class=ln>29</span>	--force			Force an operation to complete.  Use with --background to trigger a background scan regardless of <span class=s2>&#34;Automatically check&#34;</span> pref 
+<span class=ln>25</span>	--no-scan		Do not scan when listing or installing updates (use available updates previously scanned)
+<span class=ln>26</span>	--product-types &lt;type&gt;		Limit a scan to a particular product type only - ignoring all others
+<span class=ln>27</span>		Ex:  --product-types macOS  || --product-types macOS,Safari 
+<span class=ln>28</span>	--products		A comma-separated (no spaces) list of product keys to operate on. 
+<span class=ln>29</span>	--force			Force an operation to complete.  Use with --background to trigger a background scan regardless of &#34;Automatically check&#34; pref 
 <span class=ln>30</span>	--agree-to-license		Agree to the software license agreement without user interaction.
 <span class=ln>31</span>
 <span class=ln>32</span>	--verbose		Enable verbose output
-<span class=ln>33</span>	--help			Print this <span class=nb>help</span>
+<span class=ln>33</span>	--help			Print this help
 <span class=ln>34</span>
 </code></pre></div><p>Did you catch that?</p>
 <p><code>--list-full-installers List the available macOS Installers</code></p>
@@ -173,11 +175,8 @@ Technologist, perpetual student, teacher, continual incremental improvement.
 <h2 class=mt-4>Disclaimer</h2>
 The opinions expressed on this site are my own personal opinions and do not represent my employer’s view in any way.
 </div>
-<h2 class=mt-4>Recent Posts</h2>
-<ul class=flex-column>
-<li>
-<a href=https://blog.euc-rt.me/post/another-github-actions-update-change-hugo-publish-deploy-keys/ class=nav-link title="Another GitHub Actions Update - Using Deploy Keys Instead Of Personal Access Tokens">Another GitHub Actions Update - Using Deploy Keys Instead Of Personal Access Tokens</a>
-</li>
+<h2 class=mt-4>Featured Posts</h2>
+<ul>
 <li>
 <a href=https://blog.euc-rt.me/post/mapping-concepts-from-munki-to-workspace-one-uem/ class=nav-link title="Mapping Concepts from Munki to WS1 UEM">Mapping Concepts from Munki to WS1 UEM</a>
 </li>
@@ -185,32 +184,77 @@ The opinions expressed on this site are my own personal opinions and do not repr
 <a href=https://blog.euc-rt.me/post/best-practices-for-apple-admins-in-workspace-one-uem/ class=nav-link title="Best Practices for Apple Admins in Workspace ONE UEM">Best Practices for Apple Admins in Workspace ONE UEM</a>
 </li>
 <li>
-<a href=https://blog.euc-rt.me/post/converting-jamf-custom-schema-json-workspace-one-uem/ class=nav-link title="Converting Jamf Custom Schema JSON for Workspace ONE UEM">Converting Jamf Custom Schema JSON for Workspace ONE UEM</a>
+<a href=https://blog.euc-rt.me/post/great-free-resources-to-learn-github/ class=nav-link title="Great *Free* Resources to Learn GitHub">Great *Free* Resources to Learn GitHub</a>
 </li>
 <li>
-<a href=https://blog.euc-rt.me/post/updated-github-actions-publish-private-hugo-repo-to-public-pages-site/ class=nav-link title="Updated GitHub Actions to Publish Hugo Site From Private to Public Repo">Updated GitHub Actions to Publish Hugo Site From Private to Public Repo</a>
+<a href=https://blog.euc-rt.me/post/modify-zshell-defaults/ class=nav-link title="Modify ZShell Defaults in macOS">Modify ZShell Defaults in macOS</a>
+</li>
+<li>
+<a href=https://blog.euc-rt.me/post/another-github-actions-update-change-hugo-publish-deploy-keys/ class=nav-link title="Another GitHub Actions Update - Using Deploy Keys Instead Of Personal Access Tokens">Another GitHub Actions Update - Using Deploy Keys Instead Of Personal Access Tokens</a>
+</li>
+<li>
+<a href=https://blog.euc-rt.me/2020-03-06-organizing-adapted-digital-bullet-journal-ipad-goodnotes/ class=nav-link title="My Adapted Digital Bullet Journal via iPad Pro and GoodNotes 5">My Adapted Digital Bullet Journal via iPad Pro and GoodNotes 5</a>
+</li>
+</ul>
+<h2 class=mt-4>Recent Posts</h2>
+<ul class=flex-column>
+<li>
+<a href=https://blog.euc-rt.me/post/mapping-concepts-from-munki-to-workspace-one-uem/ class=nav-link title="Mapping Concepts from Munki to WS1 UEM">Mapping Concepts from Munki to WS1 UEM</a>
+</li>
+<li>
+<a href=https://blog.euc-rt.me/post/best-practices-for-apple-admins-in-workspace-one-uem/ class=nav-link title="Best Practices for Apple Admins in Workspace ONE UEM">Best Practices for Apple Admins in Workspace ONE UEM</a>
+</li>
+<li>
+<a href=https://blog.euc-rt.me/post/great-free-resources-to-learn-github/ class=nav-link title="Great *Free* Resources to Learn GitHub">Great *Free* Resources to Learn GitHub</a>
+</li>
+<li>
+<a href=https://blog.euc-rt.me/post/converting-jamf-custom-schema-json-workspace-one-uem/ class=nav-link title="Converting Jamf Custom Schema JSON for Workspace ONE UEM">Converting Jamf Custom Schema JSON for Workspace ONE UEM</a>
 </li>
 <li>
 <a href=https://blog.euc-rt.me/post/troubleshooting-macos-management-with-workspace-one/ class=nav-link title="Troubleshooting macOS Management with Workspace ONE">Troubleshooting macOS Management with Workspace ONE</a>
 </li>
+<li>
+<a href=https://blog.euc-rt.me/post/updated-github-actions-publish-private-hugo-repo-to-public-pages-site/ class=nav-link title="Updated GitHub Actions to Publish Hugo Site From Private to Public Repo">Updated GitHub Actions to Publish Hugo Site From Private to Public Repo</a>
+</li>
 </ul>
+<div>
+<h2 class="mt-4 taxonomy" id=categories-section>Categories</h2>
+<nav class=tags_nav>
+<a href=https://blog.euc-rt.me/categories/technology/ class="post_tag button button_translucent" title=technology>
+TECHNOLOGY
+<span class=button_tally>18</span>
+</a>
+<a href=https://blog.euc-rt.me/categories/workspace-one/ class="post_tag button button_translucent" title=workspace-one>
+WORKSPACE-ONE
+<span class=button_tally>10</span>
+</a>
+<a href=https://blog.euc-rt.me/categories/hugo/ class="post_tag button button_translucent" title=hugo>
+HUGO
+<span class=button_tally>4</span>
+</a>
+<a href=https://blog.euc-rt.me/categories/learn-something-new/ class="post_tag button button_translucent" title=learn-something-new>
+LEARN-SOMETHING-NEW
+<span class=button_tally>1</span>
+</a>
+</nav>
+</div>
 <div>
 <h2 class="mt-4 taxonomy" id=tags-section>Tags</h2>
 <nav class=tags_nav>
 <a href=https://blog.euc-rt.me/tags/macos/ class="post_tag button button_translucent" title=macos>
 MACOS
-<span class=button_tally>11</span>
+<span class=button_tally>12</span>
 </a>
 <a href=https://blog.euc-rt.me/tags/github/ class="post_tag button button_translucent" title=github>
 GITHUB
-<span class=button_tally>4</span>
-</a>
-<a href=https://blog.euc-rt.me/tags/hugo/ class="post_tag button button_translucent" title=hugo>
-HUGO
-<span class=button_tally>4</span>
+<span class=button_tally>5</span>
 </a>
 <a href=https://blog.euc-rt.me/tags/sso/ class="post_tag button button_translucent" title=sso>
 SSO
+<span class=button_tally>4</span>
+</a>
+<a href=https://blog.euc-rt.me/tags/vpn/ class="post_tag button button_translucent" title=vpn>
+VPN
 <span class=button_tally>4</span>
 </a>
 <a href=https://blog.euc-rt.me/tags/actions/ class="post_tag button button_translucent" title=actions>
@@ -221,13 +265,9 @@ ACTIONS
 APPLE
 <span class=button_tally>3</span>
 </a>
-<a href=https://blog.euc-rt.me/tags/vpn/ class="post_tag button button_translucent" title=vpn>
-VPN
-<span class=button_tally>3</span>
-</a>
-<a href=https://blog.euc-rt.me/tags/workspace-one/ class="post_tag button button_translucent" title=workspace-one>
-WORKSPACE-ONE
-<span class=button_tally>3</span>
+<a href=https://blog.euc-rt.me/tags/terminal/ class="post_tag button button_translucent" title=terminal>
+TERMINAL
+<span class=button_tally>2</span>
 </a>
 <a href=https://blog.euc-rt.me/tags/azure/ class="post_tag button button_translucent" title=azure>
 AZURE
@@ -249,51 +289,14 @@ MUNKI
 NOMAD
 <span class=button_tally>1</span>
 </a>
-<a href=https://blog.euc-rt.me/tags/terminal/ class="post_tag button button_translucent" title=terminal>
-TERMINAL
+<a href=https://blog.euc-rt.me/tags/workspace-one/ class="post_tag button button_translucent" title=workspace-one>
+WORKSPACE-ONE
 <span class=button_tally>1</span>
 </a>
-<br>
-<div class="post_tags_toggle button">All Tags</div>
-<div class=post_tags>
-<div class=tags_list>
-<a href=https://blog.euc-rt.me/tags/actions/ class="post_tag button button_translucent" data-position=3 title=actions>ACTIONS<span class=button_tally>3</span>
+<a href=https://blog.euc-rt.me/tags/xml/ class="post_tag button button_translucent" title=xml>
+XML
+<span class=button_tally>1</span>
 </a>
-<a href=https://blog.euc-rt.me/tags/apple/ class="post_tag button button_translucent" data-position=3 title=apple>APPLE<span class=button_tally>3</span>
-</a>
-<a href=https://blog.euc-rt.me/tags/azure/ class="post_tag button button_translucent" data-position=1 title=azure>AZURE<span class=button_tally>1</span>
-</a>
-<a href=https://blog.euc-rt.me/tags/digibujo/ class="post_tag button button_translucent" data-position=1 title=digibujo>DIGIBUJO<span class=button_tally>1</span>
-</a>
-<a href=https://blog.euc-rt.me/tags/github/ class="post_tag button button_translucent" data-position=4 title=github>GITHUB<span class=button_tally>4</span>
-</a>
-<a href=https://blog.euc-rt.me/tags/hugo/ class="post_tag button button_translucent" data-position=4 title=hugo>HUGO<span class=button_tally>4</span>
-</a>
-<a href=https://blog.euc-rt.me/tags/jekyll/ class="post_tag button button_translucent" data-position=1 title=jekyll>JEKYLL<span class=button_tally>1</span>
-</a>
-<a href=https://blog.euc-rt.me/tags/macos/ class="post_tag button button_translucent" data-position=11 title=macos>MACOS<span class=button_tally>11</span>
-</a>
-<a href=https://blog.euc-rt.me/tags/munki/ class="post_tag button button_translucent" data-position=1 title=munki>MUNKI<span class=button_tally>1</span>
-</a>
-<a href=https://blog.euc-rt.me/tags/nomad/ class="post_tag button button_translucent" data-position=1 title=nomad>NOMAD<span class=button_tally>1</span>
-</a>
-<a href=https://blog.euc-rt.me/tags/sso/ class="post_tag button button_translucent" data-position=4 title=sso>SSO<span class=button_tally>4</span>
-</a>
-<a href=https://blog.euc-rt.me/tags/terminal/ class="post_tag button button_translucent" data-position=1 title=terminal>TERMINAL<span class=button_tally>1</span>
-</a>
-<a href=https://blog.euc-rt.me/tags/tunnel/ class="post_tag button button_translucent" data-position=1 title=tunnel>TUNNEL<span class=button_tally>1</span>
-</a>
-<a href=https://blog.euc-rt.me/tags/vpn/ class="post_tag button button_translucent" data-position=3 title=vpn>VPN<span class=button_tally>3</span>
-</a>
-<a href=https://blog.euc-rt.me/tags/workspace-one/ class="post_tag button button_translucent" data-position=3 title=workspace-one>WORKSPACE-ONE<span class=button_tally>3</span>
-</a>
-<a href=https://blog.euc-rt.me/tags/xml/ class="post_tag button button_translucent" data-position=1 title=xml>XML<span class=button_tally>1</span>
-</a>
-<div class=tags_sort><span title="sort alphabetically">[A~Z]</span><span title="sort by count">[0~9]</span>
-</div>
-<span class=tags_hide><svg class="icon"><use xlink:href="#closeme"/></svg></span>
-</div>
-</div>
 </nav>
 </div>
 </section>

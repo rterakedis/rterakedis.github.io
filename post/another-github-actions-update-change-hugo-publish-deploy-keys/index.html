@@ -1,4 +1,4 @@
-<!doctype html><html lang=en data-figures class=page>
+<!doctype html><html lang=en data-figures=true class=page>
 <head>
 <title>Another GitHub Actions Update - Using Deploy Keys Instead Of Personal Access Tokens | Robert Terakedis</title>
 <meta charset=utf-8>
@@ -8,14 +8,14 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','XXXXXXXXXX')</script>
 <meta property="og:locale" content="en">
 <meta property="og:type" content="article">
-<meta name=description content="When I restarted my blogging journey in 2020, I switched from Jekyll to Hugo hosted in GitHub pages. It's been a relatively painless journey, and kudos to …">
+<meta name=description content="Constraining the Github Actions Deployment Key to the Repo instead of the Account">
 <meta name=twitter:card content="summary">
 <meta name=twitter:creator content="@robterakedis">
 <meta name=twitter:title content="Another GitHub Actions Update - Using Deploy Keys Instead Of Personal Access Tokens">
 <meta property="og:url" content="https://blog.euc-rt.me/post/another-github-actions-update-change-hugo-publish-deploy-keys/">
 <meta property="og:title" content="Another GitHub Actions Update - Using Deploy Keys Instead Of Personal Access Tokens">
-<meta property="og:description" content="When I restarted my blogging journey in 2020, I switched from Jekyll to Hugo hosted in GitHub pages. It's been a relatively painless journey, and kudos to …">
-<meta property="og:image" content="https://blog.euc-rt.me/images/thumbnail.png">
+<meta property="og:description" content="Constraining the Github Actions Deployment Key to the Repo instead of the Account">
+<meta property="og:image" content="https://blog.euc-rt.me/post/another-github-actions-update-change-hugo-publish-deploy-keys/img/avatar-icon.webp">
 <link rel=apple-touch-icon sizes=180x180 href=https://blog.euc-rt.me/icons/apple-touch-icon.png>
 <link rel=icon type=image/png sizes=32x32 href=https://blog.euc-rt.me/icons/favicon-32x32.png>
 <link rel=manifest href=https://blog.euc-rt.me/icons/site.webmanifest>
@@ -24,7 +24,7 @@
 <link rel=preload href=https://blog.euc-rt.me/js/bundle.min.061d04727b51b0a8fafe2f15b9370a961f33306e7af52abd00d69c906f5d825f1599306159d7756d7d2b4f359767a170625ae541d1f37d05c1daa4d5c7feec25.js as=script integrity="sha512-Bh0EcntRsKj6/i8VuTcKlh8zMG569Sq9ANackG9dgl8VmTBhWdd1bX0rTzWXZ6FwYlrlQdHzfQXB2qTVx/7sJQ==" crossorigin=anonymous>
 <link rel=stylesheet type=text/css href=https://blog.euc-rt.me/css/styles.a9aa5a850b6d000ffa686c86df9efe2bd23d6c5caa96df36ef5e532bf479061341c2e227cc7bc2c7c56615c1cb3fd0d129282112f3ed11b28e9bba3807813247.css integrity="sha512-qapahQttAA/6aGyG357+K9I9bFyqlt82715TK/R5BhNBwuInzHvCx8VmFcHLP9DRKSghEvPtEbKOm7o4B4EyRw==" crossorigin=anonymous>
 </head>
-<body data-code=50 data-lines=false id=documentTop>
+<body data-code=10 data-lines=false id=documentTop>
 <header class=nav_header>
 <nav class=nav><a href=https://blog.euc-rt.me/ class="nav_brand nav_item" title="Robert Terakedis">
 <img src=https://blog.euc-rt.me/img/avatar-icon-50.webp class=logo alt="Robert Terakedis">
@@ -80,10 +80,9 @@
 <div class=post_meta>
 <span><svg class="icon"><use xlink:href="#calendar"/></svg></span>
 <span class=post_date>
-Dec 10, 2021</span>
+Mar 6, 2020</span>
 <span class=post_time> · 6 min read</span><span>&nbsp;· <a href=https://blog.euc-rt.me/tags/github title=GitHub class="post_tag button button_translucent">GitHub
 </a><a href=https://blog.euc-rt.me/tags/actions title=Actions class="post_tag button button_translucent">Actions
-</a><a href=https://blog.euc-rt.me/tags/hugo title=Hugo class="post_tag button button_translucent">Hugo
 </a>
 </span>
 <span class=page_only>&nbsp;·
@@ -100,7 +99,32 @@ Share on:
 </div>
 </span>
 </div>
-<div class=post_body><p>When I restarted my blogging journey in 2020, I switched from Jekyll to Hugo hosted in GitHub pages. It's been a relatively painless journey, and kudos to GitHub as a rock-solid hosting provider. I've covered it before (<a href=https://blog.euc-rt.me/post/github-actions-publish-private-hugo-repo-to-public-pages-site/>Initial Setup</a> and <a href=https://blog.euc-rt.me/post/updated-github-actions-publish-private-hugo-repo-to-public-pages-site/>First Update</a>), but I've been incredibly happy with private-to-public publishing workflow that allows me to keep drafts and work-in-progress hidden. That said, a recent comment gave me reason to make another update to the Workflow. Read on for more detail...</p>
+<div class=post_toc>
+<h2>Overview</h2>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#background>Background</a></li>
+<li><a href=#updating-security-for-hugo-private-to-public-publishing-workflow>Updating Security for Hugo Private-to-Public Publishing Workflow</a></li>
+<li><a href=#adding-a-deploy-key-to-the-public-repository>Adding a Deploy Key to the Public Repository</a></li>
+<li><a href=#changing-the-github-actions-workflow-to-use-the-deploy-key>Changing the GitHub Actions Workflow to Use the Deploy Key</a>
+<ul>
+<li><a href=#changes-to-the-private-repository>Changes to the Private Repository</a></li>
+<li><a href=#changes-in-code>Changes in Code</a></li>
+</ul>
+</li>
+<li><a href=#show-me-the-code>Show me the Code!</a></li>
+<li><a href=#clean-up-the-personal-access-token>Clean Up the Personal Access Token</a>
+<ul>
+<li><a href=#remove-the-secret>Remove the Secret</a></li>
+<li><a href=#remove-the-token>Remove the Token</a></li>
+</ul>
+</li>
+<li><a href=#thoughts>Thoughts?</a></li>
+</ul>
+</nav>
+</div>
+<div class=post_body><h2 id=background>Background</h2>
+<p>When I restarted my blogging journey in 2020, I switched from Jekyll to Hugo hosted in GitHub pages. It's been a relatively painless journey, and kudos to GitHub as a rock-solid hosting provider. I've covered it before (<a href=https://blog.euc-rt.me/post/github-actions-publish-private-hugo-repo-to-public-pages-site/>Initial Setup</a> and <a href=https://blog.euc-rt.me/post/updated-github-actions-publish-private-hugo-repo-to-public-pages-site/>First Update</a>), but I've been incredibly happy with private-to-public publishing workflow that allows me to keep drafts and work-in-progress hidden. That said, a recent comment gave me reason to make another update to the Workflow. Read on for more detail...</p>
 <h2 id=updating-security-for-hugo-private-to-public-publishing-workflow>Updating Security for Hugo Private-to-Public Publishing Workflow</h2>
 <p>I initially set up my publishing workflow to use a <a href=https://docs.github.com/en/rest/overview/other-authentication-methods#via-oauth-and-personal-access-tokens>Personal Access Token</a> to deploy the Hugo site to the public GitHub pages repository. To do this, I configured the Personal Access Token and then saved it as a <a href=https://docs.github.com/en/actions/security-guides/encrypted-secrets>Secret</a>. You can see this being leveraged in the Action's <code>main.yml</code> file in the <code>token</code> field (<code>${{ secrets.ACCESS_TOKEN }}</code>):</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-YAML data-lang=YAML><span class=ln>1</span><span class=w>    </span><span class=c># Deploy the Static Site to Public Repo (GitHub Pages)</span><span class=w>
@@ -133,10 +157,10 @@ Share on:
 </ol>
 <h2 id=changing-the-github-actions-workflow-to-use-the-deploy-key>Changing the GitHub Actions Workflow to Use the Deploy Key</h2>
 <p>With the Deploy Key added to the Public Repo hosting my GitHub pages website, I now need to change the GitHub Actions workflow for my private repository. Since I was previously using a Personal Access Token, I need to make changes to both the Secrets AND the workflow to start using the Deploy Key. The detail on how to use the Deploy Key for the <code>Deploy</code> step in my workflow came from <a href=https://github.com/JamesIves/github-pages-deploy-action/tree/dev#using-an-ssh-deploy-key->JamesIves' documentation</a>. Here's what I did:</p>
-<h3 id=changes-in-github>Changes in GitHub</h3>
+<h3 id=changes-to-the-private-repository>Changes to the Private Repository</h3>
 <p>First, I needed to make some changes within the settings for the public repo where I host my blog.</p>
 <ol>
-<li>Browse to the Public Repository where GitHub Pages is hosted.</li>
+<li>Browse to the Private Repository where your Hugo site's source is committed.</li>
 <li>Click on the <strong>Settings</strong> tab for the repository
 <ol>
 <li><em><strong>NOTE</strong></em> If your browser is windowed, it may be hidden in the elipsis <strong>...</strong> to the right)</li>
@@ -152,7 +176,7 @@ Share on:
 <li>Click on <strong>Add Secret</strong></li>
 </ol>
 <h3 id=changes-in-code>Changes in Code</h3>
-<p>Once GitHub changes were complete, I had to then make some changes to the YAML file that details my GitHub Actions workflow. Here's how:</p>
+<p>Once the changes to the private repository settings were complete, I had to then make some changes to the YAML file that details my GitHub Actions workflow. Here's how:</p>
 <ol>
 <li>Open the <code>main.yml</code> file in the <code>/.github/workflows</code> folder in my private repository code.</li>
 <li>Find the step starting with <code>name: Deploy 🚀</code></li>
@@ -172,7 +196,7 @@ Share on:
 </span><span class=ln> 6</span><span class=w></span><span class=c># events but only for the master branch</span><span class=w>
 </span><span class=ln> 7</span><span class=w></span><span class=nt>on</span><span class=p>:</span><span class=w>
 </span><span class=ln> 8</span><span class=w>  </span><span class=nt>push</span><span class=p>:</span><span class=w>
-</span><span class=ln> 9</span><span class=w>    </span><span class=nt>branches</span><span class=p>:</span><span class=w> </span><span class=p>[</span><span class=w> </span><span class=l>master ]</span><span class=w>
+</span><span class=ln> 9</span><span class=w>    </span><span class=nt>branches</span><span class=p>:</span><span class=w> </span><span class=p>[</span><span class=w> </span><span class=l>main ]</span><span class=w>
 </span><span class=ln>10</span><span class=w>
 </span><span class=ln>11</span><span class=w></span><span class=c># A workflow run is made up of one or more jobs that can run sequentially or in parallel</span><span class=w>
 </span><span class=ln>12</span><span class=w></span><span class=nt>jobs</span><span class=p>:</span><span class=w>
@@ -184,34 +208,35 @@ Share on:
 </span><span class=ln>18</span><span class=w>    </span><span class=c># Steps represent a sequence of tasks that will be executed as part of the job</span><span class=w>
 </span><span class=ln>19</span><span class=w>    </span><span class=nt>steps</span><span class=p>:</span><span class=w>
 </span><span class=ln>20</span><span class=w>    
-</span><span class=ln>21</span><span class=w>    </span><span class=c># Check Out Repository:   https://github.com/marketplace/actions/deploy-to-github-pages</span><span class=w>
+</span><span class=ln>21</span><span class=w>    </span><span class=c># Check Out Repository:   https://github.com/marketplace/actions/checkout</span><span class=w>
 </span><span class=ln>22</span><span class=w>    </span>- <span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>Checkout 🛎️</span><span class=w>
 </span><span class=ln>23</span><span class=w>      </span><span class=nt>uses</span><span class=p>:</span><span class=w> </span><span class=l>actions/checkout@v2.4.0 </span><span class=w>
 </span><span class=ln>24</span><span class=w>      </span><span class=nt>with</span><span class=p>:</span><span class=w>
 </span><span class=ln>25</span><span class=w>        </span><span class=nt>persist-credentials</span><span class=p>:</span><span class=w> </span><span class=kc>false</span><span class=w>
-</span><span class=ln>26</span><span class=w>
-</span><span class=ln>27</span><span class=w>    </span><span class=c># Setup Hugo</span><span class=w>
-</span><span class=ln>28</span><span class=w>    </span>- <span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>Hugo setup</span><span class=w>
-</span><span class=ln>29</span><span class=w>      </span><span class=nt>uses</span><span class=p>:</span><span class=w> </span><span class=l>peaceiris/actions-hugo@v2.5.0</span><span class=w>
-</span><span class=ln>30</span><span class=w>      </span><span class=nt>with</span><span class=p>:</span><span class=w>
-</span><span class=ln>31</span><span class=w>        </span><span class=c># The Hugo version to download (if necessary) and use. Example: 0.58.2</span><span class=w>
-</span><span class=ln>32</span><span class=w>        </span><span class=nt>hugo-version</span><span class=p>:</span><span class=w> </span><span class=s1>&#39;latest&#39;</span><span class=w>
-</span><span class=ln>33</span><span class=w>        </span><span class=c># Download (if necessary) and use Hugo extended version. Example: true</span><span class=w>
-</span><span class=ln>34</span><span class=w>        </span><span class=nt>extended</span><span class=p>:</span><span class=w> </span><span class=kc>false</span><span class=w>
-</span><span class=ln>35</span><span class=w>
-</span><span class=ln>36</span><span class=w>    </span><span class=c># Runs Hugo to build the Static Site</span><span class=w>
-</span><span class=ln>37</span><span class=w>    </span>- <span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>Run Hugo</span><span class=w>
-</span><span class=ln>38</span><span class=w>      </span><span class=nt>run</span><span class=p>:</span><span class=w> </span><span class=p>|</span><span class=sd>
-</span><span class=ln>39</span><span class=sd>        </span><span class=w>        </span><span class=l>hugo --minify --verbose</span><span class=w>
-</span><span class=ln>40</span><span class=w>
-</span><span class=ln>41</span><span class=w>    </span><span class=c># Deploy the Static Site to Public Repo (GitHub Pages)</span><span class=w>
-</span><span class=ln>42</span><span class=w>    </span>- <span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>Deploy 🚀</span><span class=w>
-</span><span class=ln>43</span><span class=w>      </span><span class=nt>uses</span><span class=p>:</span><span class=w> </span><span class=l>JamesIves/github-pages-deploy-action@4.1.7</span><span class=w>
-</span><span class=ln>44</span><span class=w>      </span><span class=nt>with</span><span class=p>:</span><span class=w>
-</span><span class=ln>45</span><span class=w>        </span><span class=nt>ssh-key</span><span class=p>:</span><span class=w>  </span><span class=l>${{ secrets.DEPLOY_KEY }}</span><span class=w>
-</span><span class=ln>46</span><span class=w>        </span><span class=nt>repository-name</span><span class=p>:</span><span class=w> </span><span class=l>rterakedis/rterakedis.github.io</span><span class=w>
-</span><span class=ln>47</span><span class=w>        </span><span class=nt>branch</span><span class=p>:</span><span class=w> </span><span class=l>master</span><span class=w> </span><span class=c># The branch the action should deploy to.</span><span class=w>
-</span><span class=ln>48</span><span class=w>        </span><span class=nt>folder</span><span class=p>:</span><span class=w> </span><span class=l>docs</span><span class=w> </span><span class=c># The folder the action should deploy.</span><span class=w>
+</span><span class=ln>26</span><span class=w>        </span><span class=nt>submodules</span><span class=p>:</span><span class=w> </span><span class=kc>true</span><span class=w>  </span><span class=c># I recently changed themes and started including the theme as a submodule</span><span class=w>
+</span><span class=ln>27</span><span class=w>
+</span><span class=ln>28</span><span class=w>
+</span><span class=ln>29</span><span class=w>    </span><span class=c># Setup Hugo</span><span class=w>
+</span><span class=ln>30</span><span class=w>    </span>- <span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>Hugo setup</span><span class=w>
+</span><span class=ln>31</span><span class=w>      </span><span class=nt>uses</span><span class=p>:</span><span class=w> </span><span class=l>peaceiris/actions-hugo@v2.5.0</span><span class=w>
+</span><span class=ln>32</span><span class=w>      </span><span class=nt>with</span><span class=p>:</span><span class=w>
+</span><span class=ln>33</span><span class=w>        </span><span class=c># The Hugo version to download (if necessary) and use. Example: 0.58.2</span><span class=w>
+</span><span class=ln>34</span><span class=w>        </span><span class=nt>hugo-version</span><span class=p>:</span><span class=w> </span><span class=s1>&#39;latest&#39;</span><span class=w>
+</span><span class=ln>35</span><span class=w>        </span><span class=c># Download (if necessary) and use Hugo extended version. Example: true</span><span class=w>
+</span><span class=ln>36</span><span class=w>        </span><span class=nt>extended</span><span class=p>:</span><span class=w> </span><span class=kc>true</span><span class=w>  </span><span class=c># I recently changed themes and the new theme needs the SCSS support in hugo extended version</span><span class=w>
+</span><span class=ln>37</span><span class=w>
+</span><span class=ln>38</span><span class=w>    </span><span class=c># Runs Hugo to build the Static Site</span><span class=w>
+</span><span class=ln>39</span><span class=w>    </span>- <span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>Run Hugo</span><span class=w>
+</span><span class=ln>40</span><span class=w>      </span><span class=nt>run</span><span class=p>:</span><span class=w> </span><span class=p>|</span><span class=sd>
+</span><span class=ln>41</span><span class=sd>        </span><span class=w>        </span><span class=l>hugo --minify --verbose</span><span class=w>
+</span><span class=ln>42</span><span class=w>    </span><span class=c># Deploy the Static Site to Public Repo (GitHub Pages):  https://github.com/marketplace/actions/deploy-to-github-pages</span><span class=w>
+</span><span class=ln>43</span><span class=w>    </span>- <span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>Deploy 🚀</span><span class=w>
+</span><span class=ln>44</span><span class=w>      </span><span class=nt>uses</span><span class=p>:</span><span class=w> </span><span class=l>JamesIves/github-pages-deploy-action@4.1.7</span><span class=w>
+</span><span class=ln>45</span><span class=w>      </span><span class=nt>with</span><span class=p>:</span><span class=w>
+</span><span class=ln>46</span><span class=w>        </span><span class=nt>ssh-key</span><span class=p>:</span><span class=w>  </span><span class=l>${{ secrets.DEPLOY_KEY }}</span><span class=w>
+</span><span class=ln>47</span><span class=w>        </span><span class=nt>repository-name</span><span class=p>:</span><span class=w> </span><span class=l>rterakedis/rterakedis.github.io</span><span class=w>
+</span><span class=ln>48</span><span class=w>        </span><span class=nt>branch</span><span class=p>:</span><span class=w> </span><span class=l>master</span><span class=w> </span><span class=c># The branch the action should deploy to.</span><span class=w>
+</span><span class=ln>49</span><span class=w>        </span><span class=nt>folder</span><span class=p>:</span><span class=w> </span><span class=l>docs</span><span class=w> </span><span class=c># The folder the action should deploy.</span><span class=w>
 </span></code></pre></div><h2 id=clean-up-the-personal-access-token>Clean Up the Personal Access Token</h2>
 <p>Since I wasn't using the Personal Access Token for anything else in GitHub, I decided to do some cleanup. I highly recommend this as the token can grant more access than you'd want if the token/secret was ever leaked or stolen. Here's how I went about cleaning up:</p>
 <h3 id=remove-the-secret>Remove the Secret</h3>
@@ -259,6 +284,24 @@ Technologist, perpetual student, teacher, continual incremental improvement.
 <h2 class=mt-4>Disclaimer</h2>
 The opinions expressed on this site are my own personal opinions and do not represent my employer’s view in any way.
 </div>
+<h2 class=mt-4>Featured Posts</h2>
+<ul>
+<li>
+<a href=https://blog.euc-rt.me/post/mapping-concepts-from-munki-to-workspace-one-uem/ class=nav-link title="Mapping Concepts from Munki to WS1 UEM">Mapping Concepts from Munki to WS1 UEM</a>
+</li>
+<li>
+<a href=https://blog.euc-rt.me/post/best-practices-for-apple-admins-in-workspace-one-uem/ class=nav-link title="Best Practices for Apple Admins in Workspace ONE UEM">Best Practices for Apple Admins in Workspace ONE UEM</a>
+</li>
+<li>
+<a href=https://blog.euc-rt.me/post/great-free-resources-to-learn-github/ class=nav-link title="Great *Free* Resources to Learn GitHub">Great *Free* Resources to Learn GitHub</a>
+</li>
+<li>
+<a href=https://blog.euc-rt.me/post/modify-zshell-defaults/ class=nav-link title="Modify ZShell Defaults in macOS">Modify ZShell Defaults in macOS</a>
+</li>
+<li>
+<a href=https://blog.euc-rt.me/2020-03-06-organizing-adapted-digital-bullet-journal-ipad-goodnotes/ class=nav-link title="My Adapted Digital Bullet Journal via iPad Pro and GoodNotes 5">My Adapted Digital Bullet Journal via iPad Pro and GoodNotes 5</a>
+</li>
+</ul>
 <h2 class=mt-4>Recent Posts</h2>
 <ul class=flex-column>
 <li>
@@ -268,35 +311,56 @@ The opinions expressed on this site are my own personal opinions and do not repr
 <a href=https://blog.euc-rt.me/post/best-practices-for-apple-admins-in-workspace-one-uem/ class=nav-link title="Best Practices for Apple Admins in Workspace ONE UEM">Best Practices for Apple Admins in Workspace ONE UEM</a>
 </li>
 <li>
-<a href=https://blog.euc-rt.me/post/new-key-added-softwareupdate-command-macos/ class=nav-link title="New Key Added to SoftwareUpdate Command in macOS">New Key Added to SoftwareUpdate Command in macOS</a>
+<a href=https://blog.euc-rt.me/post/great-free-resources-to-learn-github/ class=nav-link title="Great *Free* Resources to Learn GitHub">Great *Free* Resources to Learn GitHub</a>
 </li>
 <li>
 <a href=https://blog.euc-rt.me/post/converting-jamf-custom-schema-json-workspace-one-uem/ class=nav-link title="Converting Jamf Custom Schema JSON for Workspace ONE UEM">Converting Jamf Custom Schema JSON for Workspace ONE UEM</a>
 </li>
 <li>
-<a href=https://blog.euc-rt.me/post/updated-github-actions-publish-private-hugo-repo-to-public-pages-site/ class=nav-link title="Updated GitHub Actions to Publish Hugo Site From Private to Public Repo">Updated GitHub Actions to Publish Hugo Site From Private to Public Repo</a>
-</li>
-<li>
 <a href=https://blog.euc-rt.me/post/troubleshooting-macos-management-with-workspace-one/ class=nav-link title="Troubleshooting macOS Management with Workspace ONE">Troubleshooting macOS Management with Workspace ONE</a>
 </li>
+<li>
+<a href=https://blog.euc-rt.me/post/updated-github-actions-publish-private-hugo-repo-to-public-pages-site/ class=nav-link title="Updated GitHub Actions to Publish Hugo Site From Private to Public Repo">Updated GitHub Actions to Publish Hugo Site From Private to Public Repo</a>
+</li>
 </ul>
+<div>
+<h2 class="mt-4 taxonomy" id=categories-section>Categories</h2>
+<nav class=tags_nav>
+<a href=https://blog.euc-rt.me/categories/technology/ class="post_tag button button_translucent" title=technology>
+TECHNOLOGY
+<span class=button_tally>18</span>
+</a>
+<a href=https://blog.euc-rt.me/categories/workspace-one/ class="post_tag button button_translucent" title=workspace-one>
+WORKSPACE-ONE
+<span class=button_tally>10</span>
+</a>
+<a href=https://blog.euc-rt.me/categories/hugo/ class="post_tag button button_translucent" title=hugo>
+HUGO
+<span class=button_tally>4</span>
+</a>
+<a href=https://blog.euc-rt.me/categories/learn-something-new/ class="post_tag button button_translucent" title=learn-something-new>
+LEARN-SOMETHING-NEW
+<span class=button_tally>1</span>
+</a>
+</nav>
+</div>
 <div>
 <h2 class="mt-4 taxonomy" id=tags-section>Tags</h2>
 <nav class=tags_nav>
 <a href=https://blog.euc-rt.me/tags/macos/ class="post_tag button button_translucent" title=macos>
 MACOS
-<span class=button_tally>11</span>
+<span class=button_tally>12</span>
 </a>
 <a href=https://blog.euc-rt.me/tags/github/ class="post_tag button button_translucent" title=github>
 GITHUB
-<span class=button_tally>4</span>
-</a>
-<a href=https://blog.euc-rt.me/tags/hugo/ class="post_tag button button_translucent" title=hugo>
-HUGO
-<span class=button_tally>4</span>
+<span class=button_tally>5</span>
 </a>
 <a href=https://blog.euc-rt.me/tags/sso/ class="post_tag button button_translucent" title=sso>
 SSO
+<span class=button_tally>4</span>
+</a>
+<a href=https://blog.euc-rt.me/tags/vpn/ class="post_tag button button_translucent" title=vpn>
+VPN
 <span class=button_tally>4</span>
 </a>
 <a href=https://blog.euc-rt.me/tags/actions/ class="post_tag button button_translucent" title=actions>
@@ -307,13 +371,9 @@ ACTIONS
 APPLE
 <span class=button_tally>3</span>
 </a>
-<a href=https://blog.euc-rt.me/tags/vpn/ class="post_tag button button_translucent" title=vpn>
-VPN
-<span class=button_tally>3</span>
-</a>
-<a href=https://blog.euc-rt.me/tags/workspace-one/ class="post_tag button button_translucent" title=workspace-one>
-WORKSPACE-ONE
-<span class=button_tally>3</span>
+<a href=https://blog.euc-rt.me/tags/terminal/ class="post_tag button button_translucent" title=terminal>
+TERMINAL
+<span class=button_tally>2</span>
 </a>
 <a href=https://blog.euc-rt.me/tags/azure/ class="post_tag button button_translucent" title=azure>
 AZURE
@@ -335,51 +395,14 @@ MUNKI
 NOMAD
 <span class=button_tally>1</span>
 </a>
-<a href=https://blog.euc-rt.me/tags/terminal/ class="post_tag button button_translucent" title=terminal>
-TERMINAL
+<a href=https://blog.euc-rt.me/tags/workspace-one/ class="post_tag button button_translucent" title=workspace-one>
+WORKSPACE-ONE
 <span class=button_tally>1</span>
 </a>
-<br>
-<div class="post_tags_toggle button">All Tags</div>
-<div class=post_tags>
-<div class=tags_list>
-<a href=https://blog.euc-rt.me/tags/actions/ class="post_tag button button_translucent" data-position=3 title=actions>ACTIONS<span class=button_tally>3</span>
+<a href=https://blog.euc-rt.me/tags/xml/ class="post_tag button button_translucent" title=xml>
+XML
+<span class=button_tally>1</span>
 </a>
-<a href=https://blog.euc-rt.me/tags/apple/ class="post_tag button button_translucent" data-position=3 title=apple>APPLE<span class=button_tally>3</span>
-</a>
-<a href=https://blog.euc-rt.me/tags/azure/ class="post_tag button button_translucent" data-position=1 title=azure>AZURE<span class=button_tally>1</span>
-</a>
-<a href=https://blog.euc-rt.me/tags/digibujo/ class="post_tag button button_translucent" data-position=1 title=digibujo>DIGIBUJO<span class=button_tally>1</span>
-</a>
-<a href=https://blog.euc-rt.me/tags/github/ class="post_tag button button_translucent" data-position=4 title=github>GITHUB<span class=button_tally>4</span>
-</a>
-<a href=https://blog.euc-rt.me/tags/hugo/ class="post_tag button button_translucent" data-position=4 title=hugo>HUGO<span class=button_tally>4</span>
-</a>
-<a href=https://blog.euc-rt.me/tags/jekyll/ class="post_tag button button_translucent" data-position=1 title=jekyll>JEKYLL<span class=button_tally>1</span>
-</a>
-<a href=https://blog.euc-rt.me/tags/macos/ class="post_tag button button_translucent" data-position=11 title=macos>MACOS<span class=button_tally>11</span>
-</a>
-<a href=https://blog.euc-rt.me/tags/munki/ class="post_tag button button_translucent" data-position=1 title=munki>MUNKI<span class=button_tally>1</span>
-</a>
-<a href=https://blog.euc-rt.me/tags/nomad/ class="post_tag button button_translucent" data-position=1 title=nomad>NOMAD<span class=button_tally>1</span>
-</a>
-<a href=https://blog.euc-rt.me/tags/sso/ class="post_tag button button_translucent" data-position=4 title=sso>SSO<span class=button_tally>4</span>
-</a>
-<a href=https://blog.euc-rt.me/tags/terminal/ class="post_tag button button_translucent" data-position=1 title=terminal>TERMINAL<span class=button_tally>1</span>
-</a>
-<a href=https://blog.euc-rt.me/tags/tunnel/ class="post_tag button button_translucent" data-position=1 title=tunnel>TUNNEL<span class=button_tally>1</span>
-</a>
-<a href=https://blog.euc-rt.me/tags/vpn/ class="post_tag button button_translucent" data-position=3 title=vpn>VPN<span class=button_tally>3</span>
-</a>
-<a href=https://blog.euc-rt.me/tags/workspace-one/ class="post_tag button button_translucent" data-position=3 title=workspace-one>WORKSPACE-ONE<span class=button_tally>3</span>
-</a>
-<a href=https://blog.euc-rt.me/tags/xml/ class="post_tag button button_translucent" data-position=1 title=xml>XML<span class=button_tally>1</span>
-</a>
-<div class=tags_sort><span title="sort alphabetically">[A~Z]</span><span title="sort by count">[0~9]</span>
-</div>
-<span class=tags_hide><svg class="icon"><use xlink:href="#closeme"/></svg></span>
-</div>
-</div>
 </nav>
 </div>
 </section>
